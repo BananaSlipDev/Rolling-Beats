@@ -13,6 +13,15 @@ public class PlayFabManager : MonoBehaviour
 
     public InputField emailInput;
     public InputField passwordInput;
+    public InputField username;
+    public InputField puntuacion;
+
+    public GameObject loginUI;
+    public GameObject userUI;
+    public GameObject leaderboardUI;
+
+    public GameObject rowPrefab;
+    public Transform rowsParent;
 
     public void RegisterButton()
     {
@@ -33,7 +42,8 @@ public class PlayFabManager : MonoBehaviour
 
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        messageText.text = "Registered and logged in!";
+        messageText.text = "Registered. Now you can Login!";
+       
     }
 
     public void LoginButton()
@@ -42,7 +52,11 @@ public class PlayFabManager : MonoBehaviour
         {
 
             Email = emailInput.text,
-            Password = passwordInput.text
+            Password = passwordInput.text,
+            InfoRequestParameters =  new GetPlayerCombinedInfoRequestParams
+            {
+                GetPlayerProfile = true
+            }
         };
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess,OnError);
     }
@@ -76,8 +90,19 @@ public class PlayFabManager : MonoBehaviour
 
     void OnLoginSuccess(LoginResult results)
     {
+        loginUI.SetActive(false);
         messageText.text = "Logged In";
         Debug.Log("Succesfull");
+        string name = null;
+        if(results.InfoResultPayload.PlayerProfile!=null)
+            name = results.InfoResultPayload.PlayerProfile.DisplayName;
+        
+        if (name ==null)
+            userUI.SetActive(true);
+        else
+        {
+            leaderboardUI.SetActive(true);
+        }
     }
     
     void OnError(PlayFabError error)
@@ -87,7 +112,7 @@ public class PlayFabManager : MonoBehaviour
         Debug.Log(error.GenerateErrorReport());
     }
 
-    public void SendLeaderboard(int score)
+    public void SendLeaderboard()
     {
         var request = new UpdatePlayerStatisticsRequest
         {
@@ -95,8 +120,8 @@ public class PlayFabManager : MonoBehaviour
             {
                 new StatisticUpdate
                 {
-                    StatisticName = "Score",
-                    Value = score
+                    StatisticName = "Leaderboard",
+                    Value = int.Parse(puntuacion.text)
                 }
             }
         };
@@ -112,7 +137,7 @@ public class PlayFabManager : MonoBehaviour
     {
         var request = new GetLeaderboardRequest
         {
-            StatisticName = "Score",
+            StatisticName = "Leaderboard",
             StartPosition = 0,
             MaxResultsCount = 10
         };
@@ -122,10 +147,35 @@ public class PlayFabManager : MonoBehaviour
 
     void OnLeaderboardGet(GetLeaderboardResult result)
     {
+        foreach (Transform item in rowsParent)
+        {
+            Destroy(item.gameObject);
+        }
         foreach (var item in result.Leaderboard)
         {
-            Debug.Log(item.Position + " " +item.PlayFabId+ "  "+item.DisplayName+" "+item.StatValue);
+            GameObject newGO = Instantiate(rowPrefab, rowsParent);
+            Text[] text = newGO.GetComponentsInChildren<Text>();
+            text[0].text = (item.Position +1).ToString();
+            text[1].text = item.DisplayName;
+            text[2].text = item.StatValue.ToString();
+            Debug.Log(item.Position + " " +item.DisplayName+" "+item.StatValue);
         }
         
+    }
+
+    public void SubmitNameButton()
+    {
+        var request = new UpdateUserTitleDisplayNameRequest
+        {
+            DisplayName = username.text,
+        };
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request,OnDisplayNameUpdate, OnError);
+    }
+
+    private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult obj)
+    {
+        Debug.Log("Update display name");
+        userUI.SetActive(false);
+        leaderboardUI.SetActive(true);
     }
 }
