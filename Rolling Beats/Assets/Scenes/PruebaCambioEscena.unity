@@ -673,9 +673,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66357daaef036648ae262dd3db95381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enviar: {fileID: 310440308}
-  recibir: {fileID: 1308737150}
-  puntuacion: {fileID: 615375979}
+  sendPunt: {fileID: 310440308}
+  getPunt: {fileID: 1308737150}
+  score: {fileID: 615375979}
 --- !u!1 &677618729
 GameObject:
   m_ObjectHideFlags: 0
