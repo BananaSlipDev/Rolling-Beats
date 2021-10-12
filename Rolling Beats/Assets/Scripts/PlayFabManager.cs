@@ -4,16 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
+using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class PlayFabManager : MonoBehaviour
 {
     public static PlayFabManager SharedInstance;
 
     [Header("UI")]
-    public Text welcomeT;
-    public Text messageText;
+    public TextMeshProUGUI welcomeT;
+
+    public TextMeshProUGUI messageText;
 
     public InputField emailInput;
     public InputField passwordInput;
@@ -111,6 +114,7 @@ public class PlayFabManager : MonoBehaviour
     void OnLoginSuccess(LoginResult results)
     {
         loginUI.SetActive(false);
+        messageText.gameObject.SetActive(false);
         messageText.text = "Logged In";
         welcomeT.text="Welcome "+results.InfoResultPayload.PlayerProfile.DisplayName;
         Debug.Log("Succesfull");
