@@ -7,18 +7,18 @@ using UnityEngine.UI;
 public class LeaderboardButtons : MonoBehaviour
 {
 
-    public Button enviar;
+    public Button sendPunt;
 
-    public Button recibir;
+    public Button getPunt;
 
-    public InputField puntuacion;
+    public InputField score;
     
     // Start is called before the first frame update
 
     private void Awake()
     {
-        enviar.onClick.AddListener(enviarPuntuacion);
-        recibir.onClick.AddListener(recibirPuntuacion);
+        sendPunt.onClick.AddListener(enviarPuntuacion);
+        getPunt.onClick.AddListener(recibirPuntuacion);
         PlayFabManager.SharedInstance.rowsParent = GameObject.Find("TAble");
     }
 
@@ -35,6 +35,6 @@ public class LeaderboardButtons : MonoBehaviour
 
     void enviarPuntuacion()
     {
-        PlayFabManager.SharedInstance.SendLeaderboard(int.Parse(puntuacion.text));
+        PlayFabManager.SharedInstance.SendLeaderboard(int.Parse(score.text));
     }
 }
