@@ -214,7 +214,7 @@ public class PlayFabManager : MonoBehaviour
 
     public void goToScene()
     {
-        SceneManager.LoadScene("PruebaCambioEscena");
+        //SceneManager.LoadScene("PruebaCambioEscena");
     }
 
     
