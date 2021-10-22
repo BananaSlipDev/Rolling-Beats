@@ -19,6 +19,10 @@ public class Conductor : MonoBehaviour
     
     public float songPosition;      //Current song position, in seconds
     public float songPosInBeats;    //Current song position, in beats
+    public float beatsShownInAdvance;
+
+    float[] notes;                  //Position-in-beats of notes in the song
+    int nextIndex = 0;              //Index of the next note to be spawned
 
     //Seconds passed since song started
     public float dspSongTime;
@@ -39,6 +43,8 @@ public class Conductor : MonoBehaviour
         //Record the time when music starts
         dspSongTime = (float)AudioSettings.dspTime;
 
+       // notes = musicSource.clip.GetData(notes, firstBeatOffset);
+
         //Start music
         musicSource.Play();
     }
@@ -50,7 +56,17 @@ public class Conductor : MonoBehaviour
 
         //How many beats since song started
         songPosInBeats = songPosition / secPerBeat;
-        
+
+        /*
+        // Note spawning
+        if(nextIndex < notes.Length && notes[nextIndex] < songPosInBeats)
+        {
+            Object.Instantiate(note prefab);
+
+            // initialize the fields of music note
+            nextIndex++;
+        }
+        */
     }
 
 }
