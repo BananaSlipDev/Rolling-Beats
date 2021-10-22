@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - NoteHolder
+  - Note
+  - NoteSpawner
   - Leaderboard
   layers:
   - Default
@@ -12,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - NoteHolder
+  - NoteSpawner
   - 
   - 
   - 
@@ -41,4 +44,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: NoteHolder
+    uniqueID: 3566961861
+    locked: 0
+  - name: NoteSpawner
+    uniqueID: 3238088779
+    locked: 0
+  - name: Note
+    uniqueID: 2662872697
     locked: 0
