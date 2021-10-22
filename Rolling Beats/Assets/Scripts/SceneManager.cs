@@ -8,10 +8,6 @@ public class SceneManager : MonoBehaviour
 
     public bool musicStarted = false;
 
-    [SerializeField]
-    private List<GameObject> noteList = new List<GameObject>();
-    private GameObject[] noteArray;
-
 
     // Score parameters
     private const int PERFECT_SCORE = 100;
@@ -28,14 +24,6 @@ public class SceneManager : MonoBehaviour
 
     private void Update()
     {
-        // Keeps a track of the notes that are or have been on screen  ...  AÚN NO LO USAMOS!!
-        noteArray = GameObject.FindGameObjectsWithTag("Note");
-        foreach (GameObject n in noteArray)
-        {
-            if (!noteList.Contains(n))
-                noteList.Add(n);
-        }
-
         /*
          * PRUEBA: inicia la cancion al pulsar cualquier tecla
          */
@@ -69,7 +57,7 @@ public class SceneManager : MonoBehaviour
 
         totalScore += points * combo;   // Adds the note points to the total score
         combo += 1;                     // Increases the combo
-        Debug.Log("Total score: " + totalScore);
+        //Debug.Log("Total score: " + totalScore);
     }
 
     public void Miss() //Resets the combo and... damages the health?

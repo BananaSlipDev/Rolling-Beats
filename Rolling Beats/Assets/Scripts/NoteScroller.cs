@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class NoteScroller : MonoBehaviour
 {
+    [SerializeField]
+    private const int UNITS_TO_MOVE = 2; // Unity space units to move the notes (in other words, speed)
     void Update()
     {
-        //
-        // TO BE UPDATED !!!!!
-        //
-        if(SceneManager.instance.musicStarted)
+        // Moves the notes UNITS_TO_MOVE per beat of the song
+        if (SceneManager.instance.musicStarted)
         {
-            this.transform.position -= new Vector3(Conductor.instance.songBPM * Time.deltaTime, 0f, 0f);
+            this.transform.position -= new Vector3(Conductor.instance.beatPerSec * UNITS_TO_MOVE * Time.deltaTime, 0f, 0f);
         }
     }
 }
