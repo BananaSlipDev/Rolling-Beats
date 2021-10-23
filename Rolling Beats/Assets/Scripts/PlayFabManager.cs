@@ -258,6 +258,7 @@ public class PlayFabManager : MonoBehaviour
 
     public void goToScene()
     {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("PlayScene");
         //SceneManager.LoadScene("PruebaCambioEscena");
     }
 

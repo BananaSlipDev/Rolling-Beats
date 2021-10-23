@@ -66,4 +66,17 @@ public class SceneManager : MonoBehaviour
         combo = 1;
         // ... 
     }
+
+    public void sendtotalScore()
+    {
+        PlayFabManager.SharedInstance.SendLeaderboard(totalScore);
+    }
+
+    public IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(5f);
+        sendtotalScore();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("PruebaCambioEscena");
+
+    }
 }

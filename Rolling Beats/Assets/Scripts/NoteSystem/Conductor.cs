@@ -41,7 +41,7 @@ public class Conductor : MonoBehaviour
         dspSongTime = (float)AudioSettings.dspTime;
         
         
-        // por alguna razón Unity peta con esto XD  así que guarda antes de ejecutar crack
+        // por alguna razï¿½n Unity peta con esto XD  asï¿½ que guarda antes de ejecutar crack
         //notes = new float[musicSource.clip.samples * musicSource.clip.channels];
         //musicSource.clip.GetData(notes, firstBeatOffsetIdx);
 
@@ -63,6 +63,11 @@ public class Conductor : MonoBehaviour
                 // initialize the fields of music note
                 nextIndex++;
             }
+            else
+            {
+                StartCoroutine(SceneManager.instance.GameOver());
+            }
+            
         }
 
     }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class CheckMobileManager : MonoBehaviour
 {
-    bool isMobile = true;
+    bool isMobile;
 #if !UNITY_EDITOR && UNITY_WEBGL
         [System.Runtime.InteropServices.DllImport("__Internal")]
         static extern bool IsMobile();

@@ -18,7 +18,6 @@ public class LeaderboardButtons : MonoBehaviour
 
     private void Awake()
     {
-        sendPunt.onClick.AddListener(enviarPuntuacion);
         getPunt.onClick.AddListener(recibirPuntuacion);
         PlayFabManager.SharedInstance.rowsParent = GameObject.Find("TAble");
     }
@@ -34,9 +33,6 @@ public class LeaderboardButtons : MonoBehaviour
         PlayFabManager.SharedInstance.GetLeaderboard();
     }
 
-    void enviarPuntuacion()
-    {
-        PlayFabManager.SharedInstance.SendLeaderboard(int.Parse(score.text));
-    }
+   
     
 }
