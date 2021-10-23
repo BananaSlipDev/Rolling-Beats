@@ -7,6 +7,7 @@ using PlayFab.ClientModels;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 
 public class PlayFabManager : MonoBehaviour
@@ -27,6 +28,7 @@ public class PlayFabManager : MonoBehaviour
     public GameObject userUI;
     public GameObject leaderboardUI;
     public GameObject startUI;
+    public GameObject mobile;
 
     public GameObject rowPrefab;
     public GameObject rowsParent;
@@ -101,14 +103,41 @@ public class PlayFabManager : MonoBehaviour
     // Update is called once per frame
    
 
-    void Login()
+    public void Login()
     {
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = nombre,
-            CreateAccount = true
+            CustomId = SystemInfo.deviceUniqueIdentifier,
+            CreateAccount = true,
+            InfoRequestParameters =  new GetPlayerCombinedInfoRequestParams
+            {
+            GetPlayerProfile = true
+            }
         };
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnError);
+        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccessNoUser, OnError);
+    }
+    
+    void OnLoginSuccessNoUser(LoginResult results)
+    {
+        mobile.SetActive(false);
+        messageText.gameObject.SetActive(false);
+        string name = null;
+        if(results.InfoResultPayload.PlayerProfile!=null)
+            name = results.InfoResultPayload.PlayerProfile.DisplayName;
+
+        if (name == null)
+        {
+           generateRandomUser();
+        }
+            
+            
+        else
+        {
+            startUI.SetActive(true);
+            welcomeT.text = "Welcome "+results.InfoResultPayload.PlayerProfile.DisplayName;
+            
+            
+        }
     }
 
     void OnLoginSuccess(LoginResult results)
@@ -117,7 +146,6 @@ public class PlayFabManager : MonoBehaviour
         messageText.gameObject.SetActive(false);
         messageText.text = "Logged In";
         welcomeT.text="Welcome "+results.InfoResultPayload.PlayerProfile.DisplayName;
-        Debug.Log("Succesfull");
         string name = null;
         if(results.InfoResultPayload.PlayerProfile!=null)
             name = results.InfoResultPayload.PlayerProfile.DisplayName;
@@ -186,7 +214,7 @@ public class PlayFabManager : MonoBehaviour
         foreach (var item in result.Leaderboard)
         {
             GameObject newGO = Instantiate(rowPrefab, rowsParent.transform);
-            Text[] text = newGO.GetComponentsInChildren<Text>();
+            TextMeshProUGUI[] text = newGO.GetComponentsInChildren<TextMeshProUGUI>();
             text[0].text = (item.Position +1).ToString();
             text[1].text = item.DisplayName;
             text[2].text = item.StatValue.ToString();
@@ -204,6 +232,16 @@ public class PlayFabManager : MonoBehaviour
         
         PlayFabClientAPI.UpdateUserTitleDisplayName(request,OnDisplayNameUpdate, OnError);
     }
+    
+    public void generateRandomUser()
+    {
+        var request = new UpdateUserTitleDisplayNameRequest
+        {
+            DisplayName = "User"+Random.Range(1000,999999),
+        };
+        
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request,OnDisplayNameUpdate2, OnErrorRepitedName);
+    }
 
     private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult obj)
     {
@@ -211,11 +249,24 @@ public class PlayFabManager : MonoBehaviour
         userUI.SetActive(false);
         startUI.SetActive(true);
     }
+    
+    private void OnDisplayNameUpdate2(UpdateUserTitleDisplayNameResult obj)
+    {
+        welcomeT.text = "Welcome "+ obj.DisplayName;
+        startUI.SetActive(true);
+    }
 
     public void goToScene()
     {
         //SceneManager.LoadScene("PruebaCambioEscena");
     }
+
+    private void OnErrorRepitedName(PlayFabError error)
+    {
+        generateRandomUser();
+    }
+
+    
 
     
 }
