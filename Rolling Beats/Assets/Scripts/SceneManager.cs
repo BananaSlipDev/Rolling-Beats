@@ -6,17 +6,16 @@ public class SceneManager : MonoBehaviour
 {
     public static SceneManager instance; //Public & Static instance for the SceneManager to be accessed by other scripts
 
+    [HideInInspector]
     public bool musicStarted = false;
-
 
     // Score parameters
     private const int PERFECT_SCORE = 100;
     private const int GREAT_SCORE = 50;
-
-    public static int totalScore = 0;
     private int combo = 1;
+    public static int totalScore = 0;
 
-    
+
     private void Start()
     {
         instance = this;
