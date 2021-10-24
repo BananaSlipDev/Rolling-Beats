@@ -15,23 +15,23 @@ public class PlayFabManager : MonoBehaviour
     public static PlayFabManager SharedInstance;
 
     [Header("UI")]
-    public TextMeshProUGUI welcomeT;
+    
 
     public TextMeshProUGUI messageText;
 
     public InputField emailInput;
     public InputField passwordInput;
     public InputField username;
-    public InputField puntuacion;
 
     public GameObject loginUI;
     public GameObject userUI;
     public GameObject leaderboardUI;
-    public GameObject startUI;
     public GameObject mobile;
 
     public GameObject rowPrefab;
     public GameObject rowsParent;
+
+    public String finalName;
 
 
     private void Awake()
@@ -133,8 +133,9 @@ public class PlayFabManager : MonoBehaviour
             
         else
         {
-            startUI.SetActive(true);
-            welcomeT.text = "Welcome "+results.InfoResultPayload.PlayerProfile.DisplayName;
+            finalName =results.InfoResultPayload.PlayerProfile.DisplayName;
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+            
             
             
         }
@@ -145,7 +146,7 @@ public class PlayFabManager : MonoBehaviour
         loginUI.SetActive(false);
         messageText.gameObject.SetActive(false);
         messageText.text = "Logged In";
-        welcomeT.text="Welcome "+results.InfoResultPayload.PlayerProfile.DisplayName;
+        finalName = results.InfoResultPayload.PlayerProfile.DisplayName;
         string name = null;
         if(results.InfoResultPayload.PlayerProfile!=null)
             name = results.InfoResultPayload.PlayerProfile.DisplayName;
@@ -158,7 +159,7 @@ public class PlayFabManager : MonoBehaviour
             
         else
         {
-            startUI.SetActive(true);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
            
             //SceneManager.LoadScene("PruebaCambioEscena")
             //;
@@ -245,15 +246,15 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult obj)
     {
-        welcomeT.text = "Welcome "+ obj.DisplayName;
+        finalName= obj.DisplayName;
         userUI.SetActive(false);
-        startUI.SetActive(true);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
     
     private void OnDisplayNameUpdate2(UpdateUserTitleDisplayNameResult obj)
     {
-        welcomeT.text = "Welcome "+ obj.DisplayName;
-        startUI.SetActive(true);
+        finalName= obj.DisplayName;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
     public void goToScene()

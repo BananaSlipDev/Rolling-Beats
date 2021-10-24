@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -25,10 +26,15 @@ public class MenuManager : MonoBehaviour
     private ArrayList SongList = new ArrayList();
     public Text SongText;
     private int CurrentSong = 0;
+    
+    public TextMeshProUGUI welcomeT;
 
+
+    
 
     private void Start()
     {
+        welcomeT.text = "Welcome " + PlayFabManager.SharedInstance.finalName ;
         MainMenu.SetActive(true);
         SettingsMenu.SetActive(false);
         SongSelectorMenu.SetActive(false);
@@ -43,6 +49,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
+        
         MasterSlider.onValueChanged.AddListener(ChangeVolumeMaster);
         MusicSlider.onValueChanged.AddListener(ChangeVolumeMusic);
         SoundSlider.onValueChanged.AddListener(ChangeVolumeSounds);
