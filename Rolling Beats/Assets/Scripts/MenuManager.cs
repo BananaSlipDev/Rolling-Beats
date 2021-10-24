@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    private const float INITIAL_AUDIO_VALUE = 0.3f;
+
     public GameObject MainMenu, SettingsMenu, SongSelectorMenu, ScoresMenu;
 
     [Header("MainMenu")]
@@ -29,6 +31,11 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        // Sets initial value for the 3 audio options
+        MasterSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
+        MusicSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
+        SoundSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
+
         MainMenu.SetActive(true);
         SettingsMenu.SetActive(false);
         SongSelectorMenu.SetActive(false);
@@ -91,16 +98,17 @@ public class MenuManager : MonoBehaviour
     #endregion
 
     #region Settings
+    // Log10 * 20 sets the volume right (sound is not linear)
     public void ChangeVolumeMaster(float v) {
-        Mixer.SetFloat("VolMaster", v);
+        Mixer.SetFloat("VolMaster", Mathf.Log10(v) * 20);
     }
     public void ChangeVolumeMusic(float v)
     {
-        Mixer.SetFloat("VolMusic", v);
+        Mixer.SetFloat("VolMusic", Mathf.Log10(v) * 20);
     }
     public void ChangeVolumeSounds(float v)
     {
-        Mixer.SetFloat("VolSounds", v);
+        Mixer.SetFloat("VolSounds", Mathf.Log10(v) * 20);
     }
     #endregion
 

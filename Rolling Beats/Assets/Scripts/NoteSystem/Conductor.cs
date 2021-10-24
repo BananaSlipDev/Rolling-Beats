@@ -7,18 +7,19 @@ public class Conductor : MonoBehaviour
     public static Conductor instance;
 
     [Header("Song-specific parameters")]
-    public float songBPM;           //Song beats per minute, determined by the song to sync up
+    public float songBPM;               //Song beats per minute, determined by the song to sync up
     public float firstBeatOffset = 0;   //The offset to the first beat of the song in seconds
-    public int firstBeatOffsetIdx;   //The offset to the first beat of the song in seconds
-    public float secPerBeat;        //Number of seconds for each song in a beat
-    public float beatPerSec;        //Number of beats for each song in a second
-    
-    public float songPosition;      //Current song position, in seconds
-    public float songPosInBeats;    //Current song position, in beats
+    public float secPerBeat;            //Number of seconds for each song in a beat
+    public float beatPerSec;            //Number of beats for each song in a second
+    private int firstBeatOffsetIdx;     //The offset to the first beat of the song in seconds
     public float beatsShownInAdvance;
 
+    private float songPosition;      //Current song position, in seconds
+    private float songPosInBeats;    //Current song position, in beats
+    
+
     public float[] notes;           //Position-in-beats of notes in the song
-    int nextIndex = 0;              //Index of the next note to be spawned
+    private int nextIndex = 0;      //Index of the next note to be spawned
 
     //Seconds passed since song started
     private float dspSongTime;
@@ -60,12 +61,12 @@ public class Conductor : MonoBehaviour
             {
                 NoteSpawnerController.instance.SpawnNote();
 
-                // initialize the fields of music note
                 nextIndex++;
             }
             else
             {
-                StartCoroutine(SceneManager.instance.GameOver());
+                // A MODIFICAR
+                //StartCoroutine(SceneManager.instance.GameOver());
             }
             
         }
