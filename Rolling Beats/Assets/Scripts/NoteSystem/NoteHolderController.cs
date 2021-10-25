@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoteHolderController : MonoBehaviour
 {
@@ -19,12 +20,20 @@ public class NoteHolderController : MonoBehaviour
     private CircleCollider2D circleColl;
     private BoxCollider2D boxColl;
 
+    [SerializeField] private KeyCode keyToPress;
+
+    private Touch mytouch;
+
+    private bool isMobile;
+
     [SerializeField]
-    private KeyCode keyToPress; //Must be asigned from the Unity editor
+    private int multiplier;
+    //Must be asigned from the Unity editor
     
 
     void Start()
     {
+        isMobile = CheckMobileManager.SharedInstance.IsMobileGet;
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleColl = GetComponent<CircleCollider2D>();
         boxColl = GetComponent<BoxCollider2D>();
@@ -33,25 +42,23 @@ public class NoteHolderController : MonoBehaviour
     void Update()
     {
         // Controls
-        if (Input.GetKeyDown(keyToPress))
-        { 
-            spriteRenderer.sprite = pressedSprite; //Changes the sprite and scores the note if needed
-
-            if (isNoteAbove) //If there's a note above the NoteHolder...
-            {
-                if (circleColl.IsTouching(noteAboveCol))        // Perfect collider
-                    SceneManager.instance.ScoreNote("PERFECT");
-                else if (boxColl.IsTouching(noteAboveCol))      // Great collider
-                    SceneManager.instance.ScoreNote("GREAT");
-
-                Destroy(noteAbove);
-            }
-            else
-                SceneManager.instance.Miss(); //Fails if beaten without a note
+        if (isMobile)
+        {
+            UpdateinMobile();
         }
+        else
+        {
+            if (Input.GetKeyDown(keyToPress))
+            { 
+                checkRightorMiss();
+            }
             
-        if (Input.GetKeyUp(keyToPress)) //Resets the sprite to default
-            spriteRenderer.sprite = defaultSprite;
+            if (Input.GetKeyUp(keyToPress)) //Resets the sprite to default
+                spriteRenderer.sprite = defaultSprite;
+        }
+        
+        
+       
 
     }
 
@@ -76,6 +83,40 @@ public class NoteHolderController : MonoBehaviour
             noteAboveCol = null;
         }
             
+    }
+
+    private void UpdateinMobile()
+    {
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+        {
+            mytouch = Input.GetTouch(0);
+            if (multiplier* mytouch.position.x < multiplier* Screen.width/2f)
+            {
+                checkRightorMiss();
+            }
+        }
+
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
+        {
+            spriteRenderer.sprite = defaultSprite;
+        }
+    }
+
+    private void checkRightorMiss()
+    {
+        spriteRenderer.sprite = pressedSprite; //Changes the sprite and scores the note if needed
+
+        if (isNoteAbove) //If there's a note above the NoteHolder...
+        {
+            if (circleColl.IsTouching(noteAboveCol))        // Perfect collider
+                SceneManager.instance.ScoreNote("PERFECT");
+            else if (boxColl.IsTouching(noteAboveCol))      // Great collider
+                SceneManager.instance.ScoreNote("GREAT");
+
+            Destroy(noteAbove);
+        }
+        else
+            SceneManager.instance.Miss(); //Fails if beaten without a note
     }
 
 }

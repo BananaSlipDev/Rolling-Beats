@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -7,7 +8,15 @@ using UnityEngine;
 
 public class CheckMobileManager : MonoBehaviour
 {
+    public static CheckMobileManager SharedInstance;
     bool isMobile;
+
+    public bool IsMobileGet
+    {
+        get => isMobile;
+        
+    }
+    
 #if !UNITY_EDITOR && UNITY_WEBGL
         [System.Runtime.InteropServices.DllImport("__Internal")]
         static extern bool IsMobile();
@@ -16,8 +25,19 @@ public class CheckMobileManager : MonoBehaviour
     
     public GameObject login;
     public GameObject mobile;
- 
-    
+
+    private void Awake()
+    {
+        if (SharedInstance == null)
+        {
+            SharedInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
