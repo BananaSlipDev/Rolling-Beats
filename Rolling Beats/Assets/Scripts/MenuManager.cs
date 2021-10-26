@@ -10,19 +10,13 @@ public class MenuManager : MonoBehaviour
 {
     private const float INITIAL_AUDIO_VALUE = 0.3f;
 
-    public GameObject MainMenu, SettingsMenu, SongSelectorMenu, ScoresMenu;
-
-    [Header("MainMenu")]
-    public Button StartButton;
-    public Button ScoreBoardButton;
-    public Button SettingsButton;
+    public GameObject MainMenu, SettingsMenu, SongSelectorMenu, ScoresMenu, CreditsMenu;
 
     [Header("Options")]
     public AudioMixer Mixer;
     public Slider MasterSlider;
     public Slider MusicSlider;
     public Slider SoundSlider;
-    public Button AcceptButton;
 
     [Header("SongSelection")]
     private ArrayList SongList = new ArrayList();
@@ -41,11 +35,12 @@ public class MenuManager : MonoBehaviour
         MusicSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
         SoundSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
 
-        welcomeT.text = "Welcome " + PlayFabManager.SharedInstance.finalName ;
+        //welcomeT.text = "Welcome " + PlayFabManager.SharedInstance.finalName ;
         MainMenu.SetActive(true);
         SettingsMenu.SetActive(false);
         SongSelectorMenu.SetActive(false);
         ScoresMenu.SetActive(false);
+        CreditsMenu.SetActive(false);
 
         SongList.Add("PlayScene");
         SongList.Add("Song02");
@@ -56,7 +51,6 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        
         MasterSlider.onValueChanged.AddListener(ChangeVolumeMaster);
         MusicSlider.onValueChanged.AddListener(ChangeVolumeMusic);
         SoundSlider.onValueChanged.AddListener(ChangeVolumeSounds);
@@ -67,6 +61,7 @@ public class MenuManager : MonoBehaviour
         SettingsMenu.SetActive(false);
         SongSelectorMenu.SetActive(false);
         ScoresMenu.SetActive(false);
+        CreditsMenu.SetActive(false);
 
         panel.SetActive(true);
     }
@@ -117,6 +112,14 @@ public class MenuManager : MonoBehaviour
     {
         Mixer.SetFloat("VolSounds", Mathf.Log10(v) * 20);
     }
+    #endregion
+
+    #region Credits
+
+    public void GoToUrl(string url) {
+        Application.OpenURL(url);
+    }
+
     #endregion
 
 }
