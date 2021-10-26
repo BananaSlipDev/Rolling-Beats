@@ -37,4 +37,11 @@ Tipos de multiplicadores:
 * **Rítmico:** si el jugador busca un juego con buena música y un buen sentido del ritmo, en Rolling Beats encontrará lo que busca.
 * **Comunidad:** creación de un editor de niveles para los jugadores, concursos, encuestas y colaboraciones con grupos de música para conseguir crear una comunidad y ser cercana a ella.
 
+## Social Media
+### Portfolio: https://bananaslipdev.github.io/
+### Twitter: https://twitter.com/BananaSlipDev
+### Itch.io: https://banana-slip.itch.io/rolling-beats
+### Youtube: https://www.youtube.com/channel/UCcM7FLMFyA4oRBiYDiRtaOQ
+### Github: https://github.com/BananaSlipDev
+
 
