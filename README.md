@@ -27,8 +27,14 @@ Cada nota musical, dependiendo del nivel de precisión del jugador tendrá 4 niv
 * Perfect: si el jugador acierta la nota en el momento exacto.
 * Great: cuando el jugador acierta la nota pero un poco temprano o tarde.
 * Miss: si el jugador no consigue acertar la nota.
+Tipos de multiplicadores:
+* Multiplicador: multiplicar la puntuación obtenida por el número de combo (notas seguidas acertadas).
+* Multiplicador opcional: a medida que el jugador progrese en la canción, se irá rellenando una barra de “ritmo” que podrá utilizar a conveniencia. Cuando el jugador decida utilizar el ritmo, tendrá una duración variable dependiendo del nivel de la barra, multiplicando x2 toda su puntuación durante este período.
 
-
-
+### Características clave
+* **Partidas rápidas:** cada partida está asociada a una única canción con un mapa único que tiene una duración aproximada de 2 minutos, por lo que si el jugador dispone de poco tiempo para jugar, puede divertirse con uno o dos niveles de Rolling Beats.
+* **Un reto:** al ser un juego de ritmo, los niveles pueden llegar a complicarse bastante y el jugador podría no superar los niveles la primera vez que los intenta, por lo que si buscas un buen reto, Rolling Beats es una buena opción.
+* **Rítmico:** si el jugador busca un juego con buena música y un buen sentido del ritmo, en Rolling Beats encontrará lo que busca.
+* **Comunidad:** creación de un editor de niveles para los jugadores, concursos, encuestas y colaboraciones con grupos de música para conseguir crear una comunidad y ser cercana a ella.
 
 
