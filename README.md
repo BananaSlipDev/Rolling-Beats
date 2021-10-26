@@ -1,5 +1,5 @@
-# Banana Slip Dev
-![bananaSplit](https://user-images.githubusercontent.com/73433870/138887679-2226bc3e-2f75-4431-a5d4-fabe8c68b0d0.png)
+# Banana Slip Dev 
+![Ilustración_sin_título(3)](https://user-images.githubusercontent.com/73433870/138892794-fa5eb0df-264d-4999-9828-c018d4afc400.png)
 ## Quiénes somos
 * **Banana Slip Dev** es una compañía indie establecida en Madrid con el objetivo de desarrollar su primer videojuego: Rolling Beats.
 * **Integrantes del equipo:**
