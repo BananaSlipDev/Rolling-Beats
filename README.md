@@ -3,14 +3,12 @@
 ## Quiénes somos
 * **Banana Slip Dev** es una compañía indie establecida en Madrid con el objetivo de desarrollar su primer videojuego: Rolling Beats.
 * **Integrantes del equipo:**
-    * Manuel Rodríguez Bonete.       Game Designer & tester.          Correo: mrodbon99@gmail.com
-    * Miguel Ferrer García.          Lead artist & concept.           Correo: mastersmfg@gmail.com
-    * Sergio Sánchez Martínez.       Lead Programmer.                 Correo: serjsa385@gmail.com
-    * Sonia Oiane Milagro Rubio.     Programmer, artist & UI/UX.      Correo: so.milagro.2018@alumnos.urjc.es
-    * David Ganfornina Alcón.        Programmer.                      Correo: davidganforninaalcon@gmail.com
-    * Juan José Pérez Abad.          Programmer, CM & Scrum Master.   Correo: abadjuanjo@hotmail.com
-
-
+    | Manuel Rodríguez Bonete   |     Game Designer & tester.         | Correo: mrodbon99@gmail.com             |
+    | Miguel Ferrer García      |     Lead artist & concept.          | Correo: mastersmfg@gmail.com            |
+    | Sergio Sánchez Martínez   |     Lead Programmer.                | Correo: serjsa385@gmail.com             |
+    | Sonia Oiane Milagro Rubio |     Programmer, artist & UI/UX.     | Correo: so.milagro.2018@alumnos.urjc.es |
+    | David Ganfornina Alcón.   |     Programmer.                     | Correo: davidganforninaalcon@gmail.com  |
+    | Juan José Pérez Abad.     |     Programmer, CM & Scrum Master.  | Correo: abadjuanjo@hotmail.com          |
 
 
 ## Sobre Rolling Beats
@@ -38,6 +36,10 @@ Tipos de multiplicadores:
 * **Un reto:** al ser un juego de ritmo, los niveles pueden llegar a complicarse bastante y el jugador podría no superar los niveles la primera vez que los intenta, por lo que si buscas un buen reto, Rolling Beats es una buena opción.
 * **Rítmico:** si el jugador busca un juego con buena música y un buen sentido del ritmo, en Rolling Beats encontrará lo que busca.
 * **Comunidad:** creación de un editor de niveles para los jugadores, concursos, encuestas y colaboraciones con grupos de música para conseguir crear una comunidad y ser cercana a ella.
+### Tina Rules
+Tina Rules es una patinadora aficionada cuyo sueño es llegar a patinar en los anillos de Saturno. 
+Cuando era pequeña ya patinaba con los viejos patines de su madre y en la actualidad
+
 
 ## Social Media
 ### Portfolio: https://bananaslipdev.github.io/
