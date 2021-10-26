@@ -25,8 +25,8 @@ Cada nivel del juego se compondrá de un fondo que irá avanzando a medida que l
 En estos carriles avanzan las notas musicales que el jugador debe alcanzar a tiempo para conseguir puntuación. Cada carrusel tiene asociado un único botón y este mismo puede ser pulsado o mantenido.
 Cada nota musical, dependiendo del nivel de precisión del jugador tendrá 4 niveles distintos de * **puntuación:**
 * Perfect: si el jugador acierta la nota en el momento exacto.
-    * Great: cuando el jugador acierta la nota pero un poco temprano o tarde.
-    * Miss: si el jugador no consigue acertar la nota.
+* Great: cuando el jugador acierta la nota pero un poco temprano o tarde.
+* Miss: si el jugador no consigue acertar la nota.
 
 
 
