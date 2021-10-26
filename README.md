@@ -43,7 +43,7 @@ Tipos de multiplicadores:
 * **Comunidad:** creación de un editor de niveles para los jugadores, concursos, encuestas y colaboraciones con grupos de música para conseguir crear una comunidad y ser cercana a ella.
 ### Tina Rules
 Tina Rules es una patinadora aficionada cuyo sueño es llegar a patinar en los anillos de Saturno. 
-Cuando era pequeña ya patinaba con los viejos patines de su madre y en la actualidad
+Cuando era pequeña ya patinaba con los viejos patines de su madre y en la actualidad patinadora en su tiempo libre.
 
 
 ## Social Media
