@@ -42,6 +42,7 @@ Tipos de multiplicadores:
 * **Rítmico:** si el jugador busca un juego con buena música y un buen sentido del ritmo, en Rolling Beats encontrará lo que busca.
 * **Comunidad:** creación de un editor de niveles para los jugadores, concursos, encuestas y colaboraciones con grupos de música para conseguir crear una comunidad y ser cercana a ella.
 ### Tina Rules
+![Tina](https://user-images.githubusercontent.com/73433870/138900946-eecb2e02-c0a2-4075-9e5b-66dc9a7c5652.jpg)
 Tina Rules es una patinadora aficionada cuyo sueño es llegar a patinar en los anillos de Saturno. 
 Cuando era pequeña ya patinaba con los viejos patines de su madre y en la actualidad patinadora en su tiempo libre.
 
