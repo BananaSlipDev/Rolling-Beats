@@ -4,7 +4,7 @@
 * **Banana Slip Dev** es una compañía indie establecida en Madrid con el objetivo de desarrollar su primer videojuego: Rolling Beats.
 * **Integrantes del equipo:**
 | Primer encabezado | Segundo encabezado | Tercer Encabezado |
-| ------------- | ------------- | ------------- |
+|:--------------:| ------------- | ------------- |
 | Manuel Rodríguez Bonete   |     Game Designer & tester.         | Correo: mrodbon99@gmail.com             |
 | Miguel Ferrer García      |     Lead artist & concept.          | Correo: mastersmfg@gmail.com            |
 | Sergio Sánchez Martínez   |     Lead Programmer.                | Correo: serjsa385@gmail.com             |
