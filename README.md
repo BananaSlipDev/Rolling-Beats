@@ -14,6 +14,7 @@
 
 
 ## Sobre Rolling Beats
+![RollingBeats](https://user-images.githubusercontent.com/73433870/138893103-01520e24-c9f7-4b15-9033-06547c88691a.jpg)
 ### Introducción
 * **Rolling beats** es un videojuego de ritmo, donde el jugador controla a Tina Rules, una patinadora cuyo sueño es convertirse en la primera persona en patinar sobre los anillos de Saturno.
 Durante el juego, se verá la evolución de Tina como patinadora a la vez que el jugador realiza canciones con un ritmo más rápido y frenético.
