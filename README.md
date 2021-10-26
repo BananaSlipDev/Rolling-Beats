@@ -27,6 +27,7 @@ Cada nota musical, dependiendo del nivel de precisión del jugador tendrá 4 niv
 * Perfect: si el jugador acierta la nota en el momento exacto.
 * Great: cuando el jugador acierta la nota pero un poco temprano o tarde.
 * Miss: si el jugador no consigue acertar la nota.
+
 Tipos de multiplicadores:
 * Multiplicador: multiplicar la puntuación obtenida por el número de combo (notas seguidas acertadas).
 * Multiplicador opcional: a medida que el jugador progrese en la canción, se irá rellenando una barra de “ritmo” que podrá utilizar a conveniencia. Cuando el jugador decida utilizar el ritmo, tendrá una duración variable dependiendo del nivel de la barra, multiplicando x2 toda su puntuación durante este período.
