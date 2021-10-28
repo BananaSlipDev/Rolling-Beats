@@ -22,7 +22,7 @@ public class EndSongMenu : MonoBehaviour
 
     private void Awake()
     {
-        messageT = PlayFabManager.SharedInstance.messageText;
+        //messageT = PlayFabManager.SharedInstance.messageText;
     }
 
     public void GoToMainMenu() {

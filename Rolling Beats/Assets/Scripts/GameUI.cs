@@ -5,31 +5,29 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-
     public GameObject UIGame, PauseMenu;
-    // Start is called before the first frame update
+
     void Start()
     {
         PauseMenu.SetActive(false);
         UIGame.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void PauseGame() {
         Time.timeScale = 0;
         PauseMenu.SetActive(true);
         UIGame.SetActive(false);
+        Conductor.instance.musicSource.Pause();
+        AudioListener.pause = true;
     }
 
     public void ResumeGame() {
         Time.timeScale = 1;
         PauseMenu.SetActive(false);
         UIGame.SetActive(true);
+        Conductor.instance.musicSource.Play();
+        AudioListener.pause = false;
     }
 
     public void RestartSong(string song) {

@@ -36,6 +36,7 @@ public class NoteHolderController : MonoBehaviour
     void Start()
     {
         isMobile = false; //CheckMobileManager.SharedInstance.IsMobileGet;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleColl = GetComponent<CircleCollider2D>();
         boxColl = GetComponent<BoxCollider2D>();

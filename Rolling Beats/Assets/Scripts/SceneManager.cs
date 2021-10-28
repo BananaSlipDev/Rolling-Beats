@@ -24,20 +24,6 @@ public class SceneManager : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
-    {
-        /*
-         * PRUEBA: inicia la cancion al pulsar cualquier tecla
-         */
-        if (!musicStarted && Input.anyKeyDown)
-        {
-            musicStarted = true;
-            Conductor.instance.musicSource.Play();
-        }
-            
-        ///////////////////////
-    }
-
 
     public void ScoreNote(string scoreType) //Adds score note to the current score
     {
@@ -77,7 +63,7 @@ public class SceneManager : MonoBehaviour
     public IEnumerator GameOver()
     {
         yield return new WaitForSeconds(5f);
-        sendtotalScore();
+        //sendtotalScore();
         UnityEngine.SceneManagement.SceneManager.LoadScene("EndSong");
 
     }
