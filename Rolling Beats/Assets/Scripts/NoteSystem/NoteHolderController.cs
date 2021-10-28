@@ -28,12 +28,14 @@ public class NoteHolderController : MonoBehaviour
 
     [SerializeField]
     private int multiplier;
+
+    private bool wasTouching = false;
     //Must be asigned from the Unity editor
     
 
     void Start()
     {
-        isMobile = CheckMobileManager.SharedInstance.IsMobileGet;
+        isMobile = false; //CheckMobileManager.SharedInstance.IsMobileGet;
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleColl = GetComponent<CircleCollider2D>();
         boxColl = GetComponent<BoxCollider2D>();
@@ -87,14 +89,18 @@ public class NoteHolderController : MonoBehaviour
 
     private void UpdateinMobile()
     {
-        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+        bool isTouching = Input.touchCount > 0;
+        if (isTouching && Input.touches[0].phase == TouchPhase.Began && !wasTouching)
         {
+            Input.touches[0].phase = TouchPhase.Canceled;
             mytouch = Input.GetTouch(0);
             if (multiplier* mytouch.position.x < multiplier* Screen.width/2f)
             {
                 checkRightorMiss();
             }
         }
+
+        wasTouching = isTouching;
 
         if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
         {

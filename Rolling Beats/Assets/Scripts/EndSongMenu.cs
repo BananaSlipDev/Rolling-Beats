@@ -1,20 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EndSongMenu : MonoBehaviour
 {
+    public TextMeshProUGUI messageT;
     // Start is called before the first frame update
     void Start()
     {
-        //Hay que pasarle la canción que acabe de terminar
+        //Hay que pasarle la canciÃ³n que acabe de terminar
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void Awake()
+    {
+        messageT = PlayFabManager.SharedInstance.messageText;
     }
 
     public void GoToMainMenu() {

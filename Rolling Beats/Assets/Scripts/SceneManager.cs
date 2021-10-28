@@ -13,11 +13,14 @@ public class SceneManager : MonoBehaviour
     private const int PERFECT_SCORE = 100;
     private const int GREAT_SCORE = 50;
     private int combo = 1;
+    
+    [SerializeField]
     public static int totalScore = 0;
 
 
     private void Start()
     {
+        totalScore = 0;
         instance = this;
     }
 
@@ -75,7 +78,7 @@ public class SceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         sendtotalScore();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("PruebaCambioEscena");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndSong");
 
     }
 }
