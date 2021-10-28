@@ -62,7 +62,7 @@ public class SceneManager : MonoBehaviour
 
     public IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(Conductor.instance.secondsTilEnd);
         //sendtotalScore();
         UnityEngine.SceneManagement.SceneManager.LoadScene("EndSong");
 

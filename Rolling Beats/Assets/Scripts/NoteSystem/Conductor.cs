@@ -13,6 +13,7 @@ public class Conductor : MonoBehaviour
     public float songBPM;               //Song beats per minute, determined by the song to sync up
     public float firstBeatOffset;   //The offset to the first beat of the song in seconds
     public float beatsShownInAdvance;
+    public float secondsTilEnd;
 
     [HideInInspector]
     public float secPerBeat;            //Number of seconds for each song in a beat
