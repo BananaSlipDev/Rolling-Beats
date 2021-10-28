@@ -73,7 +73,7 @@ public class SceneManager : MonoBehaviour
 
     public IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(5f);
         sendtotalScore();
         UnityEngine.SceneManagement.SceneManager.LoadScene("PruebaCambioEscena");
 
