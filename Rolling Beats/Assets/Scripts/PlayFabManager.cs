@@ -92,8 +92,6 @@ public class PlayFabManager : MonoBehaviour
     }
     
     
-
-    public string nombre;
     // Start is called before the first frame update
     void Start()
     {
@@ -107,7 +105,7 @@ public class PlayFabManager : MonoBehaviour
     {
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = SystemInfo.deviceUniqueIdentifier,
+            CustomId = SystemInfo.deviceUniqueIdentifier + Random.Range(0,1000),
             CreateAccount = true,
             InfoRequestParameters =  new GetPlayerCombinedInfoRequestParams
             {
@@ -121,24 +119,12 @@ public class PlayFabManager : MonoBehaviour
     {
         mobile.SetActive(false);
         messageText.gameObject.SetActive(false);
-        string name = null;
-        if(results.InfoResultPayload.PlayerProfile!=null)
-            name = results.InfoResultPayload.PlayerProfile.DisplayName;
-
-        if (name == null)
-        {
-           generateRandomUser();
-        }
-            
-            
-        else
-        {
-            finalName =results.InfoResultPayload.PlayerProfile.DisplayName;
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        generateRandomUser();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
             
             
             
-        }
+        
     }
 
     void OnLoginSuccess(LoginResult results)
@@ -266,6 +252,11 @@ public class PlayFabManager : MonoBehaviour
     private void OnErrorRepitedName(PlayFabError error)
     {
         generateRandomUser();
+    }
+
+    public void deleteUserProfile()
+    {
+       
     }
 
     
