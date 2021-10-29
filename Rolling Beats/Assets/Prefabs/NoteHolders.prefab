@@ -200,7 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: -728005435
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f0727b4bd6b0d764f859368a9363cdc2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be1862e38472dcc4d85bc520c62df033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -223,9 +223,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9902e951fed3664d9950d0d037730c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSprite: {fileID: 21300000, guid: f0727b4bd6b0d764f859368a9363cdc2, type: 3}
-  pressedSprite: {fileID: 21300000, guid: 11756e6092b1fb54c8897e14de02e55a, type: 3}
+  defaultSprite: {fileID: 21300000, guid: be1862e38472dcc4d85bc520c62df033, type: 3}
+  pressedSprite: {fileID: 21300000, guid: 09ff03eecb4281e4c937aa6550f13527, type: 3}
   keyToPress: 122
+  multiplier: 0
 --- !u!58 &8259944520690539240
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -280,7 +281,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.6}
+    oldSize: {x: 1.25, y: 1.25}
     newSize: {x: 16, y: 16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -364,7 +365,7 @@ SpriteRenderer:
   m_SortingLayerID: -728005435
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6714e946cd611e84cab74ec08bc2307c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be1862e38472dcc4d85bc520c62df033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -387,9 +388,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9902e951fed3664d9950d0d037730c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSprite: {fileID: 21300000, guid: 6714e946cd611e84cab74ec08bc2307c, type: 3}
-  pressedSprite: {fileID: 21300000, guid: 85dd171d5d02eff44b98ea68cda464eb, type: 3}
+  defaultSprite: {fileID: 21300000, guid: be1862e38472dcc4d85bc520c62df033, type: 3}
+  pressedSprite: {fileID: 21300000, guid: 09ff03eecb4281e4c937aa6550f13527, type: 3}
   keyToPress: 120
+  multiplier: 0
 --- !u!58 &8259944521169360588
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -444,7 +446,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.6}
+    oldSize: {x: 1.25, y: 1.25}
     newSize: {x: 16, y: 16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
