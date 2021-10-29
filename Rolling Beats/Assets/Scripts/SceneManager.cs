@@ -26,7 +26,7 @@ public class SceneManager : MonoBehaviour
         instance = this;
 
         // Sets a fixed framerate
-        Application.targetFrameRate = FRAMERATE;
+        //Application.targetFrameRate = FRAMERATE;
     }
 
 
@@ -68,7 +68,7 @@ public class SceneManager : MonoBehaviour
     public IEnumerator GameOver()
     {
         yield return new WaitForSeconds(Conductor.instance.secondsTilEnd);
-        //sendtotalScore();
+        sendtotalScore();
         UnityEngine.SceneManagement.SceneManager.LoadScene("EndSong");
 
     }

@@ -28,13 +28,16 @@ public class Conductor : MonoBehaviour
     [HideInInspector] public AudioListener musicListener;
 
     // Writing variables
-    [SerializeField] private string songFileName; // MUST BE WRITTEN FROM THE INSPECTOR
-    private string generalPath = "Assets/Audio/TextFileSongs/";
-    private string songFilePath;
+    //[SerializeField] private string songFileName; // MUST BE WRITTEN FROM THE INSPECTOR
+    //private string generalPath = "Assets/Audio/TextFileSongs/";
+    //private string songFilePath;
+
+    public TextAsset textAsset;
 
     public List<double> notesPositions;
     public List<int> notesLines;
     private string[] texto;
+    private string[] texto2;
 
     private void Start()
     {
@@ -51,24 +54,37 @@ public class Conductor : MonoBehaviour
         beatPerSec = songBPM / 60f;
 
         //Record the time when music starts
-        dspSongTime = (float)AudioSettings.dspTime;
+        //dspSongTime = (float)AudioSettings.dspTime;
 
 
         // -- Reading the song file --
-        songFilePath += generalPath + songFileName;
-        StreamReader reader = new StreamReader(songFilePath);
-        string text = "";
+        //songFilePath += generalPath + songFileName;
+        //StreamReader reader = new StreamReader(songFilePath);
+        //string text = "";
 
-        text = reader.ReadLine();
-        while (text != null)
+        //text = reader.ReadLine();
+        //while (text != null)
+        //{
+        //    texto = text.Split('/');
+        //    notesLines.Add(int.Parse(texto[0]));
+        //    notesPositions.Add(double.Parse(texto[1]));
+        //    text = reader.ReadLine();
+        //}
+
+        //reader.Close();
+
+
+
+        string textAssetTxt = textAsset.text;
+
+        texto = textAssetTxt.Split('\n');
+        for (int i = 0; i < texto.Length; i++)
         {
-            texto = text.Split('/');
-            notesLines.Add(int.Parse(texto[0]));
-            notesPositions.Add(double.Parse(texto[1]));
-            text = reader.ReadLine();
+            texto2 = texto[i].Split('/');
+            notesLines.Add(int.Parse(texto2[0]));
+            notesPositions.Add(double.Parse(texto2[1]));
         }
 
-        reader.Close();
 
         SceneManager.instance.musicStarted = true;
 
@@ -78,7 +94,8 @@ public class Conductor : MonoBehaviour
     {
         if(SceneManager.instance.musicStarted)
         {
-            songPosition = (float)(AudioSettings.dspTime - dspSongTime + firstBeatOffset);
+            //songPosition = (float)(AudioSettings.dspTime - dspSongTime + firstBeatOffset);
+            songPosition = musicSource.time + firstBeatOffset;
             songPosInBeats = songPosition / secPerBeat;
 
 

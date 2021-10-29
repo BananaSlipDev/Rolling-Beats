@@ -29,13 +29,26 @@ public class AudioSyncGenerator : AudioSyncer {
 	private void Start()
     {
 		//Record the time when music starts
-		dspSongTime = (float)AudioSettings.dspTime;
+		dspSongTime = (float)audiosource.time;
 
 		// Declares list of notes to write
 		notes = new List<double>();
 
 		songFilePath += generalPath + songFileName;
     }
+
+	public override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		// Calculates song position in seconds
+		//songPosition = (float)(AudioSettings.dspTime - dspSongTime);
+		songPosition = audiosource.time;
+
+		if (m_isBeat) return;
+
+		transform.localScale = Vector3.Lerp(transform.localScale, restScale, restSmoothTime * Time.deltaTime);
+	}
 
 	public override void OnBeat()
 	{
@@ -69,7 +82,7 @@ public class AudioSyncGenerator : AudioSyncer {
 			writer.Close();
 
 			//Re-import the file to update the reference in the editor
-			AssetDatabase.ImportAsset(songFilePath);
+			//AssetDatabase.ImportAsset(songFilePath);
 
 			Debug.Log("Data writed succesfully.");
 		}
@@ -99,20 +112,5 @@ public class AudioSyncGenerator : AudioSyncer {
 
 		m_isBeat = false;
 	}
-
-	public override void OnUpdate()
-	{
-		base.OnUpdate();
-
-		// Calculates song position in seconds
-		songPosition = (float)(AudioSettings.dspTime - dspSongTime);
-
-		if (m_isBeat) return;
-
-		transform.localScale = Vector3.Lerp(transform.localScale, restScale, restSmoothTime * Time.deltaTime);
-	}
-
-
-
 
 }

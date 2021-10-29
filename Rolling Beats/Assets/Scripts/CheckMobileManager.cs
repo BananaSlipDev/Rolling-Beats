@@ -9,7 +9,7 @@ using UnityEngine;
 public class CheckMobileManager : MonoBehaviour
 {
     public static CheckMobileManager SharedInstance;
-    bool isMobile = false;
+    private bool isMobile;
 
     public bool IsMobileGet
     {

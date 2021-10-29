@@ -35,7 +35,7 @@ public class NoteHolderController : MonoBehaviour
 
     void Start()
     {
-        isMobile = false; //CheckMobileManager.SharedInstance.IsMobileGet;
+        //isMobile = CheckMobileManager.SharedInstance.IsMobileGet;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleColl = GetComponent<CircleCollider2D>();
@@ -45,7 +45,7 @@ public class NoteHolderController : MonoBehaviour
     void Update()
     {
         // Controls
-        if (isMobile)
+        if (CheckMobileManager.SharedInstance.IsMobileGet)
         {
             UpdateinMobile();
         }
@@ -59,10 +59,6 @@ public class NoteHolderController : MonoBehaviour
             if (Input.GetKeyUp(keyToPress)) //Resets the sprite to default
                 spriteRenderer.sprite = defaultSprite;
         }
-        
-        
-       
-
     }
 
     // The OnTrigger functions detect if the note is above or not
