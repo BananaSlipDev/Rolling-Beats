@@ -7,7 +7,7 @@ public class NoteScroller : MonoBehaviour
 
     [SerializeField] private const int UNITS_TO_MOVE = 2; // Unity-space units to move the notes (in other words, speed)
 
-    //Interval for Unity-space degrees to rotate the notes (rotation speed
+    //Interval for Unity-space degrees to rotate the notes (rotation speed)
     [SerializeField] private const int MIN_DEGREES_TO_ROTATE = 10;
     [SerializeField] private const int MAX_DEGREES_TO_ROTATE = 60;
 
