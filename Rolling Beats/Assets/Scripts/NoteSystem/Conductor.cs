@@ -33,6 +33,8 @@ public class Conductor : MonoBehaviour
     private string songFilePath;
 
     public List<double> notesPositions;
+    public List<int> notesLines;
+    private string[] texto;
 
     private void Start()
     {
@@ -60,7 +62,9 @@ public class Conductor : MonoBehaviour
         text = reader.ReadLine();
         while (text != null)
         {
-            notesPositions.Add(double.Parse(text));
+            texto = text.Split('/');
+            notesLines.Add(int.Parse(texto[0]));
+            notesPositions.Add(double.Parse(texto[1]));
             text = reader.ReadLine();
         }
 
@@ -85,7 +89,14 @@ public class Conductor : MonoBehaviour
             }
             else if (System.Math.Round(songPosition, 2) > notesPositions[nextIndex])
             {
-                NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerTopPosition());
+                if (notesLines[nextIndex] == 0)
+                {
+                    NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerTopPosition());
+                }
+                else
+                {
+                    NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerBottomPosition());
+                }
                 nextIndex++;
             }
 
