@@ -6,6 +6,8 @@ public class SceneManager : MonoBehaviour
 {
     public static SceneManager instance; //Public & Static instance for the SceneManager to be accessed by other scripts
 
+    private const int FRAMERATE = 60;   // Target framerate for the game (FPS)
+
     [HideInInspector]
     public bool musicStarted = false;
 
@@ -22,6 +24,9 @@ public class SceneManager : MonoBehaviour
     {
         totalScore = 0;
         instance = this;
+
+        // Sets a fixed framerate
+        Application.targetFrameRate = FRAMERATE;
     }
 
 

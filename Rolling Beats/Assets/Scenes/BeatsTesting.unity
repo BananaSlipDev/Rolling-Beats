@@ -351,7 +351,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2041317762}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AudioSyncScale, Assembly-CSharp
         m_MethodName: WriteFile
         m_Mode: 1
@@ -755,18 +755,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2041317761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5831017d9e240c4d81b387f587ef8c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 398c155f9228b444d928d0eac0249c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audiosource: {fileID: 2030121767}
-  bias: 30
+  bias: 35
   timeStep: 0.3
   timeToBeat: 0.0001
   restSmoothTime: 30
-  beatScale: {x: 2, y: 2, z: 0}
-  restScale: {x: 1, y: 1, z: 0}
+  beatScale: {x: 2, y: 2, z: 2}
+  restScale: {x: 1, y: 1, z: 1}
   songFileName: Snake_Eyes.txt
-  songFilePath: 
   notes: []
 --- !u!114 &2041317763
 MonoBehaviour:

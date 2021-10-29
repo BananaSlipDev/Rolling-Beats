@@ -11,29 +11,21 @@ public class Conductor : MonoBehaviour
 
     [Header("Song-specific parameters")]
     public float songBPM;               //Song beats per minute, determined by the song to sync up
-    public float firstBeatOffset;   //The offset to the first beat of the song in seconds
-    public float beatsShownInAdvance;
+    public float firstBeatOffset;       //The offset to the first beat of the song in seconds
     public float secondsTilEnd;
 
-    [HideInInspector]
-    public float secPerBeat;            //Number of seconds for each song in a beat
-    public float beatPerSec;            //Number of beats for each song in a second
-    //private int firstBeatOffsetIdx = 0;     //The offset to the first beat of the song in seconds
+    [HideInInspector] public float secPerBeat;            //Number of seconds for each song in a beat
+    [HideInInspector] public float beatPerSec;            //Number of beats for each song in a second    
     
-    [HideInInspector]
-    public float songPosition;      //Current song position, in seconds
+    [HideInInspector] public float songPosition;      //Current song position, in seconds
     private float songPosInBeats;    //Current song position, in beats
-
-    private float[] notes;          //Position-in-beats of notes in the song
+    
+    private float dspSongTime;      //Seconds passed since song started
     private int nextIndex = 0;      //Index of the next note to be spawned
 
-    //Seconds passed since song started
-    private float dspSongTime;
-
-    //AudioSource that will play the music
-    public AudioSource musicSource;
-    public AudioListener musicListener;
-
+    // Audio components
+    [HideInInspector] public AudioSource musicSource;
+    [HideInInspector] public AudioListener musicListener;
 
     // Writing variables
     [SerializeField] private string songFileName; // MUST BE WRITTEN FROM THE INSPECTOR
@@ -50,6 +42,7 @@ public class Conductor : MonoBehaviour
 
         //Load the AudioSource to the Conductor GameObject
         musicSource = GetComponent<AudioSource>();
+        musicListener = GetComponent<AudioListener>();
 
         //Calculate seconds in each beat and viceversa
         secPerBeat = 60f / songBPM;
