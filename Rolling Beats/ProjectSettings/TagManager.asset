@@ -48,12 +48,15 @@ TagManager:
   - name: Background
     uniqueID: 1930977095
     locked: 0
-  - name: NoteHolder
-    uniqueID: 3566961861
-    locked: 0
   - name: NoteSpawner
     uniqueID: 3238088779
     locked: 0
+  - name: NoteHolder
+    uniqueID: 3566961861
+    locked: 0
   - name: Note
     uniqueID: 2662872697
+    locked: 0
+  - name: Particles
+    uniqueID: 388706291
     locked: 0

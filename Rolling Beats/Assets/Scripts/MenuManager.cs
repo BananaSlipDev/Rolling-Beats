@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
         MusicSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
         SoundSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
 
-        //welcomeT.text = "Welcome " + PlayFabManager.SharedInstance.finalName ;
+        welcomeT.text = "Welcome " + PlayFabManager.SharedInstance.finalName ;
         MainMenu.SetActive(true);
         SettingsMenu.SetActive(false);
         SongSelectorMenu.SetActive(false);

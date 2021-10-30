@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
     public static SceneManager instance; //Public & Static instance for the SceneManager to be accessed by other scripts
+
+    private const int FRAMERATE = 60;   // Target framerate for the game (FPS)
 
     [HideInInspector]
     public bool musicStarted = false;
@@ -13,26 +16,24 @@ public class SceneManager : MonoBehaviour
     private const int PERFECT_SCORE = 100;
     private const int GREAT_SCORE = 50;
     private int combo = 1;
+
+    private int perfects = 0; // Perfects achieved in the song, etc
+    private int greats = 0;    
+    private int misses = 0;
+
+
+    [SerializeField]
     public static int totalScore = 0;
+
 
 
     private void Start()
     {
+        totalScore = 0;
         instance = this;
-    }
 
-    private void Update()
-    {
-        /*
-         * PRUEBA: inicia la cancion al pulsar cualquier tecla
-         */
-        if (!musicStarted && Input.anyKeyDown)
-        {
-            musicStarted = true;
-            Conductor.instance.musicSource.Play();
-        }
-            
-        ///////////////////////
+        // Sets a fixed framerate
+        //Application.targetFrameRate = FRAMERATE;
     }
 
 
@@ -44,11 +45,11 @@ public class SceneManager : MonoBehaviour
         {
             case "PERFECT":
                 points = PERFECT_SCORE;
-                Debug.Log("Perfect!");
+                perfects++;
                 break;
             case "GREAT":
                 points = GREAT_SCORE;
-                Debug.Log("Great!");
+                greats++;
                 break;
             default:
                 break;
@@ -56,14 +57,19 @@ public class SceneManager : MonoBehaviour
 
         totalScore += points * combo;   // Adds the note points to the total score
         combo += 1;                     // Increases the combo
-        //Debug.Log("Total score: " + totalScore);
+
+        // Updates UI
+        GameUI.instance.UpdateScoreAndComboText(totalScore.ToString(), "x"+ combo.ToString());
     }
 
     public void Miss() //Resets the combo and... damages the health?
     {
-        Debug.Log("Miss...");
         combo = 1;
-        // ... 
+        misses++;
+        // ... damage the health ...
+
+        // Updates UI
+        GameUI.instance.UpdateScoreAndComboText(totalScore.ToString(), "x" + combo.ToString());
     }
 
     public void sendtotalScore()
@@ -73,9 +79,9 @@ public class SceneManager : MonoBehaviour
 
     public IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(Conductor.instance.secondsTilEnd);
         sendtotalScore();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("PruebaCambioEscena");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndSong");
 
     }
 }

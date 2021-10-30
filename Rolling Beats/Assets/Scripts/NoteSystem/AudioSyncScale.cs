@@ -1,10 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using UnityEditor;
+
 
 public class AudioSyncScale : AudioSyncer {
 
-	private IEnumerator MoveToScale(Vector3 _target)
+
+	[Header("Scaling")]
+	public Vector3 beatScale;
+	public Vector3 restScale;
+
+
+	public override void OnBeat()
+	{
+		base.OnBeat();
+
+		StopCoroutine("MoveToScale");
+		StartCoroutine("MoveToScale", beatScale);
+	}
+
+    private IEnumerator MoveToScale(Vector3 _target)
 	{
 		Vector3 _curr = transform.localScale;
 		Vector3 _initial = _curr;
@@ -30,16 +47,9 @@ public class AudioSyncScale : AudioSyncer {
 		if (m_isBeat) return;
 
 		transform.localScale = Vector3.Lerp(transform.localScale, restScale, restSmoothTime * Time.deltaTime);
+
 	}
 
-	public override void OnBeat()
-	{
-		base.OnBeat();
+	
 
-		StopCoroutine("MoveToScale");
-		StartCoroutine("MoveToScale", beatScale);
-	}
-
-	public Vector3 beatScale;
-	public Vector3 restScale;
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class NoteSpawnerController : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class NoteSpawnerController : MonoBehaviour
     // Spawner's gameobjects. For now only uses the position.
     private GameObject spawnerTop;
     private GameObject spawnerBottom;
+
+    [SerializeField] private List<Sprite> sprites;
 
     private void Start()
     {
@@ -20,6 +23,10 @@ public class NoteSpawnerController : MonoBehaviour
     //Spawns a note above the spawner
     public void SpawnNote(Vector3 p)
     {
+        // Possible sprites must be assigned from inspector!!
+        int randomSpriteIdx = (int)Random.Range(0, sprites.Count);
+        notePrefab.GetComponent<SpriteRenderer>().sprite = sprites[randomSpriteIdx];
+
         Object.Instantiate(notePrefab, p, Quaternion.identity);
     }
 
