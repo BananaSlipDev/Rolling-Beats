@@ -27,6 +27,7 @@ public class PlayFabManager : MonoBehaviour
     public GameObject userUI;
     public GameObject leaderboardUI;
     public GameObject mobile;
+    public GameObject userMobileUI;
 
     public GameObject rowPrefab;
     public GameObject rowsParent;
@@ -120,8 +121,9 @@ public class PlayFabManager : MonoBehaviour
     {
         mobile.SetActive(false);
         messageText.gameObject.SetActive(false);
-        generateRandomUser();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        userMobileUI.SetActive(true);
+        //generateRandomUser();
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
     void OnLoginSuccess(LoginResult results)
@@ -217,11 +219,11 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.UpdateUserTitleDisplayName(request,OnDisplayNameUpdate, OnError);
     }
     
-    public void generateRandomUser()
+    public void generateRandomUser(String name)
     {
         var request = new UpdateUserTitleDisplayNameRequest
         {
-            DisplayName = "User"+Random.Range(1000,999999),
+            DisplayName = name,
         };
         
         PlayFabClientAPI.UpdateUserTitleDisplayName(request,OnDisplayNameUpdate2, OnErrorRepitedName);
@@ -248,7 +250,7 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnErrorRepitedName(PlayFabError error)
     {
-        generateRandomUser();
+        //TODO SI EL NOMBRE ES EL MISMO
     }
 
     

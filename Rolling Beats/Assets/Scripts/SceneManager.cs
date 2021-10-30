@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
@@ -18,6 +19,8 @@ public class SceneManager : MonoBehaviour
     
     [SerializeField]
     public static int totalScore = 0;
+
+    public TextMeshProUGUI textoError;
 
 
     private void Start()

@@ -11,6 +11,7 @@ public class CheckMobileManager : MonoBehaviour
     public static CheckMobileManager SharedInstance;
     private bool isMobile;
 
+
     public bool IsMobileGet
     {
         get => isMobile;

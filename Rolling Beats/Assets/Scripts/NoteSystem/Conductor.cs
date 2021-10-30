@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -39,10 +40,12 @@ public class Conductor : MonoBehaviour
     private string[] texto;
     private string[] texto2;
 
-    private void Start()
+    public bool wasWrited = false;
+
+    private void Awake()
     {
         instance = this;
-
+        
         notesPositions = new List<double>();
 
         //Load the AudioSource to the Conductor GameObject
@@ -53,6 +56,23 @@ public class Conductor : MonoBehaviour
         secPerBeat = 60f / songBPM;
         beatPerSec = songBPM / 60f;
 
+        
+        string textAssetTxt = textAsset.text;
+
+        texto = textAssetTxt.Split('\n');
+        for (int i = 0; i < texto.Length; i++)
+        {
+            texto2 = texto[i].Split('/');
+            notesLines.Add(int.Parse(texto2[0]));
+            notesPositions.Add(double.Parse(texto2[1]));
+        }
+    }
+
+    private void Start()
+    {
+        
+
+       
         //Record the time when music starts
         //dspSongTime = (float)AudioSettings.dspTime;
 
@@ -75,15 +95,7 @@ public class Conductor : MonoBehaviour
 
 
 
-        string textAssetTxt = textAsset.text;
-
-        texto = textAssetTxt.Split('\n');
-        for (int i = 0; i < texto.Length; i++)
-        {
-            texto2 = texto[i].Split('/');
-            notesLines.Add(int.Parse(texto2[0]));
-            notesPositions.Add(double.Parse(texto2[1]));
-        }
+        
 
 
         SceneManager.instance.musicStarted = true;
@@ -92,8 +104,18 @@ public class Conductor : MonoBehaviour
 
     private void Update()
     {
-        if(SceneManager.instance.musicStarted)
+        if (!wasWrited)
         {
+            SceneManager.instance.musicStarted = true;
+            SceneManager.instance.textoError.text = ""+SceneManager.instance.musicStarted;
+            wasWrited = true;
+        }
+
+        SceneManager.instance.textoError.text = "" + songPosition + " " + notesPositions[nextIndex];
+        
+       //if(SceneManager.instance.musicStarted)
+       //{
+            
             //songPosition = (float)(AudioSettings.dspTime - dspSongTime + firstBeatOffset);
             songPosition = musicSource.time + firstBeatOffset;
             songPosInBeats = songPosition / secPerBeat;
@@ -104,7 +126,7 @@ public class Conductor : MonoBehaviour
                 // A MODIFICAR
                 StartCoroutine(SceneManager.instance.GameOver());
             }
-            else if (System.Math.Round(songPosition, 2) > notesPositions[nextIndex])
+            else if (songPosition > notesPositions[nextIndex])
             {
                 if (notesLines[nextIndex] == 0)
                 {
@@ -117,7 +139,7 @@ public class Conductor : MonoBehaviour
                 nextIndex++;
             }
 
-        }
+        //}
 
     }
 
