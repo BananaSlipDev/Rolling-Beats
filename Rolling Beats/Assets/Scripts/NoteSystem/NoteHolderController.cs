@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class NoteHolderController : MonoBehaviour
 {
-    public Sprite defaultSprite;
-    public Sprite pressedSprite;
-
+    [SerializeField] private Sprite defaultSprite;
+    [SerializeField] private Sprite pressedSprite;
 
     private SpriteRenderer spriteRenderer;
 
@@ -15,6 +14,9 @@ public class NoteHolderController : MonoBehaviour
     private GameObject noteAbove;
     private Collider2D noteAboveCol;
     private bool isNoteAbove = false;
+
+    [SerializeField] private List<Material> beatSprites; // Must be assigned from inspector
+    private ParticleSystem particles;
 
     // NoteHolder colliders
     private CircleCollider2D circleColl;
@@ -40,17 +42,18 @@ public class NoteHolderController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleColl = GetComponent<CircleCollider2D>();
         boxColl = GetComponent<BoxCollider2D>();
+        particles = GetComponent<ParticleSystem>();
     }
     
     void Update()
     {
         // Controls
-        if (CheckMobileManager.SharedInstance.IsMobileGet)
-        {
-            UpdateinMobile();
-        }
-        else
-        {
+        //if (CheckMobileManager.SharedInstance.IsMobileGet)
+        //{
+        //    UpdateinMobile();
+        //}
+        //else
+        //{
             if (Input.GetKeyDown(keyToPress))
             { 
                 checkRightorMiss();
@@ -58,7 +61,7 @@ public class NoteHolderController : MonoBehaviour
             
             if (Input.GetKeyUp(keyToPress)) //Resets the sprite to default
                 spriteRenderer.sprite = defaultSprite;
-        }
+        //}
     }
 
     // The OnTrigger functions detect if the note is above or not
@@ -112,14 +115,26 @@ public class NoteHolderController : MonoBehaviour
         if (isNoteAbove) //If there's a note above the NoteHolder...
         {
             if (circleColl.IsTouching(noteAboveCol))        // Perfect collider
+            {
                 SceneManager.instance.ScoreNote("PERFECT");
+                particles.GetComponent<ParticleSystemRenderer>().material = beatSprites[0];//Perfect
+            }                
             else if (boxColl.IsTouching(noteAboveCol))      // Great collider
+            {
                 SceneManager.instance.ScoreNote("GREAT");
-
+                particles.GetComponent<ParticleSystemRenderer>().material = beatSprites[1]; //Great
+                
+            }
             Destroy(noteAbove);
         }
         else
+        {
             SceneManager.instance.Miss(); //Fails if beaten without a note
+            particles.GetComponent<ParticleSystemRenderer>().material = beatSprites[2]; //Miss
+        }
+
+        particles.Emit(1);
+
     }
 
 }

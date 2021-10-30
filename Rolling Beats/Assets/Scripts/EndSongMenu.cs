@@ -9,6 +9,8 @@ public class EndSongMenu : MonoBehaviour
 {
     public TextMeshProUGUI messageT;
     // Start is called before the first frame update
+
+
     void Start()
     {
         //Hay que pasarle la canción que acabe de terminar

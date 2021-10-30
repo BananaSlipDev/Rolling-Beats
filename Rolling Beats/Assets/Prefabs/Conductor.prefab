@@ -46,14 +46,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   songBPM: 60
   firstBeatOffset: 0
-  firstBeatOffsetIdx: 0
+  secondsTilEnd: 0
   secPerBeat: 0
   beatPerSec: 0
   songPosition: 0
-  songPosInBeats: 0
-  beatsShownInAdvance: 0
-  notes: []
   musicSource: {fileID: 0}
+  musicListener: {fileID: 0}
+  textAsset: {fileID: 0}
+  notesPositions: []
+  notesLines: 
+  wasWrited: 0
 --- !u!82 &4487522438771536170
 AudioSource:
   m_ObjectHideFlags: 0
@@ -63,7 +65,7 @@ AudioSource:
   m_GameObject: {fileID: 4487522438771536169}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -686553248588061446, guid: 6971e6642a54f5647a0017f60795476d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.1

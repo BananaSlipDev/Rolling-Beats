@@ -16,7 +16,12 @@ public class SceneManager : MonoBehaviour
     private const int PERFECT_SCORE = 100;
     private const int GREAT_SCORE = 50;
     private int combo = 1;
-    
+
+    private int perfects = 0; // Perfects achieved in the song, etc
+    private int greats = 0;    
+    private int misses = 0;
+
+
     [SerializeField]
     public static int totalScore = 0;
 
@@ -40,11 +45,11 @@ public class SceneManager : MonoBehaviour
         {
             case "PERFECT":
                 points = PERFECT_SCORE;
-                Debug.Log("Perfect!");
+                perfects++;
                 break;
             case "GREAT":
                 points = GREAT_SCORE;
-                Debug.Log("Great!");
+                greats++;
                 break;
             default:
                 break;
@@ -52,14 +57,19 @@ public class SceneManager : MonoBehaviour
 
         totalScore += points * combo;   // Adds the note points to the total score
         combo += 1;                     // Increases the combo
-        //Debug.Log("Total score: " + totalScore);
+
+        // Updates UI
+        GameUI.instance.UpdateScoreAndComboText(totalScore.ToString(), "x"+ combo.ToString());
     }
 
     public void Miss() //Resets the combo and... damages the health?
     {
-        Debug.Log("Miss...");
         combo = 1;
-        // ... 
+        misses++;
+        // ... damage the health ...
+
+        // Updates UI
+        GameUI.instance.UpdateScoreAndComboText(totalScore.ToString(), "x" + combo.ToString());
     }
 
     public void sendtotalScore()

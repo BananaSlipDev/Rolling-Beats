@@ -36,8 +36,8 @@ public class Conductor : MonoBehaviour
 
     public TextAsset textAsset;
 
-    public List<double> notesPositions;
-    public List<int> notesLines;
+    [SerializeField] private List<double> notesPositions;
+    private List<int> notesLines;
     private string[] texto;
     private string[] texto2;
 
