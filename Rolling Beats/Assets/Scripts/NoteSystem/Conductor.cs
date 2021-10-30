@@ -18,10 +18,10 @@ public class Conductor : MonoBehaviour
 
     [HideInInspector] public float secPerBeat;            //Number of seconds for each song in a beat
     [HideInInspector] public float beatPerSec;            //Number of beats for each song in a second    
-    
+
     [HideInInspector] public float songPosition;      //Current song position, in seconds
     private float songPosInBeats;    //Current song position, in beats
-    
+
     private float dspSongTime;      //Seconds passed since song started
     private int nextIndex = 0;      //Index of the next note to be spawned
 
@@ -48,8 +48,9 @@ public class Conductor : MonoBehaviour
     {
         System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-ES");
         instance = this;
-        
+
         notesPositions = new List<double>();
+        notesLines = new List<int>();
 
         //Load the AudioSource to the Conductor GameObject
         musicSource = GetComponent<AudioSource>();
@@ -59,7 +60,7 @@ public class Conductor : MonoBehaviour
         secPerBeat = 60f / songBPM;
         beatPerSec = songBPM / 60f;
 
-        
+
         string textAssetTxt = textAsset.text;
 
         texto = textAssetTxt.Split('\n');
@@ -73,9 +74,6 @@ public class Conductor : MonoBehaviour
 
     private void Start()
     {
-        
-
-       
         //Record the time when music starts
         //dspSongTime = (float)AudioSettings.dspTime;
 
@@ -97,12 +95,7 @@ public class Conductor : MonoBehaviour
         //reader.Close();
 
 
-
-        
-
-
         SceneManager.instance.musicStarted = true;
-
     }
 
     private void Update()
@@ -115,36 +108,36 @@ public class Conductor : MonoBehaviour
         }
 
         //SceneManager.instance.textoError.text = "" + songPosition + " " + notesPositions[nextIndex];
-        
-       //if(SceneManager.instance.musicStarted)
-       //{
-            
-            //songPosition = (float)(AudioSettings.dspTime - dspSongTime + firstBeatOffset);
-            songPosition = musicSource.time + firstBeatOffset;
-            songPosInBeats = songPosition / secPerBeat;
 
-            
-            if(nextIndex >= notesPositions.Count)
+        //if(SceneManager.instance.musicStarted)
+        //{
+
+        //songPosition = (float)(AudioSettings.dspTime - dspSongTime + firstBeatOffset);
+        songPosition = musicSource.time + firstBeatOffset;
+        songPosInBeats = songPosition / secPerBeat;
+
+
+        if (nextIndex >= notesPositions.Count)
+        {
+            // A MODIFICAR
+            StartCoroutine(SceneManager.instance.GameOver());
+
+        }
+        else if (System.Math.Round(songPosition, 2) > notesPositions[nextIndex])
+        //
+        {
+            Debug.Log("Dentro");
+            if (notesLines[nextIndex] == 0)
             {
-                // A MODIFICAR
-                StartCoroutine(SceneManager.instance.GameOver());
+                NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerTopPosition());
 
             }
-            else if (System.Math.Round(songPosition,2) > notesPositions[nextIndex])
-            //
+            else
             {
-                Debug.Log("Dentro");
-                if (notesLines[nextIndex] == 0)
-                {
-                    NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerTopPosition());
-                    
-                }
-                else
-                {
-                    NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerBottomPosition());
-                }
-                nextIndex++;
+                NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerBottomPosition());
             }
+            nextIndex++;
+        }
 
         //}
 
