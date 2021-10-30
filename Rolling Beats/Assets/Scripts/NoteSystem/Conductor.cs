@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using Unity.Collections;
 using Unity.Jobs;
@@ -40,10 +41,12 @@ public class Conductor : MonoBehaviour
     private string[] texto;
     private string[] texto2;
 
+
     public bool wasWrited = false;
 
     private void Awake()
     {
+        System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-ES");
         instance = this;
         
         notesPositions = new List<double>();
@@ -107,11 +110,11 @@ public class Conductor : MonoBehaviour
         if (!wasWrited)
         {
             SceneManager.instance.musicStarted = true;
-            SceneManager.instance.textoError.text = ""+SceneManager.instance.musicStarted;
+            //SceneManager.instance.textoError.text = ""+SceneManager.instance.musicStarted;
             wasWrited = true;
         }
 
-        SceneManager.instance.textoError.text = "" + songPosition + " " + notesPositions[nextIndex];
+        //SceneManager.instance.textoError.text = "" + songPosition + " " + notesPositions[nextIndex];
         
        //if(SceneManager.instance.musicStarted)
        //{
@@ -120,17 +123,21 @@ public class Conductor : MonoBehaviour
             songPosition = musicSource.time + firstBeatOffset;
             songPosInBeats = songPosition / secPerBeat;
 
-
+            
             if(nextIndex >= notesPositions.Count)
             {
                 // A MODIFICAR
                 StartCoroutine(SceneManager.instance.GameOver());
+
             }
-            else if (songPosition > notesPositions[nextIndex])
+            else if (System.Math.Round(songPosition,2) > notesPositions[nextIndex])
+            //
             {
+                Debug.Log("Dentro");
                 if (notesLines[nextIndex] == 0)
                 {
                     NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerTopPosition());
+                    
                 }
                 else
                 {

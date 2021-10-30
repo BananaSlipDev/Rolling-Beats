@@ -20,7 +20,6 @@ public class SceneManager : MonoBehaviour
     [SerializeField]
     public static int totalScore = 0;
 
-    public TextMeshProUGUI textoError;
 
 
     private void Start()
