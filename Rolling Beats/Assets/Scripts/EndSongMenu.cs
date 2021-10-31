@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class EndSongMenu : MonoBehaviour
 {
     public TextMeshProUGUI puntuacion;
+
+    public TextMeshProUGUI messageT;
     // Start is called before the first frame update
 
 
