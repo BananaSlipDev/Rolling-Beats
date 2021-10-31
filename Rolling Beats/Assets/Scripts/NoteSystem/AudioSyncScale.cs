@@ -7,11 +7,9 @@ using UnityEditor;
 
 public class AudioSyncScale : AudioSyncer {
 
-
 	[Header("Scaling")]
 	public Vector3 beatScale;
 	public Vector3 restScale;
-
 
 	public override void OnBeat()
 	{
@@ -47,9 +45,7 @@ public class AudioSyncScale : AudioSyncer {
 		if (m_isBeat) return;
 
 		transform.localScale = Vector3.Lerp(transform.localScale, restScale, restSmoothTime * Time.deltaTime);
-
 	}
 
-	
 
 }

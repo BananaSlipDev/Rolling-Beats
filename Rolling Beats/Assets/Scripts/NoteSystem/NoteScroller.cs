@@ -15,10 +15,7 @@ public class NoteScroller : MonoBehaviour
     void Update()
     {
         // Moves the notes UNITS_TO_MOVE per beat of the song
-        if (SceneManager.instance.musicStarted)
-        {
-            this.transform.position -= new Vector3(Conductor.instance.beatPerSec * UNITS_TO_MOVE * Time.deltaTime, 0f, 0f); // Fixed speed depending on BPM
-            this.transform.Rotate(0f, 0f, Random.Range(MIN_DEGREES_TO_ROTATE, MAX_DEGREES_TO_ROTATE) * Time.deltaTime);     // Random rotation speed
-        }
+        this.transform.position -= new Vector3(Conductor.instance.beatPerSec * UNITS_TO_MOVE * Time.deltaTime, 0f, 0f); // Fixed speed depending on BPM
+        this.transform.Rotate(0f, 0f, Random.Range(MIN_DEGREES_TO_ROTATE, MAX_DEGREES_TO_ROTATE) * Time.deltaTime);     // Random rotation speed
     }
 }

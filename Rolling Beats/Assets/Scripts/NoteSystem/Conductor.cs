@@ -100,12 +100,13 @@ public class Conductor : MonoBehaviour
 
     private void Update()
     {
-        //if (!wasWrited)
-        //{
-        //    SceneManager.instance.musicStarted = true;
-        //    //SceneManager.instance.textoError.text = ""+SceneManager.instance.musicStarted;
-        //    wasWrited = true;
-        //}
+        if (!wasWrited)
+        {
+            Debug.Log("Entra en wasWrited");
+            SceneManager.instance.musicStarted = true;
+            //SceneManager.instance.textoError.text = ""+SceneManager.instance.musicStarted;
+            wasWrited = true;
+        }
 
         //SceneManager.instance.textoError.text = "" + songPosition + " " + notesPositions[nextIndex];
 

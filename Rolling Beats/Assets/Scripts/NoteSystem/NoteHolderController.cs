@@ -116,6 +116,16 @@ public class NoteHolderController : MonoBehaviour
             if (multiplier* mytouch.position.x < multiplier* Screen.width/2f)
             {
                 checkRightorMiss();
+
+                switch(multiplier) //Changes the sprite depending on the touch
+                {
+                    case 1:
+                        rulles.JumpSprite();
+                        break;
+                    case -1:
+                        rulles.DownSprite();
+                        break;
+                }
             }
         }
 
@@ -124,6 +134,7 @@ public class NoteHolderController : MonoBehaviour
         if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
         {
             spriteRenderer.sprite = defaultSprite;
+            rulles.IdleSprite();
         }
     }
 
@@ -142,7 +153,7 @@ public class NoteHolderController : MonoBehaviour
             {
                 SceneManager.instance.ScoreNote("GREAT");
                 particles.GetComponent<ParticleSystemRenderer>().material = beatSprites[1]; //Great
-                
+
             }
             Destroy(noteAbove);
         }

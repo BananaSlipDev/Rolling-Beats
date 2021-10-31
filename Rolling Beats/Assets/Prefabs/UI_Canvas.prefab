@@ -381,7 +381,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIGame: {fileID: 3368210717063373075}
   PauseMenu: {fileID: 3368210718145319157}
-  TUTORIAL_SECONDS: 8
 --- !u!1 &3368210717063373075
 GameObject:
   m_ObjectHideFlags: 0
