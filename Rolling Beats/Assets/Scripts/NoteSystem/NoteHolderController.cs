@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class NoteHolderController : MonoBehaviour
 {
+    private RullesController rulles;
+
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite pressedSprite;
 
@@ -26,8 +28,6 @@ public class NoteHolderController : MonoBehaviour
 
     private Touch mytouch;
 
-    private bool isMobile;
-
     [SerializeField]
     private int multiplier;
 
@@ -37,7 +37,7 @@ public class NoteHolderController : MonoBehaviour
 
     void Start()
     {
-        //isMobile = CheckMobileManager.SharedInstance.IsMobileGet;
+        rulles = this.GetComponentInParent<RullesController>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleColl = GetComponent<CircleCollider2D>();
@@ -48,20 +48,35 @@ public class NoteHolderController : MonoBehaviour
     void Update()
     {
         // Controls
-        //if (CheckMobileManager.SharedInstance.IsMobileGet)
-        //{
-        //    UpdateinMobile();
-        //}
-        //else
-        //{
+        if (CheckMobileManager.SharedInstance.IsMobileGet)
+        {
+            UpdateinMobile();
+        }
+        else
+        {
             if (Input.GetKeyDown(keyToPress))
-            { 
+            {                
+                switch(keyToPress)
+                {
+                    case KeyCode.Z:
+                        rulles.JumpSprite();
+                        break;
+                    case KeyCode.X:
+                        rulles.DownSprite();
+                        break;
+                }
+
                 checkRightorMiss();
+
             }
             
             if (Input.GetKeyUp(keyToPress)) //Resets the sprite to default
+            {
                 spriteRenderer.sprite = defaultSprite;
-        //}
+                rulles.IdleSprite();
+            }
+                
+        }
     }
 
     // The OnTrigger functions detect if the note is above or not
@@ -84,7 +99,6 @@ public class NoteHolderController : MonoBehaviour
             noteAbove = null;
             noteAboveCol = null;
         }
-            
     }
 
     private void UpdateinMobile()

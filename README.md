@@ -8,7 +8,7 @@
 
 | Nombre | Rol / Roles | Correo |
 |:--------------:| ------------- | ------------- |
-| Manuel Rodríguez Bonete   |     Game Designer & tester.         |  mrodbon99@gmail.com             |
+| Manuel Rodríguez Bonete   |     Game and Web Designer & tester. |  mrodbon99@gmail.com             |
 | Miguel Ferrer García      |     Lead artist & concept.          |  mastersmfg@gmail.com            |
 | Sergio Sánchez Martínez   |     Lead Programmer.                |  serjsa385@gmail.com             |
 | Sonia Oiane Milagro Rubio |     Programmer, artist & UI/UX.     |  so.milagro.2018@alumnos.urjc.es |

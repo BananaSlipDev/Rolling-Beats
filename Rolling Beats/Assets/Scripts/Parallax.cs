@@ -28,28 +28,18 @@ public class Parallax : MonoBehaviour
         {
             layers[i].transform.Translate(-speeds[i] * Time.deltaTime, 0, 0);
         }
-        if (layers[3].transform.localPosition.x < -45.69)
+        if (layers[3].transform.localPosition.x < -49.48)
         {
             //Debug.Log(layers[3].)
             layers[3].transform.position = coordIniciales;
         }
-        if (layers[2].transform.localPosition.x < -24.5)
+        if (layers[2].transform.localPosition.x < -28.28)
         {
             layers[2].transform.position = coordIniciales2;
         }
-        if (layers[10].transform.localPosition.x < -13.47)
+        if (layers[10].transform.localPosition.x < -33.82)
         {
             layers[10].transform.position = coordIniciales3;
         }
-        //if (layer3.transform.localPosition.x> -40.2f)
-        //{
-        //    layer3.transform.Translate(-3f*Time.deltaTime,0,0 );
-        //    layer2.transform.Translate(-0.5f*Time.deltaTime,0,0 );
-        //    layer1.transform.Translate(-0.1f*Time.deltaTime,0,0 );
-        //}
-        //else
-        //{
-        //    layer3.transform.position = coordIniciales;
-        //}
     }
 }
