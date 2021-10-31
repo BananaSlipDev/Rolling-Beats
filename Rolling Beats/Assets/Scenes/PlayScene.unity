@@ -1726,7 +1726,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869101647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.76, y: -2.3135424, z: -49.975002}
+  m_LocalPosition: {x: 0, y: -2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1998692028}
@@ -3825,7 +3825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5227851114901986487, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5227851114901986487, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3991,6 +3991,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1141904123103379354, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
     - target: {fileID: 2763698973826653135, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: lengthInSec
       value: 1
@@ -4047,6 +4051,14 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.scalar
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8188122257870466186, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188122257870466186, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -728005435
+      objectReference: {fileID: 0}
     - target: {fileID: 8259944520555728187, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: m_Name
       value: NoteHolders
@@ -4061,7 +4073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8259944520555728188, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8259944520555728188, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4147,6 +4159,10 @@ PrefabInstance:
       propertyPath: beatSprites.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: fe8d5c1e543ad6845b4b583b2893e22a, type: 2}
+    - target: {fileID: 8259944521169360587, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8259944521169360588, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: m_Radius
       value: 0.1

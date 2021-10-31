@@ -20,11 +20,8 @@ public class SceneManager : MonoBehaviour
     private int perfects = 0; // Perfects achieved in the song, etc
     private int greats = 0;    
     private int misses = 0;
-
-    
     
     public int totalScore = 0;
-
 
 
     private void Start()
