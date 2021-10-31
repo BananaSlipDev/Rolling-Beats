@@ -34,6 +34,8 @@ public class PlayFabManager : MonoBehaviour
 
     public String finalName;
 
+    private int Level1Score;
+
 
     private void Awake()
     {
@@ -69,6 +71,7 @@ public class PlayFabManager : MonoBehaviour
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
         messageText.text = "Registered. Now you can Login!";
+        sendScoreAndLevel(0);
        
     }
 
@@ -120,6 +123,7 @@ public class PlayFabManager : MonoBehaviour
     void OnLoginSuccessNoUser(LoginResult results)
     {
         mobile.SetActive(false);
+        loginUI.SetActive(false);
         messageText.gameObject.SetActive(false);
         userMobileUI.SetActive(true);
         //generateRandomUser();
@@ -136,6 +140,7 @@ public class PlayFabManager : MonoBehaviour
         if(results.InfoResultPayload.PlayerProfile!=null)
             name = results.InfoResultPayload.PlayerProfile.DisplayName;
 
+        getScoreAndLevel();
         if (name == null)
         {
             userUI.SetActive(true);
@@ -160,6 +165,11 @@ public class PlayFabManager : MonoBehaviour
 
     public void SendLeaderboard(int value)
     {
+        if (value > Level1Score)
+        {
+            sendScoreAndLevel(value);
+        }
+        
         var request = new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate>
@@ -176,7 +186,7 @@ public class PlayFabManager : MonoBehaviour
 
     void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
     {
-        Debug.Log("Succesfull statits");
+        
     }
 
     public void GetLeaderboard()
@@ -251,6 +261,38 @@ public class PlayFabManager : MonoBehaviour
     private void OnErrorRepitedName(PlayFabError error)
     {
         //TODO SI EL NOMBRE ES EL MISMO
+    }
+
+    public void sendScoreAndLevel(int score)
+    {
+        var request = new UpdateUserDataRequest
+        {
+            Data = new Dictionary<string, string>
+            {
+                {"Level1Score", score.ToString()},
+            }
+        };
+        PlayFabClientAPI.UpdateUserData(request, OnDataSend, OnError);
+    }
+
+    public void OnDataSend(UpdateUserDataResult result)
+    {
+        
+    }
+
+    public void getScoreAndLevel()
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnDataReceived, OnError);
+    }
+
+    public void OnDataReceived(GetUserDataResult result)
+    {
+        if (result != null && result.Data.ContainsKey("Level1Score"))
+        {
+            Level1Score = int.Parse(result.Data["Level1Score"].Value);
+        }
+        
+        
     }
 
     

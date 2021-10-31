@@ -7,13 +7,17 @@ using UnityEngine.UI;
 
 public class EndSongMenu : MonoBehaviour
 {
+    public TextMeshProUGUI puntuacion;
+
     public TextMeshProUGUI messageT;
     // Start is called before the first frame update
 
 
     void Start()
     {
+        puntuacion.text = ""+SceneManager.instance.totalScore;
         //Hay que pasarle la canción que acabe de terminar
+
     }
 
     // Update is called once per frame
