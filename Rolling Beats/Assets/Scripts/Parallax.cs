@@ -22,7 +22,7 @@ public class Parallax : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         for(int i = 0; i < layers.Count; i++)
         {
@@ -37,7 +37,7 @@ public class Parallax : MonoBehaviour
         {
             layers[2].transform.position = coordIniciales2;
         }
-        if (layers[10].transform.localPosition.x < -33.82)
+        if (layers[10].transform.localPosition.x < -36.80)
         {
             layers[10].transform.position = coordIniciales3;
         }

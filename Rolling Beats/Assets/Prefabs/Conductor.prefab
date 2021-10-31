@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4487522438771536172}
   - component: {fileID: 4487522438771536171}
   - component: {fileID: 4487522438771536170}
+  - component: {fileID: 6447182445762431981}
+  - component: {fileID: 5636790611880144336}
   m_Layer: 0
   m_Name: Conductor
   m_TagString: Untagged
@@ -54,7 +56,6 @@ MonoBehaviour:
   musicListener: {fileID: 0}
   textAsset: {fileID: 0}
   notesPositions: []
-  notesLines: 
   wasWrited: 0
 --- !u!82 &4487522438771536170
 AudioSource:
@@ -152,3 +153,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &6447182445762431981
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487522438771536169}
+  m_Enabled: 1
+--- !u!114 &5636790611880144336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487522438771536169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b14eb8f8c50fd4da68c2600c7de6e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_audioSpectrum: []
+  spectrumChannel: 0
