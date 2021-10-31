@@ -124,7 +124,7 @@ public class PlayFabManager : MonoBehaviour
     {
         mobile.SetActive(false);
         loginUI.SetActive(false);
-        messageText.gameObject.SetActive(false);
+        messageText.gameObject.SetActive(true);
         userMobileUI.SetActive(true);
         //generateRandomUser();
         //UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
@@ -133,9 +133,10 @@ public class PlayFabManager : MonoBehaviour
     void OnLoginSuccess(LoginResult results)
     {
         loginUI.SetActive(false);
-        messageText.gameObject.SetActive(false);
+        messageText.gameObject.SetActive(true);
         messageText.text = "Logged In";
         finalName = results.InfoResultPayload.PlayerProfile.DisplayName;
+
         string name = null;
         if(results.InfoResultPayload.PlayerProfile!=null)
             name = results.InfoResultPayload.PlayerProfile.DisplayName;

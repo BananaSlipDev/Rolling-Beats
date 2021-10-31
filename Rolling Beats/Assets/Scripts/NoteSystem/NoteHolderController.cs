@@ -7,6 +7,8 @@ public class NoteHolderController : MonoBehaviour
 {
     private RullesController rulles;
 
+    private AudioSource sounds;
+
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite pressedSprite;
 
@@ -39,6 +41,8 @@ public class NoteHolderController : MonoBehaviour
     {
         rulles = this.GetComponentInParent<RullesController>();
 
+        sounds = this.GetComponentInParent<AudioSource>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleColl = GetComponent<CircleCollider2D>();
         boxColl = GetComponent<BoxCollider2D>();
@@ -66,6 +70,7 @@ public class NoteHolderController : MonoBehaviour
                         break;
                 }
 
+                sounds.Play();
                 checkRightorMiss();
 
             }

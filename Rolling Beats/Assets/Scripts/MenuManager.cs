@@ -19,14 +19,12 @@ public class MenuManager : MonoBehaviour
     public Slider SoundSlider;
 
     [Header("SongSelection")]
-    private ArrayList SongList = new ArrayList();
+    [SerializeField] private List<string> SongList;
     public Text SongText;
     private int CurrentSong = 0;
     
     public TextMeshProUGUI welcomeT;
 
-
-    
 
     private void Start()
     {
@@ -41,10 +39,6 @@ public class MenuManager : MonoBehaviour
         SongSelectorMenu.SetActive(false);
         ScoresMenu.SetActive(false);
         CreditsMenu.SetActive(false);
-
-        SongList.Add("PlayScene");
-        SongList.Add("Song02");
-        SongList.Add("Song03");
 
         SongText.text = SongList[0].ToString();
     }
@@ -94,8 +88,8 @@ public class MenuManager : MonoBehaviour
 
     public void StartSong()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(SongText.text);
-        //SceneManager.LoadScene(song);
+        if(!SongText.text.Equals("Coming soon!"))
+            UnityEngine.SceneManagement.SceneManager.LoadScene(SongText.text);
     }
     #endregion
 
