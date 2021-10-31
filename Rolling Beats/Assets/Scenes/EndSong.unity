@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 496782648}
   - component: {fileID: 496782647}
   m_Layer: 5
-  m_Name: _Helper
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,7 +347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -270.01724, y: 202.40263}
+  m_AnchoredPosition: {x: -0.000095367, y: 56}
   m_SizeDelta: {x: 259.9654, y: 45.1947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &496782647
@@ -371,19 +371,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: c1d45c0013b72c647b75909494bc4ccc, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: END SONG
+  m_Text: 'Your score: '
 --- !u!222 &496782648
 CanvasRenderer:
   m_ObjectHideFlags: 0
