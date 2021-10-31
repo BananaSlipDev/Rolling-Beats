@@ -20,8 +20,8 @@ public class GameUI : MonoBehaviour
         PauseMenu.SetActive(false);
         UIGame.SetActive(true);
 
-        currentScoreTXT = UIGame.transform.Find("Score").transform.Find("ScoreTXT").GetComponent<TMP_Text>();
-        currentComboTXT = UIGame.transform.Find("Score").transform.Find("ComboTXT").GetComponent<TMP_Text>();
+        currentScoreTXT = UIGame.transform.Find("Points_Background").transform.Find("ScoreTXT").GetComponent<TMP_Text>();
+        currentComboTXT = UIGame.transform.Find("Combo_Background").transform.Find("ComboTXT").GetComponent<TMP_Text>();
     }
 
     // Updates UIs text. Called from SceneManager
