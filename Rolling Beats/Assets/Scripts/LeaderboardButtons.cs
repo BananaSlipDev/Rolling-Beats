@@ -28,7 +28,7 @@ public class LeaderboardButtons : MonoBehaviour
         
     }
 
-    void recibirPuntuacion()
+    public void recibirPuntuacion()
     {
         PlayFabManager.SharedInstance.GetLeaderboard();
     }

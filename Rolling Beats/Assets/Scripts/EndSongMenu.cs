@@ -13,7 +13,9 @@ public class EndSongMenu : MonoBehaviour
 
     void Start()
     {
-        puntuacion.text = "" + SceneManager.instance.totalScore;
+
+        puntuacion.text = "YOUR SCORE: "+SceneManager.instance.totalScore;
+
         //Hay que pasarle la canción que acabe de terminar
 
     }
