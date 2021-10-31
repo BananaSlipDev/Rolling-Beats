@@ -21,9 +21,9 @@ public class SceneManager : MonoBehaviour
     private int greats = 0;    
     private int misses = 0;
 
-
-    [SerializeField]
-    public static int totalScore = 0;
+    
+    
+    public int totalScore = 0;
 
 
 
