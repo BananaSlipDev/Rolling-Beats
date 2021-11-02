@@ -12,10 +12,10 @@ public class CreateUsernameDropdown : MonoBehaviour
 
     public TMP_Dropdown adjetive;
 
-    private String[] animals = {"Horse", "Duck", "Dog", "Alien", "Frog", "Axolotl", "Penguin", "Cat", "Donkey", "Goat","MAKI"} ;
+    private String[] animals = {"Horse", "Duck", "Dog", "Alien", "Frog", "Axolotl", "Penguin", "Cat", "Donkey", "Goat","MAKI", "Jessy", "Monkey", "Baka"} ;
     private List<String> listAnimals;
 
-    private String[] adjetives = {"Crazy", "Horny", "Mad", "Happy", "Bisnaga", "Kinky", "Bored", "Kleptomaniac", "THE", "Silly", "Simp", "Troll", "Stubborn", "Maniac", "Skater"} ;
+    private String[] adjetives = {"Crazy", "Horny", "Mad", "Happy", "Bisnaga", "Kinky", "Bored", "Kleptomaniac", "THE", "Silly", "Simp", "Troll", "Stubborn", "Maniac", "Skater", "Sussy"} ;
     private List<String> listAdjetives;
     
     // Start is called before the first frame update
