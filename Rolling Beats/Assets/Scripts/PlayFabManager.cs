@@ -36,6 +36,8 @@ public class PlayFabManager : MonoBehaviour
 
     private int Level1Score;
 
+    public String randomName;
+
 
     private void Awake()
     {
@@ -234,7 +236,7 @@ public class PlayFabManager : MonoBehaviour
     {
         var request = new UpdateUserTitleDisplayNameRequest
         {
-            DisplayName = name,
+            DisplayName = name+ Random.Range(0,10000),
         };
         
         PlayFabClientAPI.UpdateUserTitleDisplayName(request,OnDisplayNameUpdate2, OnErrorRepitedName);
@@ -261,7 +263,7 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnErrorRepitedName(PlayFabError error)
     {
-        //TODO SI EL NOMBRE ES EL MISMO
+        generateRandomUser(randomName);
     }
 
     public void sendScoreAndLevel(int score)

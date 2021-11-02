@@ -553,6 +553,7 @@ MonoBehaviour:
   rowPrefab: {fileID: 8073485110928647168, guid: 6d279d7d282cc614b8e1feca3ba4e380, type: 3}
   rowsParent: {fileID: 0}
   finalName: 
+  randomName: 
 --- !u!4 &279830360
 Transform:
   m_ObjectHideFlags: 0
