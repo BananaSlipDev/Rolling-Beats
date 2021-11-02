@@ -30,7 +30,7 @@ public class GameUI : MonoBehaviour
         UIGame.SetActive(true);
         tutorial.SetActive(true);
 
-        StartCoroutine("HideTutorial");
+        StartCoroutine("ShowTutorialOnce");
     }
 
     // Updates UIs text. Called from SceneManager
@@ -46,6 +46,12 @@ public class GameUI : MonoBehaviour
         UIGame.SetActive(false);
         Conductor.instance.musicSource.Pause();
         AudioListener.pause = true;
+
+        // --- TO BE CHANGED IN ANOTHER SCRIPT ---
+        // Tutorial needs its own script and song.
+        // Hide the tutorial if game is paused
+        StopCoroutine("ShowTutorialOnce");
+        tutorial.SetActive(false);
     }
 
     public void ResumeGame() {
@@ -66,8 +72,9 @@ public class GameUI : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
-    public IEnumerator HideTutorial()
+    public IEnumerator ShowTutorialOnce()
     {
+        tutorial.SetActive(true);
         yield return new WaitForSeconds(TUTORIAL_SECONDS);
         tutorial.SetActive(false);
     }
