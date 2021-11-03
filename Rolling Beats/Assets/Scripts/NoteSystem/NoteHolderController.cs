@@ -54,7 +54,11 @@ public class NoteHolderController : MonoBehaviour
         // Controls
         if (CheckMobileManager.SharedInstance.IsMobileGet)
         {
-            UpdateinMobile();
+            if (!GameUI.instance.PauseMenu.activeInHierarchy)
+            {
+                UpdateinMobile();
+            }
+            
         }
         else
         {
@@ -113,7 +117,9 @@ public class NoteHolderController : MonoBehaviour
         {
             Input.touches[0].phase = TouchPhase.Canceled;
             mytouch = Input.GetTouch(0);
-            if (multiplier* mytouch.position.x < multiplier* Screen.width/2f)
+
+            
+            if (multiplier* mytouch.position.x < multiplier* Screen.width/2f && mytouch.position.y < (Screen.height - Screen.height/3))
             {
                 checkRightorMiss();
 
