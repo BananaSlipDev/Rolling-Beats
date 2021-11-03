@@ -26,7 +26,7 @@ public class AudioSyncSprite : AudioSyncer
 
 	private IEnumerator MoveToScale(Vector3 _target)
 	{
-		Debug.Log("Entra MoveToScale");
+		
 		Vector3 _curr = transform.localScale;
 		Vector3 _initial = _curr;
 		float _timer = 0;
