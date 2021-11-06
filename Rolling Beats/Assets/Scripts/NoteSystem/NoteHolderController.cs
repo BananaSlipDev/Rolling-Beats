@@ -58,7 +58,7 @@ public class NoteHolderController : MonoBehaviour
             {
                 UpdateinMobile();
             }
-            
+
         }
         else
         {
@@ -84,7 +84,7 @@ public class NoteHolderController : MonoBehaviour
                 spriteRenderer.sprite = defaultSprite;
                 rulles.IdleSprite();
             }
-                
+
         }
     }
 

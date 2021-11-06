@@ -333,8 +333,10 @@ MonoBehaviour:
   MusicSlider: {fileID: 328967919}
   SoundSlider: {fileID: 552800513}
   SongList:
+  - Tutorial
   - Snake Eyes
   - Lolito
+  - Amongus
   - Coming soon!
   SongText: {fileID: 1198129682}
   welcomeT: {fileID: 238994285}
