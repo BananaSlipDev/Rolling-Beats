@@ -334,6 +334,7 @@ MonoBehaviour:
   SoundSlider: {fileID: 552800513}
   SongList:
   - Snake Eyes
+  - Lolito
   - Coming soon!
   SongText: {fileID: 1198129682}
   welcomeT: {fileID: 238994285}
