@@ -64,7 +64,7 @@ public class NoteHolderController : MonoBehaviour
                 }
 
             }
-            
+
         }
         else
         {
@@ -90,7 +90,7 @@ public class NoteHolderController : MonoBehaviour
                 spriteRenderer.sprite = defaultSprite;
                 rulles.IdleSprite();
             }
-                
+
         }
     }
 

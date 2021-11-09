@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    private const float INITIAL_AUDIO_VALUE = 0.3f;
+    private const float INITIAL_AUDIO_VALUE = 1f;
 
     public GameObject MainMenu, SettingsMenu, SongSelectorMenu, ScoresMenu, CreditsMenu;
 
