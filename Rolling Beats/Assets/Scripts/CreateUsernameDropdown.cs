@@ -12,7 +12,7 @@ public class CreateUsernameDropdown : MonoBehaviour
 
     public TMP_Dropdown adjetive;
 
-    private String[] animals = {"Horse", "Duck", "Dog", "Alien", "Frog", "Axolotl", "Penguin", "Cat", "Donkey", "Goat","MAKI", "Jessy", "Monkey", "Baka"} ;
+    private String[] animals = {"Horse", "Duck", "Dog", "Alien", "Frog", "Axolotl", "Penguin", "Cat", "Donkey", "Goat","MAKI", "Jessy", "Monkey", "Baka", "Bear"} ;
     private List<String> listAnimals;
 
     private String[] adjetives = {"Crazy", "Horny", "Mad", "Happy", "Bisnaga", "Kinky", "Bored", "Kleptomaniac", "THE", "Silly", "Simp", "Troll", "Stubborn", "Maniac", "Skater", "Sussy"} ;
