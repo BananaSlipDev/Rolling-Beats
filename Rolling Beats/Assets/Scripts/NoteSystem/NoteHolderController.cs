@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class NoteHolderController : MonoBehaviour
 {
-    private RullesController rulles;
+    // -- ONLY FOR TESTING --
+    public bool testMode = false;
+    //-----------------------
 
+    private RullesController rulles;
     private AudioSource sounds;
 
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite pressedSprite;
-
     private SpriteRenderer spriteRenderer;
 
     // Note variables
@@ -51,20 +53,24 @@ public class NoteHolderController : MonoBehaviour
     
     void Update()
     {
-        // Controls
-        if (CheckMobileManager.SharedInstance.IsMobileGet)
+        if(!testMode)
         {
-            if (!GameUI.instance.PauseMenu.activeInHierarchy)
+            // Controls
+            if (CheckMobileManager.SharedInstance.IsMobileGet)
             {
-                UpdateinMobile();
+                if (!GameUI.instance.PauseMenu.activeInHierarchy)
+                {
+                    UpdateinMobile();
+                }
+
             }
             
         }
         else
         {
             if (Input.GetKeyDown(keyToPress))
-            {                
-                switch(keyToPress)
+            {
+                switch (keyToPress)
                 {
                     case KeyCode.Z:
                         rulles.JumpSprite();
@@ -78,7 +84,7 @@ public class NoteHolderController : MonoBehaviour
                 checkRightorMiss();
 
             }
-            
+
             if (Input.GetKeyUp(keyToPress)) //Resets the sprite to default
             {
                 spriteRenderer.sprite = defaultSprite;
