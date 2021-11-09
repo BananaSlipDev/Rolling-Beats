@@ -10,9 +10,6 @@ public class GameUI : MonoBehaviour
 
     public GameObject UIGame, PauseMenu;
 
-    [SerializeField] private float TUTORIAL_SECONDS = 5f;
-    private GameObject tutorial;
-
     // TextMeshPro to update
     private TMP_Text currentScoreTXT;
     private TMP_Text currentComboTXT;
@@ -21,16 +18,11 @@ public class GameUI : MonoBehaviour
     {
         instance = this;
 
-        tutorial = this.transform.Find("Tutorial").gameObject;
-
         currentScoreTXT = UIGame.transform.Find("Points_Background").transform.Find("ScoreTXT").GetComponent<TMP_Text>();
         currentComboTXT = UIGame.transform.Find("Combo_Background").transform.Find("ComboTXT").GetComponent<TMP_Text>();
 
         PauseMenu.SetActive(false);
         UIGame.SetActive(true);
-        tutorial.SetActive(true);
-
-        StartCoroutine("ShowTutorialOnce");
     }
 
     // Updates UIs text. Called from SceneManager
@@ -46,12 +38,6 @@ public class GameUI : MonoBehaviour
         UIGame.SetActive(false);
         Conductor.instance.musicSource.Pause();
         AudioListener.pause = true;
-
-        // --- TO BE CHANGED IN ANOTHER SCRIPT ---
-        // Tutorial needs its own script and song.
-        // Hide the tutorial if game is paused
-        StopCoroutine("ShowTutorialOnce");
-        tutorial.SetActive(false);
     }
 
     public void ResumeGame() {
@@ -70,12 +56,5 @@ public class GameUI : MonoBehaviour
     public void GoToMenu() {
         ResumeGame();
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-    }
-
-    public IEnumerator ShowTutorialOnce()
-    {
-        tutorial.SetActive(true);
-        yield return new WaitForSeconds(TUTORIAL_SECONDS);
-        tutorial.SetActive(false);
     }
 }
