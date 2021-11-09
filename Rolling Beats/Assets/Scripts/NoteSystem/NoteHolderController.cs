@@ -52,12 +52,12 @@ public class NoteHolderController : MonoBehaviour
     void Update()
     {
         // Controls
-        if (CheckMobileManager.SharedInstance.IsMobileGet)
-        {
-            UpdateinMobile();
-        }
-        else
-        {
+        ////if (CheckMobileManager.SharedInstance.IsMobileGet)
+        ////{
+        ////    UpdateinMobile();
+        ////}
+        ////else
+        ////{
             if (Input.GetKeyDown(keyToPress))
             {                
                 switch(keyToPress)
@@ -81,7 +81,7 @@ public class NoteHolderController : MonoBehaviour
                 rulles.IdleSprite();
             }
                 
-        }
+        //}
     }
 
     // The OnTrigger functions detect if the note is above or not
