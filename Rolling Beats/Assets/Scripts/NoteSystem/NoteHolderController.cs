@@ -5,13 +5,9 @@ using UnityEngine.UI;
 
 public class NoteHolderController : MonoBehaviour
 {
-    // -- ONLY FOR TESTING --
-    public bool testMode = false;
-    //-----------------------
-
-    private RullesController rulles;
     private AudioSource sounds;
 
+    // Sprites, must be assigned from the inspector
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite pressedSprite;
     private SpriteRenderer spriteRenderer;
@@ -28,21 +24,9 @@ public class NoteHolderController : MonoBehaviour
     private CircleCollider2D circleColl;
     private BoxCollider2D boxColl;
 
-    [SerializeField] private KeyCode keyToPress;
-
-    private Touch mytouch;
-
-    [SerializeField]
-    private int multiplier;
-
-    private bool wasTouching = false;
-    //Must be asigned from the Unity editor
-    
 
     void Start()
     {
-        rulles = this.GetComponentInParent<RullesController>();
-
         sounds = this.GetComponentInParent<AudioSource>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -50,107 +34,19 @@ public class NoteHolderController : MonoBehaviour
         boxColl = GetComponent<BoxCollider2D>();
         particles = GetComponent<ParticleSystem>();
     }
-    
-    void Update()
+
+    public void BeatNote()
     {
-        if(!testMode)
-        {
-            // Controls
-            if (CheckMobileManager.SharedInstance.IsMobileGet)
-            {
-                if (!GameUI.instance.PauseMenu.activeInHierarchy)
-                {
-                    UpdateinMobile();
-                }
-
-            }
-
-        }
-        else
-        {
-            if (Input.GetKeyDown(keyToPress))
-            {
-                switch (keyToPress)
-                {
-                    case KeyCode.Z:
-                        rulles.JumpSprite();
-                        break;
-                    case KeyCode.X:
-                        rulles.DownSprite();
-                        break;
-                }
-
-                sounds.Play();
-                checkRightorMiss();
-
-            }
-
-            if (Input.GetKeyUp(keyToPress)) //Resets the sprite to default
-            {
-                spriteRenderer.sprite = defaultSprite;
-                rulles.IdleSprite();
-            }
-
-        }
+        sounds.Play();
+        CheckRightorMiss();
     }
 
-    // The OnTrigger functions detect if the note is above or not
-    private void OnTriggerEnter2D(Collider2D other)
+    public void ReleaseControl()
     {
-        if (other.tag == "Note" )
-        {
-            isNoteAbove = true;
-            noteAbove = other.gameObject;
-            noteAboveCol = other;
-        }
-            
+        spriteRenderer.sprite = defaultSprite;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == "Note")
-        {
-            isNoteAbove = false;
-            noteAbove = null;
-            noteAboveCol = null;
-        }
-    }
-
-    private void UpdateinMobile()
-    {
-        bool isTouching = Input.touchCount > 0;
-        if (isTouching && Input.touches[0].phase == TouchPhase.Began && !wasTouching)
-        {
-            Input.touches[0].phase = TouchPhase.Canceled;
-            mytouch = Input.GetTouch(0);
-
-            
-            if (multiplier* mytouch.position.x < multiplier* Screen.width/2f && mytouch.position.y < (Screen.height - Screen.height/3))
-            {
-                checkRightorMiss();
-
-                switch(multiplier) //Changes the sprite depending on the touch
-                {
-                    case 1:
-                        rulles.JumpSprite();
-                        break;
-                    case -1:
-                        rulles.DownSprite();
-                        break;
-                }
-            }
-        }
-
-        wasTouching = isTouching;
-
-        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
-        {
-            spriteRenderer.sprite = defaultSprite;
-            rulles.IdleSprite();
-        }
-    }
-
-    private void checkRightorMiss()
+    private void CheckRightorMiss()
     {
         spriteRenderer.sprite = pressedSprite; //Changes the sprite and scores the note if needed
 
@@ -160,7 +56,7 @@ public class NoteHolderController : MonoBehaviour
             {
                 SceneManager.instance.ScoreNote("PERFECT");
                 particles.GetComponent<ParticleSystemRenderer>().material = beatSprites[0];//Perfect
-            }                
+            }
             else if (boxColl.IsTouching(noteAboveCol))      // Great collider
             {
                 SceneManager.instance.ScoreNote("GREAT");
@@ -177,6 +73,27 @@ public class NoteHolderController : MonoBehaviour
 
         particles.Emit(1);
 
+    }
+
+    // The OnTrigger functions detect if the note is above or not
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Note" )
+        {
+            isNoteAbove = true;
+            noteAbove = other.gameObject;
+            noteAboveCol = other;
+        }   
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Note")
+        {
+            isNoteAbove = false;
+            noteAbove = null;
+            noteAboveCol = null;
+        }
     }
 
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MissController : MonoBehaviour
 {
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {   
         // Checks if the note is missed. If so, destroy it and call SceneManager
