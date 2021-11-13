@@ -13,11 +13,10 @@ public class EndSongMenu : MonoBehaviour
 
     void Start()
     {
-
         puntuacion.text = "YOUR SCORE: "+SceneManager.instance.totalScore;
 
         //Hay que pasarle la canción que acabe de terminar
-
+        // Usar DontDestroyOnLoad
     }
 
     private void Awake()
@@ -30,6 +29,7 @@ public class EndSongMenu : MonoBehaviour
     }
 
 
+    // CAMBIAR
     public void RestartSong(string song) {
         UnityEngine.SceneManagement.SceneManager.LoadScene(song);
     }

@@ -225,7 +225,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SELECCIONA TU NOMBRE DE USUARIO
+  m_text: CHOOSE YOUR USERNAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9ab3c2c76b412845bc3368d40238f4e, type: 2}
   m_sharedMaterial: {fileID: -5188404505072270917, guid: f9ab3c2c76b412845bc3368d40238f4e, type: 2}
@@ -553,6 +553,7 @@ MonoBehaviour:
   rowPrefab: {fileID: 8073485110928647168, guid: 6d279d7d282cc614b8e1feca3ba4e380, type: 3}
   rowsParent: {fileID: 0}
   finalName: 
+  randomName: 
 --- !u!4 &279830360
 Transform:
   m_ObjectHideFlags: 0
@@ -5105,7 +5106,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: INTRODUCE TU NOMBRE DE USUARIO
+  m_text: ENTER YOUR USERNAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9ab3c2c76b412845bc3368d40238f4e, type: 2}
   m_sharedMaterial: {fileID: -5188404505072270917, guid: f9ab3c2c76b412845bc3368d40238f4e, type: 2}

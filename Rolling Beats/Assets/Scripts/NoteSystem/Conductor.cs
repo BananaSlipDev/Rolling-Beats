@@ -102,7 +102,7 @@ public class Conductor : MonoBehaviour
     {
         if (!wasWrited)
         {
-            Debug.Log("Entra en wasWrited");
+            
             SceneManager.instance.musicStarted = true;
             //SceneManager.instance.textoError.text = ""+SceneManager.instance.musicStarted;
             wasWrited = true;
@@ -127,7 +127,7 @@ public class Conductor : MonoBehaviour
         else if (System.Math.Round(songPosition, 2) > notesPositions[nextIndex])
         //
         {
-            Debug.Log("Dentro");
+            
             if (notesLines[nextIndex] == 0)
             {
                 NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerTopPosition());

@@ -15,8 +15,17 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ee07849ded35ba449b35c9c212c0f72f
   - enabled: 1
-    path: Assets/Scenes/Snake Eyes.unity
+    path: Assets/Scenes/PlaySongs/Tutorial.unity
+    guid: dd883d2b2259b1647a240b48483bbb78
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Snake Eyes.unity
     guid: 1d3e15bb50055c44d8e3d76b8ca431db
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Lolito.unity
+    guid: 9229942803527d942a671c8f65fae686
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Amongus.unity
+    guid: 92b1ad22d7254864b8d1bc0cbad01651
   - enabled: 1
     path: Assets/Scenes/EndSong.unity
     guid: e34e9dc1bc987194bb5176b4663ec9df

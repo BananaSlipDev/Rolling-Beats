@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class NoteHolderController : MonoBehaviour
 {
-    private RullesController rulles;
+    // -- ONLY FOR TESTING --
+    public bool testMode = false;
+    //-----------------------
 
+    private RullesController rulles;
     private AudioSource sounds;
 
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite pressedSprite;
-
     private SpriteRenderer spriteRenderer;
 
     // Note variables
@@ -51,16 +53,24 @@ public class NoteHolderController : MonoBehaviour
     
     void Update()
     {
-        // Controls
-        ////if (CheckMobileManager.SharedInstance.IsMobileGet)
-        ////{
-        ////    UpdateinMobile();
-        ////}
-        ////else
-        ////{
+        if(!testMode)
+        {
+            // Controls
+            if (CheckMobileManager.SharedInstance.IsMobileGet)
+            {
+                if (!GameUI.instance.PauseMenu.activeInHierarchy)
+                {
+                    UpdateinMobile();
+                }
+
+            }
+
+        }
+        else
+        {
             if (Input.GetKeyDown(keyToPress))
-            {                
-                switch(keyToPress)
+            {
+                switch (keyToPress)
                 {
                     case KeyCode.Z:
                         rulles.JumpSprite();
@@ -74,14 +84,14 @@ public class NoteHolderController : MonoBehaviour
                 checkRightorMiss();
 
             }
-            
+
             if (Input.GetKeyUp(keyToPress)) //Resets the sprite to default
             {
                 spriteRenderer.sprite = defaultSprite;
                 rulles.IdleSprite();
             }
-                
-        //}
+
+        }
     }
 
     // The OnTrigger functions detect if the note is above or not
@@ -113,7 +123,9 @@ public class NoteHolderController : MonoBehaviour
         {
             Input.touches[0].phase = TouchPhase.Canceled;
             mytouch = Input.GetTouch(0);
-            if (multiplier* mytouch.position.x < multiplier* Screen.width/2f)
+
+            
+            if (multiplier* mytouch.position.x < multiplier* Screen.width/2f && mytouch.position.y < (Screen.height - Screen.height/3))
             {
                 checkRightorMiss();
 

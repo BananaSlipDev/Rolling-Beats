@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_audioSpectrum: []
-  spectrumChannel: 0
+  spectrumChannel: 10
 --- !u!82 &2030121767
 AudioSource:
   m_ObjectHideFlags: 0
@@ -626,7 +626,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d684e3be0c8c11440b6244973d24edf9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 61308685c09aded41a6b1bb301829408, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 28d354c38fb10464a95349191604a2a9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -759,13 +759,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audiosource: {fileID: 2030121767}
-  bias: 35
+  bias: 20
   timeStep: 0.3
   timeToBeat: 0.0001
   restSmoothTime: 30
   beatScale: {x: 2, y: 2, z: 2}
   restScale: {x: 1, y: 1, z: 1}
-  songFileName: Snake_Eyes.txt
+  songFileName: Amongus.txt
   notes: []
 --- !u!114 &2041317763
 MonoBehaviour:
