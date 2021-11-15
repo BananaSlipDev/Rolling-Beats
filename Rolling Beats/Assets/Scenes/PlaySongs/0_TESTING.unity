@@ -4004,7 +4004,7 @@ PrefabInstance:
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: textAsset
       value: 
-      objectReference: {fileID: 4900000, guid: 1e8a5a4e996ac1347971390aeffa69dc, type: 3}
+      objectReference: {fileID: 4900000, guid: c7aa0ec8deaf3324d9a119739a46307b, type: 3}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: songFileName
       value: Snake_Eyes.txt
@@ -4075,6 +4075,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: longNotePrefab
+      value: 
+      objectReference: {fileID: 4828462793338410058, guid: 01ea7eb75d5aaec4f815b736cf9ab7b5, type: 3}
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: sprites.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -4088,6 +4092,30 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cb6b88b294f7f554b8bb6524387634aa, type: 3}
     - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: f147b21c7e675a94299e66b4e20bafef, type: 3}
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: fillNoteSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: normalNoteSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: fillNoteSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5115e02f975278249bae610735b4ba2a, type: 3}
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: fillNoteSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: c1c53ea75b51bf6409672319653d5fcb, type: 3}
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: normalNoteSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: cb6b88b294f7f554b8bb6524387634aa, type: 3}
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: normalNoteSprites.Array.data[2]
       value: 
       objectReference: {fileID: 21300000, guid: f147b21c7e675a94299e66b4e20bafef, type: 3}
     - target: {fileID: 5227851114901986486, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
@@ -4164,7 +4192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5227851116000975045, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5227851116000975045, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: m_SortingLayerID
@@ -4192,7 +4220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5227851116148734358, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5227851116148734358, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: m_SortingLayerID

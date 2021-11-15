@@ -27,6 +27,7 @@ public class NoteHoldersManager : MonoBehaviour
     [SerializeField] private KeyCode keyToPressBottom;
     private RullesController rulles;
 
+
     private void Start()
     {
         rulles = this.GetComponent<RullesController>();
@@ -36,7 +37,7 @@ public class NoteHoldersManager : MonoBehaviour
 
     void Update()
     {
-        if (testMode) // ONLY FOR TESTING IN UNITY
+        if (testMode) // ONLY FOR TESTING IN UNITY, SHOULD BE FALSE IN RELEASE VERSION
         {
             ControlsPC();
         }
