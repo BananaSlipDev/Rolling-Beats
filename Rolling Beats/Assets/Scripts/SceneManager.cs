@@ -27,7 +27,7 @@ public class SceneManager : MonoBehaviour
 
     private void Start()
     {
-        PlayFabManager.SharedInstance.actualScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        //PlayFabManager.SharedInstance.actualScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         totalScore = 0;
         instance = this;
 
