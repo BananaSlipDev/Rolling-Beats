@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
@@ -23,9 +25,12 @@ public class SceneManager : MonoBehaviour
     
     public int totalScore = 0;
 
+    
+
 
     private void Start()
     {
+        PlayFabManager.SharedInstance.actualScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         totalScore = 0;
         instance = this;
 

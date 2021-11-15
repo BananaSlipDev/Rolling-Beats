@@ -37,6 +37,7 @@ public class PlayFabManager : MonoBehaviour
     private int Level1Score;
 
     public String randomName;
+    public String actualScene;
 
 
     private void Awake()

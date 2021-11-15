@@ -17,7 +17,10 @@ public class NoteHoldersManager : MonoBehaviour
     //Mobile variables
     private Touch mytouch;
     [SerializeField] private int multiplier;
+
     private bool wasTouching = false;
+    private bool wasTouching1 = false;
+    private bool wasTouching2 = false;
 
 
     [SerializeField] private KeyCode keyToPressTop;
@@ -96,37 +99,74 @@ public class NoteHoldersManager : MonoBehaviour
     // A REHACER POR EL DAVID GANFORNINA
     private void ControlsMobile()
     {
-        bool isTouching = Input.touchCount > 0;
-        if (isTouching && Input.touches[0].phase == TouchPhase.Began && !wasTouching)
-        {
-            Input.touches[0].phase = TouchPhase.Canceled;
-            mytouch = Input.GetTouch(0);
+                //bool isTouching = Input.touchCount > 0;
+                int iteration = 0;
 
-
-            if (multiplier * mytouch.position.x < multiplier * Screen.width / 2f && mytouch.position.y < (Screen.height - Screen.height / 3))
-            {
-                switch (multiplier) //Changes the sprite depending on the touch
+                foreach (var touch in Input.touches)
                 {
-                    case 1:
-                        NoteHolderTop.BeatNote();
-                        rulles.JumpSprite();
-                        break;
-                    case -1:
-                        NoteHolderBottom.BeatNote();
-                        rulles.DownSprite();
-                        break;
+                    if (iteration == 0)
+                    {
+                        if (touch.phase == TouchPhase.Began && !wasTouching)
+                        {
+                            if (touch.position.x < Screen.width/2f && touch.position.y < (Screen.height - Screen.height / 3))
+                            {
+                                NoteHolderTop.BeatNote();
+                                rulles.JumpSprite();
+                            }
+                            else if (touch.position.x > Screen.width/2f &&
+                                     touch.position.y < (Screen.height - Screen.height / 3))
+                            {
+                                NoteHolderBottom.BeatNote();
+                                rulles.DownSprite();
+                            }
+                        }
+                    
+                        wasTouching = touch.phase !=TouchPhase.Ended;
+
+                        if (Input.touchCount > 0 && touch.phase == TouchPhase.Ended)
+                        {
+                            NoteHolderTop.ReleaseControl();
+                            NoteHolderBottom.ReleaseControl();
+                            rulles.IdleSprite();
+                        }
+
+                        iteration = 1;
+                    }
+                    else
+                    {
+                        Debug.Log("Ha entrado en la segunda");
+                        if (touch.phase == TouchPhase.Began && !wasTouching1)
+                        {
+                            Debug.Log("Ha entrado en la segunda IF");
+                            if (touch.position.x < Screen.width/2f && touch.position.y < (Screen.height - Screen.height / 3))
+                            {
+                                NoteHolderTop.BeatNote();
+                                rulles.JumpSprite();
+                            }
+                            else if (touch.position.x > Screen.width/2f &&
+                                     touch.position.y < (Screen.height - Screen.height / 3))
+                            {
+                                NoteHolderBottom.BeatNote();
+                                rulles.DownSprite();
+                            }
+                        }
+                    
+                        wasTouching1 = touch.phase != TouchPhase.Ended;
+
+                        if (Input.touchCount > 0 && touch.phase == TouchPhase.Ended)
+                        {
+                            NoteHolderTop.ReleaseControl();
+                            NoteHolderBottom.ReleaseControl();
+                            rulles.IdleSprite();
+                        }      
+                    }
+                    
                 }
-            }
-        }
-
-        wasTouching = isTouching;
-
-        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
-        {
-            //spriteRenderer.sprite = defaultSprite;
-            NoteHolderTop.ReleaseControl();
-            rulles.IdleSprite();
-        }
+                
+               
+            
+          
+        
     }
 
     #endregion

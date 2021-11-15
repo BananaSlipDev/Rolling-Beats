@@ -78,7 +78,7 @@ public class NoteHolderController : MonoBehaviour
     // The OnTrigger functions detect if the note is above or not
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Note" )
+        if (other.tag == "Note")
         {
             isNoteAbove = true;
             noteAbove = other.gameObject;
