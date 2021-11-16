@@ -38,6 +38,7 @@ public class PlayFabManager : MonoBehaviour
     public string ActualLevel;
 
     public String randomName;
+    public String actualScene;
 
 
     private void Awake()

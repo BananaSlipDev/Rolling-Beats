@@ -30,8 +30,8 @@ public class EndSongMenu : MonoBehaviour
 
 
     // CAMBIAR
-    public void RestartSong(string song) {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(song);
+    public void RestartSong() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(PlayFabManager.SharedInstance.actualScene);
     }
     
 }

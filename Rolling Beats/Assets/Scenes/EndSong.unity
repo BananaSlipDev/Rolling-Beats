@@ -1027,7 +1027,7 @@ MonoBehaviour:
       - m_Target: {fileID: 466624237}
         m_TargetAssemblyTypeName: EndSongMenu, Assembly-CSharp
         m_MethodName: RestartSong
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

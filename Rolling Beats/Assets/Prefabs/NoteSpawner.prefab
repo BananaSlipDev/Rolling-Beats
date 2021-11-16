@@ -46,8 +46,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 4828462793338410058, guid: 8421e1f53fa45af4286df74e63263273, type: 3}
-  sprites:
+  longNotePrefab: {fileID: 4828462793338410058, guid: 01ea7eb75d5aaec4f815b736cf9ab7b5, type: 3}
+  longNoteEndPrefab: {fileID: 4828462793338410058, guid: 6052f3d7e75a0b942b4a2c541883369a, type: 3}
+  normalNoteSprites:
   - {fileID: 21300000, guid: 7ecf56faf34ec2d41a3a60277c281b91, type: 3}
+  - {fileID: 21300000, guid: cb6b88b294f7f554b8bb6524387634aa, type: 3}
+  - {fileID: 21300000, guid: f147b21c7e675a94299e66b4e20bafef, type: 3}
+  fillNoteSprites:
+  - {fileID: 21300000, guid: b357a30cc09f2cf4294638435aaaa6b4, type: 3}
+  - {fileID: 21300000, guid: 5115e02f975278249bae610735b4ba2a, type: 3}
+  - {fileID: 21300000, guid: c1c53ea75b51bf6409672319653d5fcb, type: 3}
 --- !u!1 &5227851116000975051
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 4828462793338410058, guid: 8421e1f53fa45af4286df74e63263273, type: 3}
-  sprites: []
+  longNotePrefab: {fileID: 0}
+  longNoteEndPrefab: {fileID: 0}
+  normalNoteSprites: []
+  fillNoteSprites: []
 --- !u!1 &5227851116148734363
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,4 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 4828462793338410058, guid: 8421e1f53fa45af4286df74e63263273, type: 3}
-  sprites: []
+  longNotePrefab: {fileID: 0}
+  longNoteEndPrefab: {fileID: 0}
+  normalNoteSprites: []
+  fillNoteSprites: []
