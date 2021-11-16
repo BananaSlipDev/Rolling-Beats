@@ -14,8 +14,6 @@ public class Parallax : MonoBehaviour
         initialCoords = new List<Vector3>();
         for (int i = 0; i < layers.Count; i++)
         {
-            
-            Debug.Log(layers[i].GetComponent<Transform>().position);
             initialCoords.Add(layers[i].transform.position);
         }
 
@@ -30,8 +28,9 @@ public class Parallax : MonoBehaviour
         }
         for (int i = 0; i < layers.Count; i++)
         {
-            if (layers[i].transform.position.x <= initialCoords[i].x - (layers[i].GetComponent<SpriteRenderer>().bounds.extents.x * 2))
+            if (layers[i].transform.position.x <= initialCoords[i].x - (layers[i].GetComponent<SpriteRenderer>().bounds.size.x * 2))
             {
+                Debug.Log(layers[i].GetComponent<SpriteRenderer>().bounds.size.x * 2);
                 layers[i].transform.position = initialCoords[i];
             }
         }
