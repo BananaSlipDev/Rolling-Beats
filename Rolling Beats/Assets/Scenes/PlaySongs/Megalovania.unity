@@ -3976,7 +3976,7 @@ PrefabInstance:
     - target: {fileID: 4487522438771536170, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 28d354c38fb10464a95349191604a2a9, type: 3}
+      objectReference: {fileID: 8300000, guid: e7bee05052e279a41a6102b7d17b1cd5, type: 3}
     - target: {fileID: 4487522438771536170, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: m_PlayOnAwake
       value: 1
@@ -3995,7 +3995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: songBPM
-      value: 117
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: textito
@@ -4015,7 +4015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: firstBeatOffset
-      value: 3.9
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: beatsShownInAdvance
