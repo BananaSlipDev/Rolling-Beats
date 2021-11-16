@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
@@ -23,11 +25,15 @@ public class SceneManager : MonoBehaviour
     
     public int totalScore = 0;
 
-
     private void Start()
     {
+        //PlayFabManager.SharedInstance.actualScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         totalScore = 0;
         instance = this;
+        
+       
+        PlayFabManager.SharedInstance.ActualLevel = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        PlayFabManager.SharedInstance.getScoreAndLevel();
 
         // Sets a fixed framerate
         //Application.targetFrameRate = FRAMERATE;
@@ -69,15 +75,15 @@ public class SceneManager : MonoBehaviour
         GameUI.instance.UpdateScoreAndComboText(totalScore.ToString(), "x" + combo.ToString());
     }
 
-    public void sendtotalScore()
+    public void sendtotalScore(String sceneName)
     {
-        PlayFabManager.SharedInstance.SendLeaderboard(totalScore);
+        PlayFabManager.SharedInstance.SendLeaderboard(totalScore, sceneName);
     }
 
-    public IEnumerator GameOver()
+    public IEnumerator GameOver(String sceneName)
     {
         yield return new WaitForSeconds(Conductor.instance.secondsTilEnd);
-        sendtotalScore();
+        sendtotalScore(sceneName);
         UnityEngine.SceneManagement.SceneManager.LoadScene("EndSong");
 
     }

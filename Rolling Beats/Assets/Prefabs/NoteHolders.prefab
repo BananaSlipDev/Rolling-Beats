@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 8259944520555728188}
   - component: {fileID: 2851760152955680730}
   - component: {fileID: 4470341953441594766}
+  - component: {fileID: 8066265491984078324}
   m_Layer: 6
   m_Name: NoteHolders
   m_TagString: Untagged
@@ -322,6 +323,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8066265491984078324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8259944520555728187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbf91cba6aad734587beaaa04ed29ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testMode: 0
+  keyToPressTop: 122
+  keyToPressBottom: 120
+  NoteHolderTop: {fileID: 0}
+  NoteHolderBottom: {fileID: 0}
 --- !u!1 &8259944520690539220
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9902e951fed3664d9950d0d037730c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testMode: 0
   defaultSprite: {fileID: 21300000, guid: be1862e38472dcc4d85bc520c62df033, type: 3}
   pressedSprite: {fileID: 21300000, guid: 09ff03eecb4281e4c937aa6550f13527, type: 3}
   beatSprites: []
@@ -5362,6 +5381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9902e951fed3664d9950d0d037730c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testMode: 0
   defaultSprite: {fileID: 21300000, guid: be1862e38472dcc4d85bc520c62df033, type: 3}
   pressedSprite: {fileID: 21300000, guid: 09ff03eecb4281e4c937aa6550f13527, type: 3}
   beatSprites: []

@@ -8,6 +8,8 @@ TagManager:
   - Note
   - NoteSpawner
   - Leaderboard
+  - LongNote
+  - LongNoteEnd
   layers:
   - Default
   - TransparentFX

@@ -34,9 +34,11 @@ public class PlayFabManager : MonoBehaviour
 
     public String finalName;
 
-    private int Level1Score;
+    public int actualLevelScore;
+    public string ActualLevel;
 
     public String randomName;
+    public String actualScene;
 
 
     private void Awake()
@@ -73,7 +75,7 @@ public class PlayFabManager : MonoBehaviour
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
         messageText.text = "Registered. Now you can Login!";
-        sendScoreAndLevel(0);
+        //sendScoreAndLevel(0);
        
     }
 
@@ -161,16 +163,16 @@ public class PlayFabManager : MonoBehaviour
     
     void OnError(PlayFabError error)
     {
-        messageText.text = error.ErrorMessage;
+        //messageText.text = error.ErrorMessage;
         Debug.Log("error");
-        Debug.Log(error.GenerateErrorReport());
+        Debug.Log(error.ErrorMessage);
     }
 
-    public void SendLeaderboard(int value)
+    public void SendLeaderboard(int value, String level)
     {
-        if (value > Level1Score)
+        if (value > actualLevelScore)
         {
-            sendScoreAndLevel(value);
+            sendScoreAndLevel(value, level);
         }
         
         var request = new UpdatePlayerStatisticsRequest
@@ -179,7 +181,7 @@ public class PlayFabManager : MonoBehaviour
             {
                 new StatisticUpdate
                 {
-                    StatisticName = "Leaderboard",
+                    StatisticName = level,
                     Value = value
                 }
             }
@@ -192,11 +194,11 @@ public class PlayFabManager : MonoBehaviour
         
     }
 
-    public void GetLeaderboard()
+    public void GetLeaderboard(string level)
     {
         var request = new GetLeaderboardRequest
         {
-            StatisticName = "Leaderboard",
+            StatisticName = level,
             StartPosition = 0,
             MaxResultsCount = 10
         };
@@ -266,13 +268,13 @@ public class PlayFabManager : MonoBehaviour
         generateRandomUser(randomName);
     }
 
-    public void sendScoreAndLevel(int score)
+    public void sendScoreAndLevel(int score, String level)
     {
         var request = new UpdateUserDataRequest
         {
             Data = new Dictionary<string, string>
             {
-                {"Level1Score", score.ToString()},
+                {level, score.ToString()},
             }
         };
         PlayFabClientAPI.UpdateUserData(request, OnDataSend, OnError);
@@ -290,9 +292,13 @@ public class PlayFabManager : MonoBehaviour
 
     public void OnDataReceived(GetUserDataResult result)
     {
-        if (result != null && result.Data.ContainsKey("Level1Score"))
+        if (result != null && result.Data.ContainsKey(ActualLevel))
         {
-            Level1Score = int.Parse(result.Data["Level1Score"].Value);
+            actualLevelScore = int.Parse(result.Data[ActualLevel].Value);
+        }
+        else
+        {
+            actualLevelScore = 0;
         }
         
         
