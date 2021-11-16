@@ -87,7 +87,8 @@ public class Conductor : MonoBehaviour
     {
         if (nextIndex >= notesPositions.Count)
         {
-            StartCoroutine(SceneManager.instance.GameOver());
+            // A MODIFICAR
+            StartCoroutine(SceneManager.instance.GameOver(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
         }
         else if (System.Math.Round(songPosition, 2) > notesPositions[nextIndex]) // If there are notes left...
         {

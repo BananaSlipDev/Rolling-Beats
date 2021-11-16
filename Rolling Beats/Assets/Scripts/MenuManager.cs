@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,6 +25,9 @@ public class MenuManager : MonoBehaviour
     private int CurrentSong = 0;
     
     public TextMeshProUGUI welcomeT;
+    public TextMeshProUGUI yourScore;
+
+    public Button getLead;
 
 
     private void Start()
@@ -41,13 +45,24 @@ public class MenuManager : MonoBehaviour
         CreditsMenu.SetActive(false);
 
         SongText.text = SongList[0].ToString();
+        
+        PlayFabManager.SharedInstance.ActualLevel = SongText.text;
+        PlayFabManager.SharedInstance.getScoreAndLevel();
+        //yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
     }
 
     private void Awake()
     {
+       
+        PlayFabManager.SharedInstance.rowsParent = GameObject.Find("TAble");
         MasterSlider.onValueChanged.AddListener(ChangeVolumeMaster);
         MusicSlider.onValueChanged.AddListener(ChangeVolumeMusic);
         SoundSlider.onValueChanged.AddListener(ChangeVolumeSounds);
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void OpenPanel(GameObject panel) {
@@ -58,6 +73,22 @@ public class MenuManager : MonoBehaviour
         CreditsMenu.SetActive(false);
 
         panel.SetActive(true);
+        yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
+    }
+
+    public void getCurrentLeaderboard()
+    {
+        PlayFabManager.SharedInstance.GetLeaderboard(SongText.text);
+        SongSelectorMenu.SetActive(false);
+        ScoresMenu.SetActive(true);
+        
+    }
+
+    public void closeScoreBoard()
+    {
+        ScoresMenu.SetActive(false);
+        SongSelectorMenu.SetActive(true);
+        
     }
 
     #region SongSelector
@@ -66,11 +97,20 @@ public class MenuManager : MonoBehaviour
         {
             SongText.text = SongList[0].ToString();
             CurrentSong = 0;
+            
+            
+
         }
         else {
             SongText.text = SongList[CurrentSong + 1].ToString();
             CurrentSong += 1;
+
         }
+        
+        PlayFabManager.SharedInstance.ActualLevel = SongText.text;
+        PlayFabManager.SharedInstance.getScoreAndLevel();
+        StartCoroutine(MedioSecond());
+        
         
     }
 
@@ -79,11 +119,18 @@ public class MenuManager : MonoBehaviour
         {
             SongText.text = SongList[SongList.Count - 1].ToString();
             CurrentSong = SongList.Count - 1;
+
         }
         else {
             SongText.text = SongList[CurrentSong - 1].ToString();
             CurrentSong -= 1;
+            
+            
         }
+        PlayFabManager.SharedInstance.ActualLevel = SongText.text;
+        PlayFabManager.SharedInstance.getScoreAndLevel();
+        StartCoroutine(MedioSecond());
+        
     }
 
     public void StartSong()
@@ -115,5 +162,11 @@ public class MenuManager : MonoBehaviour
     }
 
     #endregion
+
+    public IEnumerator MedioSecond()
+    {
+        yield return new WaitForSeconds(0.5f);
+        yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
+    }
 
 }
