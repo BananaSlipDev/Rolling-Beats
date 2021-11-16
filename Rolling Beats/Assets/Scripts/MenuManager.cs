@@ -32,6 +32,8 @@ public class MenuManager : MonoBehaviour
 
     public GameObject notAvailable;
 
+    public GameObject shopPanel;
+
 
     private void Start()
     {
@@ -54,13 +56,17 @@ public class MenuManager : MonoBehaviour
         PlayFabManager.SharedInstance.GetInventory();
         PlayFabManager.SharedInstance.getCurrency();
         
+        checkPurchasedSongs();
+        
+        
+        
 
         //yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
     }
 
     private void Awake()
     {
-       
+        //shopPanel = GameObject.Find("Panel");
         PlayFabManager.SharedInstance.rowsParent = GameObject.Find("TAble");
         MasterSlider.onValueChanged.AddListener(ChangeVolumeMaster);
         MusicSlider.onValueChanged.AddListener(ChangeVolumeMusic);
@@ -83,6 +89,7 @@ public class MenuManager : MonoBehaviour
         panel.SetActive(true);
         yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
         yourCoins.text = "RollingCoins : " +PlayFabManager.SharedInstance.RollingCoins;
+        
     }
 
     public void getCurrentLeaderboard()
@@ -196,6 +203,7 @@ public class MenuManager : MonoBehaviour
     {
         PlayFabManager.SharedInstance.makePurchase(mapname);
         StartCoroutine(OneSecond());
+        
     }
 
     #endregion
@@ -210,6 +218,20 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         yourCoins.text = "RollingCoins : " +PlayFabManager.SharedInstance.RollingCoins;
+        checkPurchasedSongs();
+    }
+
+    void checkPurchasedSongs()
+    {
+        foreach (Transform gameObj in shopPanel.transform)
+        {
+            if (PlayFabManager.SharedInstance.songs.Contains(gameObj.name))
+            {
+                gameObj.transform.Find("Panel").gameObject.SetActive(true);
+                Debug.Log(gameObj.name+" Ya está comprado");
+            }
+            
+        }
     }
 
 }
