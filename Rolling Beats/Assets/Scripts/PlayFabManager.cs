@@ -39,6 +39,10 @@ public class PlayFabManager : MonoBehaviour
 
     public String randomName;
 
+    public List<String> songs;
+
+    public int RollingCoins = 0;
+
 
     private void Awake()
     {
@@ -103,7 +107,8 @@ public class PlayFabManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        songs = new List<string>();
+        songs.Add("Tutorial");
     }
 
     // Update is called once per frame
@@ -129,12 +134,14 @@ public class PlayFabManager : MonoBehaviour
         loginUI.SetActive(false);
         messageText.gameObject.SetActive(true);
         userMobileUI.SetActive(true);
+        
         //generateRandomUser();
         //UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
     void OnLoginSuccess(LoginResult results)
     {
+        
         loginUI.SetActive(false);
         messageText.gameObject.SetActive(true);
         messageText.text = "Logged In";
@@ -302,6 +309,66 @@ public class PlayFabManager : MonoBehaviour
         
         
     }
+
+    public void addCoins()
+    {
+        PlayFabClientAPI.AddUserVirtualCurrency(new AddUserVirtualCurrencyRequest(), OnCurrencyAdded, OnError);
+        
+        
+    }
+
+    public void OnCurrencyAdded(ModifyUserVirtualCurrencyResult result)
+    {
+        
+    }
+
+    //Get the received item listed in the Server and add it to the user Inventory
+    public void makePurchase(String mapName)
+    {
+        PlayFabClientAPI.PurchaseItem(new PurchaseItemRequest {
+            // In your game, this should just be a constant matching your primary catalog
+            CatalogVersion = "Inventory",
+            ItemId = mapName,
+            Price = 10,
+            VirtualCurrency = "RC"
+        }, PurchaseSuccess, OnError);
+    }
+
+    void PurchaseSuccess(PurchaseItemResult result)
+    {
+        GetInventory();
+        getCurrency();
+    }
+    
+    public void GetInventory() 
+    {
+        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(),OnGetInventory,error => Debug.LogError(error.GenerateErrorReport()));
+    }
+ 
+ 
+ 
+ 
+    public void OnGetInventory(GetUserInventoryResult result)
+    {
+        foreach (var eachItem in result.Inventory)
+        {
+            songs.Add(eachItem.DisplayName);
+        }
+           
+    }
+
+    public void getCurrency()
+    {
+        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), OnGetCurrency, error=> Debug.LogError("NoCurrency"));
+    }
+    
+    public void OnGetCurrency(GetUserInventoryResult result)
+    {
+        RollingCoins = result.VirtualCurrency["RC"];
+
+    }
+
+    
 
     
 

@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
 {
     private const float INITIAL_AUDIO_VALUE = 1f;
 
-    public GameObject MainMenu, SettingsMenu, SongSelectorMenu, ScoresMenu, CreditsMenu;
+    public GameObject MainMenu, SettingsMenu, SongSelectorMenu, ScoresMenu, CreditsMenu, ShopMenu;
 
     [Header("Options")]
     public AudioMixer Mixer;
@@ -26,8 +26,11 @@ public class MenuManager : MonoBehaviour
     
     public TextMeshProUGUI welcomeT;
     public TextMeshProUGUI yourScore;
+    public TextMeshProUGUI yourCoins;
 
     public Button getLead;
+
+    public GameObject notAvailable;
 
 
     private void Start()
@@ -48,6 +51,10 @@ public class MenuManager : MonoBehaviour
         
         PlayFabManager.SharedInstance.ActualLevel = SongText.text;
         PlayFabManager.SharedInstance.getScoreAndLevel();
+        PlayFabManager.SharedInstance.GetInventory();
+        PlayFabManager.SharedInstance.getCurrency();
+        
+
         //yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
     }
 
@@ -71,9 +78,11 @@ public class MenuManager : MonoBehaviour
         SongSelectorMenu.SetActive(false);
         ScoresMenu.SetActive(false);
         CreditsMenu.SetActive(false);
+        ShopMenu.SetActive(false);
 
         panel.SetActive(true);
         yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
+        yourCoins.text = "RollingCoins : " +PlayFabManager.SharedInstance.RollingCoins;
     }
 
     public void getCurrentLeaderboard()
@@ -106,7 +115,15 @@ public class MenuManager : MonoBehaviour
             CurrentSong += 1;
 
         }
-        
+
+        if (!PlayFabManager.SharedInstance.songs.Contains(SongText.text))
+        {
+            notAvailable.SetActive(true);
+        }
+        else
+        {
+            notAvailable.SetActive(false);
+        }
         PlayFabManager.SharedInstance.ActualLevel = SongText.text;
         PlayFabManager.SharedInstance.getScoreAndLevel();
         StartCoroutine(MedioSecond());
@@ -126,6 +143,15 @@ public class MenuManager : MonoBehaviour
             CurrentSong -= 1;
             
             
+        }
+        
+        if (!PlayFabManager.SharedInstance.songs.Contains(SongText.text))
+        {
+            notAvailable.SetActive(true);
+        }
+        else
+        {
+            notAvailable.SetActive(false);
         }
         PlayFabManager.SharedInstance.ActualLevel = SongText.text;
         PlayFabManager.SharedInstance.getScoreAndLevel();
@@ -163,10 +189,27 @@ public class MenuManager : MonoBehaviour
 
     #endregion
 
+    #region Shop
+
+    
+    public void makePurchase(String mapname)
+    {
+        PlayFabManager.SharedInstance.makePurchase(mapname);
+        StartCoroutine(OneSecond());
+    }
+
+    #endregion
+
     public IEnumerator MedioSecond()
     {
         yield return new WaitForSeconds(0.5f);
         yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
+    }
+
+    public IEnumerator OneSecond()
+    {
+        yield return new WaitForSeconds(1f);
+        yourCoins.text = "RollingCoins : " +PlayFabManager.SharedInstance.RollingCoins;
     }
 
 }
