@@ -5,8 +5,10 @@ using UnityEngine;
 public class NoteHoldersManager : MonoBehaviour
 {
     // -- ONLY FOR TESTING --
-    [SerializeField] private bool testMode = false;
+    [SerializeField] public bool testMode = false;
     //-----------------------
+
+    public static NoteHoldersManager instance;
 
     // NoteHoldes
     [SerializeField] private NoteHolderController NoteHolderTop;
@@ -30,6 +32,7 @@ public class NoteHoldersManager : MonoBehaviour
 
     private void Start()
     {
+        instance = this;
         rulles = this.GetComponent<RullesController>();
         NoteHolderTop = transform.Find("NoteHolderTop").GetComponent<NoteHolderController>();
         NoteHolderBottom = transform.Find("NoteHolderBottom").GetComponent<NoteHolderController>();
