@@ -367,6 +367,25 @@ public class PlayFabManager : MonoBehaviour
         RollingCoins = result.VirtualCurrency["RC"];
 
     }
+    
+    public void AddVC()
+    {
+        AddUserVirtualCurrencyRequest vcRequest = new AddUserVirtualCurrencyRequest();
+
+        vcRequest.VirtualCurrency = "RC";
+        vcRequest.Amount = 50;
+
+        PlayFabClientAPI.AddUserVirtualCurrency(vcRequest, onAddedSucces, error=> Debug.LogError(error.Error));
+        
+    }
+
+    public void onAddedSucces(ModifyUserVirtualCurrencyResult result)
+    {
+        Debug.Log("RC Added");
+    }
+    
+    
+    
 
     
 

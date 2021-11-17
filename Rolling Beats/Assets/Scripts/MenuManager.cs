@@ -219,6 +219,7 @@ public class MenuManager : MonoBehaviour
     public void cancelPurchase()
     {
         panelBuy.SetActive(false);
+        
     }
 
     #endregion

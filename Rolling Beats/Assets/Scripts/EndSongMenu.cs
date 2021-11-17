@@ -14,6 +14,8 @@ public class EndSongMenu : MonoBehaviour
     void Start()
     {
         puntuacion.text = "YOUR SCORE: "+SceneManager.instance.totalScore;
+        PlayFabManager.SharedInstance.AddVC();
+        PlayFabManager.SharedInstance.getCurrency();
 
         //Hay que pasarle la canción que acabe de terminar
         // Usar DontDestroyOnLoad
