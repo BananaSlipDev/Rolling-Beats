@@ -33,6 +33,9 @@ public class MenuManager : MonoBehaviour
     public GameObject notAvailable;
 
     public GameObject shopPanel;
+    public GameObject panelBuy;
+
+    public String songToBuy;
 
 
     private void Start()
@@ -201,9 +204,21 @@ public class MenuManager : MonoBehaviour
     
     public void makePurchase(String mapname)
     {
-        PlayFabManager.SharedInstance.makePurchase(mapname);
+        panelBuy.SetActive(true);
+        songToBuy = mapname;
+    }
+
+    public void confirmPurchase()
+    {
+        PlayFabManager.SharedInstance.makePurchase(songToBuy);
         StartCoroutine(OneSecond());
+        panelBuy.SetActive(false);
         
+    }
+
+    public void cancelPurchase()
+    {
+        panelBuy.SetActive(false);
     }
 
     #endregion
@@ -219,6 +234,14 @@ public class MenuManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         yourCoins.text = "RollingCoins : " +PlayFabManager.SharedInstance.RollingCoins;
         checkPurchasedSongs();
+        if (!PlayFabManager.SharedInstance.songs.Contains(SongText.text))
+        {
+            notAvailable.SetActive(true);
+        }
+        else
+        {
+            notAvailable.SetActive(false);
+        }
     }
 
     void checkPurchasedSongs()
@@ -227,6 +250,7 @@ public class MenuManager : MonoBehaviour
         {
             if (PlayFabManager.SharedInstance.songs.Contains(gameObj.name))
             {
+                gameObj.GetComponent<Button>().enabled = false;
                 gameObj.transform.Find("Panel").gameObject.SetActive(true);
                 Debug.Log(gameObj.name+" Ya está comprado");
             }
