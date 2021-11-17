@@ -25,7 +25,7 @@ public class Tutorial : MonoBehaviour
         texts.Add("Use the inputs shown above...");
         texts.Add("to press the notes in the right order and score a beat!");
         texts.Add("Come on, prove it!");
-        texts.Add(" "); texts.Add(" "); texts.Add(" ");  // 9 seconds
+        texts.Add(" "); texts.Add(" "); texts.Add(" ");  // Wait
 
         texts.Add("There are two lanes. Be careful!");
         texts.Add("Your accuracy determines your points");
@@ -33,7 +33,7 @@ public class Tutorial : MonoBehaviour
         texts.Add("The combo will help you score higher...");
         texts.Add("but don't loose it! A miss will reset it to one");
         texts.Add("Here, try something more");
-        texts.Add(" "); texts.Add(" "); texts.Add(" "); texts.Add(" "); // 20 seconds
+        texts.Add(" "); texts.Add(" "); texts.Add(" "); texts.Add(" "); // Wait
 
         texts.Add("By the way, there are long notes too!");
         texts.Add("Hold the control until the end to score a beat");
