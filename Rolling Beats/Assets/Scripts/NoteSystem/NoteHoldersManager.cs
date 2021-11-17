@@ -20,10 +20,7 @@ public class NoteHoldersManager : MonoBehaviour
     private Touch mytouch;
     [SerializeField] private int multiplier;
 
-    private bool wasTouching = false;
-    private bool wasTouching1 = false;
-    private bool wasTouching2 = false;
-
+    private List<int> fingers;
 
     [SerializeField] private KeyCode keyToPressTop;
     [SerializeField] private KeyCode keyToPressBottom;
@@ -36,6 +33,8 @@ public class NoteHoldersManager : MonoBehaviour
         rulles = this.GetComponent<RullesController>();
         NoteHolderTop = transform.Find("NoteHolderTop").GetComponent<NoteHolderController>();
         NoteHolderBottom = transform.Find("NoteHolderBottom").GetComponent<NoteHolderController>();
+
+        fingers = new List<int>();
     }
 
     void Update()
@@ -90,86 +89,63 @@ public class NoteHoldersManager : MonoBehaviour
             rulles.IdleSprite();
             bottomPressed = false;
         }
-        
-        // WORK IN PROGRESS
-        //if(topPressed && bottomPressed)
-        //{
-        //    // This is true SEVERAL TIMES
-        //}
 
     }
 
-
-    // A REHACER POR EL DAVID GANFORNINA
     private void ControlsMobile()
     {
-                //bool isTouching = Input.touchCount > 0;
-                int iteration = 0;
+        int nbTouches = Input.touchCount;
 
-                foreach (var touch in Input.touches)
+        if(nbTouches > 0) // If there are any touches...
+        {
+            for(int i = 0; i < nbTouches; i++)
+            {
+                Touch touch = Input.GetTouch(i);
+
+                if(touch.phase == TouchPhase.Began &&
+                    !fingers.Contains(touch.fingerId)) // If there's a new touch on screen
                 {
-                    if (iteration == 0)
+                    fingers.Add(touch.fingerId); // Adds the touch to the list of touches onScreen
+
+                    // Left side down
+                    if (touch.position.x < Screen.width/2f &&
+                         touch.position.y < (Screen.height - Screen.height / 3))
                     {
-                        if (touch.phase == TouchPhase.Began && !wasTouching)
-                        {
-                            if (touch.position.x < Screen.width/2f && touch.position.y < (Screen.height - Screen.height / 3))
-                            {
-                                NoteHolderTop.BeatNote();
-                                rulles.JumpSprite();
-                            }
-                            else if (touch.position.x > Screen.width/2f &&
-                                     touch.position.y < (Screen.height - Screen.height / 3))
-                            {
-                                NoteHolderBottom.BeatNote();
-                                rulles.DownSprite();
-                            }
-                        }
-                    
-                        wasTouching = touch.phase !=TouchPhase.Ended;
-
-                        if (Input.touchCount > 0 && touch.phase == TouchPhase.Ended)
-                        {
-                            NoteHolderTop.ReleaseControl();
-                            NoteHolderBottom.ReleaseControl();
-                            rulles.IdleSprite();
-                        }
-
-                        iteration = 1;
+                        NoteHolderTop.BeatNote();
+                        rulles.JumpSprite();
                     }
-                    else
+                    // Right side down
+                    else if (touch.position.x > Screen.width/2f &&
+                             touch.position.y < (Screen.height - Screen.height / 3))
                     {
-                        Debug.Log("Ha entrado en la segunda");
-                        if (touch.phase == TouchPhase.Began && !wasTouching1)
-                        {
-                            Debug.Log("Ha entrado en la segunda IF");
-                            if (touch.position.x < Screen.width/2f && touch.position.y < (Screen.height - Screen.height / 3))
-                            {
-                                NoteHolderTop.BeatNote();
-                                rulles.JumpSprite();
-                            }
-                            else if (touch.position.x > Screen.width/2f &&
-                                     touch.position.y < (Screen.height - Screen.height / 3))
-                            {
-                                NoteHolderBottom.BeatNote();
-                                rulles.DownSprite();
-                            }
-                        }
-                    
-                        wasTouching1 = touch.phase != TouchPhase.Ended;
-
-                        if (Input.touchCount > 0 && touch.phase == TouchPhase.Ended)
-                        {
-                            NoteHolderTop.ReleaseControl();
-                            NoteHolderBottom.ReleaseControl();
-                            rulles.IdleSprite();
-                        }      
+                        NoteHolderBottom.BeatNote();
+                        rulles.DownSprite();
                     }
-                    
                 }
+                else if(touch.phase == TouchPhase.Ended &&
+                        fingers.Contains(touch.fingerId)) // If the touch was onScreen and ended
+                {
+                    fingers.Remove(touch.fingerId); // Deletes the touch from the list of touches onScreen
+
+                    // Left side up
+                    if (touch.position.x < Screen.width/2f &&
+                         touch.position.y < (Screen.height - Screen.height / 3))
+                    {
+                        NoteHolderTop.ReleaseControl();
+                    }
+                    // Right side up
+                    else if (touch.position.x > Screen.width/2f &&
+                             touch.position.y < (Screen.height - Screen.height / 3))
+                    {
+                        NoteHolderBottom.ReleaseControl();
+                    }
+
+                }
+            }
+        }
+        else
+            rulles.IdleSprite();
                 
-               
-            
-          
         
     }
 
