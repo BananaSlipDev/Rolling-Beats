@@ -20,7 +20,8 @@ public class Timer : MonoBehaviour
     {
         float passedTime = Conductor.instance.songPosition;
 
-        loadingBar.fillAmount = passedTime/totalSongSeconds; 
+        if(passedTime > 0.5)
+            loadingBar.fillAmount = passedTime/totalSongSeconds; 
     }
     
 
