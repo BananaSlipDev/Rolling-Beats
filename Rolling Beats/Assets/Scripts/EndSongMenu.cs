@@ -44,7 +44,7 @@ public class EndSongMenu : MonoBehaviour
     private void SetScore()
     {
         // Set data
-        score.text = "SCORE:\n" + SceneManager.instance.totalScore;
+        score.text = "" + SceneManager.instance.totalScore;
 
         int perfects = SceneManager.instance.perfects,
             greats = SceneManager.instance.greats, 
@@ -55,8 +55,8 @@ public class EndSongMenu : MonoBehaviour
         missTXT.text = misses.ToString();
 
 
-        // Calculate letter
-
+        // CALCULATE LETTER:
+        
         int totalNotes = SceneManager.instance.totalNotes;
         
         // Calculates performance, a % between 0 and 100
@@ -81,7 +81,7 @@ public class EndSongMenu : MonoBehaviour
         else if(performance <= 60)                              // C, less than 60% scored
             letter.sprite = letterSprites[4];
 
-        accuracyTXT.text = "Accuracy: " + performance + "%";
+        accuracyTXT.text = performance + "%";
     }
 
     private void CheckNewRecord()
