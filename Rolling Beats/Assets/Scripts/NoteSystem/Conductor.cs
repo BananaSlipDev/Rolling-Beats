@@ -14,7 +14,7 @@ public class Conductor : MonoBehaviour
     [Header("Song-specific parameters")]
     public float songBPM;               //Song beats per minute, determined by the song to sync up
     public float firstBeatOffset;       //The offset to the first beat of the song in seconds
-    public float secondsTilEnd;
+    public float secondsTilEnd;         //Seconds until the last note spawned for the song to end
 
     [HideInInspector] public float secPerBeat;            //Number of seconds for each song in a beat
     [HideInInspector] public float beatPerSec;            //Number of beats for each song in a second    
@@ -29,18 +29,15 @@ public class Conductor : MonoBehaviour
     [HideInInspector] public AudioSource musicSource;
     [HideInInspector] public AudioListener musicListener;
 
-    // Writing variables
-    //[SerializeField] private string songFileName; // MUST BE WRITTEN FROM THE INSPECTOR
-    //private string generalPath = "Assets/Audio/TextFileSongs/";
-    //private string songFilePath;
-
+    // Text asset that includes the notes
     public TextAsset textAsset;
 
     [SerializeField] private List<double> notesPositions;
-    private List<int> notesLines;
+    [SerializeField] private List<int> notesLines;   // 0 - Top      /  1 - Bottom
+    [SerializeField] private List<String> notesType;    // N - Normal   /  L - Long  / LE - Long End
+
     private string[] texto;
     private string[] texto2;
-
 
     public bool wasWrited = false;
 
@@ -60,41 +57,12 @@ public class Conductor : MonoBehaviour
         secPerBeat = 60f / songBPM;
         beatPerSec = songBPM / 60f;
 
-
-        string textAssetTxt = textAsset.text;
-
-        texto = textAssetTxt.Split('\n');
-        for (int i = 0; i < texto.Length; i++)
-        {
-            texto2 = texto[i].Split('/');
-            notesLines.Add(int.Parse(texto2[0]));
-            notesPositions.Add(double.Parse(texto2[1]));
-        }
+        // Reads the file and stores the notes
+        StoreNotes();
     }
 
     private void Start()
     {
-        //Record the time when music starts
-        //dspSongTime = (float)AudioSettings.dspTime;
-
-
-        // -- Reading the song file --
-        //songFilePath += generalPath + songFileName;
-        //StreamReader reader = new StreamReader(songFilePath);
-        //string text = "";
-
-        //text = reader.ReadLine();
-        //while (text != null)
-        //{
-        //    texto = text.Split('/');
-        //    notesLines.Add(int.Parse(texto[0]));
-        //    notesPositions.Add(double.Parse(texto[1]));
-        //    text = reader.ReadLine();
-        //}
-
-        //reader.Close();
-
-
         SceneManager.instance.musicStarted = true;
     }
 
@@ -102,46 +70,75 @@ public class Conductor : MonoBehaviour
     {
         if (!wasWrited)
         {
-            
             SceneManager.instance.musicStarted = true;
-            //SceneManager.instance.textoError.text = ""+SceneManager.instance.musicStarted;
             wasWrited = true;
         }
 
-        //SceneManager.instance.textoError.text = "" + songPosition + " " + notesPositions[nextIndex];
-
-        //if(SceneManager.instance.musicStarted)
-        //{
-
-        //songPosition = (float)(AudioSettings.dspTime - dspSongTime + firstBeatOffset);
         songPosition = musicSource.time + firstBeatOffset;
         songPosInBeats = songPosition / secPerBeat;
 
+        // Spawns a note if it has to.
+        SpawnNote();
 
+
+    }
+
+    private bool SpawnNote() // Spawns notes. Returns true if spawns, false if not.
+    {
         if (nextIndex >= notesPositions.Count)
         {
             // A MODIFICAR
             StartCoroutine(SceneManager.instance.GameOver(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
-
         }
-        else if (System.Math.Round(songPosition, 2) > notesPositions[nextIndex])
-        //
+        else if (System.Math.Round(songPosition, 2) > notesPositions[nextIndex]) // If there are notes left...
         {
-            
-            if (notesLines[nextIndex] == 0)
+            if (notesLines[nextIndex] == 0) // Top lane
             {
-                NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerTopPosition());
+                if (notesType[nextIndex].Equals("N"))
+                    NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerTopPosition());
+                else if (notesType[nextIndex].Equals("L"))
+                {
+                    NoteSpawnerController.instance.SpawnLongNote(NoteSpawnerController.instance.GetSpawnerTopPosition());
+                }    
+                else if (notesType[nextIndex].Equals("LE"))
+                {
+                    NoteSpawnerController.instance.SpawnLongNoteEnd(NoteSpawnerController.instance.GetSpawnerTopPosition());
+                }
+                    
+            }
+            else if(notesLines[nextIndex] == 1) // Bottom lane
+            {
+                if (notesType[nextIndex].Equals("N"))
+                    NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerBottomPosition());
+                else if (notesType[nextIndex].Equals("L"))
+                {
+                    NoteSpawnerController.instance.SpawnLongNote(NoteSpawnerController.instance.GetSpawnerBottomPosition());
+                }
+                else if (notesType[nextIndex].Equals("LE"))
+                {
+                    NoteSpawnerController.instance.SpawnLongNoteEnd(NoteSpawnerController.instance.GetSpawnerBottomPosition());
+                }
+            }
 
-            }
-            else
-            {
-                NoteSpawnerController.instance.SpawnNote(NoteSpawnerController.instance.GetSpawnerBottomPosition());
-            }
             nextIndex++;
+            return true; //A note was spawned
         }
 
-        //}
-
+        return false; //A note wasn't spawned
     }
 
+    private void StoreNotes()
+    {
+        // Reads the file and stores the notes
+        string textAssetTxt = textAsset.text;
+
+        texto = textAssetTxt.Split('\n');
+        for (int i = 0; i < texto.Length; i++)
+        {
+            texto2 = texto[i].Split('/');
+            notesType.Add(texto2[0]);                   // Tipo
+            notesLines.Add(int.Parse(texto2[1]));       // Carril
+            notesPositions.Add(double.Parse(texto2[2]));// Segundo
+        }
+    }
 }

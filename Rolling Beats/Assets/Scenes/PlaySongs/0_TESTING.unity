@@ -3976,7 +3976,7 @@ PrefabInstance:
     - target: {fileID: 4487522438771536170, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 376da4cf567a9ea4693430155782dd4c, type: 3}
+      objectReference: {fileID: 8300000, guid: 1ee327335a1b14741bdb8062d9d6b65f, type: 3}
     - target: {fileID: 4487522438771536170, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: m_PlayOnAwake
       value: 1
@@ -4004,7 +4004,7 @@ PrefabInstance:
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: textAsset
       value: 
-      objectReference: {fileID: 4900000, guid: 7716c09cac95f7740ad50c6b8d4613cd, type: 3}
+      objectReference: {fileID: 4900000, guid: c7aa0ec8deaf3324d9a119739a46307b, type: 3}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: songFileName
       value: Snake_Eyes.txt
@@ -4074,6 +4074,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: longNotePrefab
+      value: 
+      objectReference: {fileID: 4828462793338410058, guid: 01ea7eb75d5aaec4f815b736cf9ab7b5, type: 3}
     - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: sprites.Array.size
       value: 3
@@ -4356,6 +4360,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810627199689571250, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066265491984078324, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
+      propertyPath: testMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8188122257870466186, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
