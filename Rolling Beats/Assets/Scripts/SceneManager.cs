@@ -14,23 +14,23 @@ public class SceneManager : MonoBehaviour
     [HideInInspector]
     public bool musicStarted = false;
 
-    // Score parameters
+    //  Score parameters
     private const int PERFECT_SCORE = 100;
     private const int GREAT_SCORE = 50;
     private int combo = 1;
 
-    private int perfects = 0; // Perfects achieved in the song, etc
-    private int greats = 0;    
-    private int misses = 0;
-    
-    public int totalScore = 0;
+    // Parameters to pass to End Song Results scene 
+    public int perfects = 0; // Perfects achieved in the song, etc
+    public int greats = 0;    
+    public int misses = 0;
+    public int totalNotes;
+    public int totalScore;
 
     private void Start()
     {
-        //PlayFabManager.SharedInstance.actualScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        totalScore = 0;
         instance = this;
-        
+        totalScore = 0;
+        totalNotes = 0;
        
         PlayFabManager.SharedInstance.ActualLevel = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         PlayFabManager.SharedInstance.getScoreAndLevel();

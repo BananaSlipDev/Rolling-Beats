@@ -59,7 +59,7 @@ public class PlayFabManager : MonoBehaviour
     {
         if(passwordInput.text.Length <6)
         {
-            messageText.text = "PAssword too short";
+            messageText.text = "Password too short";
             return;
         }
         var request = new RegisterPlayFabUserRequest
