@@ -55,11 +55,11 @@ MonoBehaviour:
   - {fileID: 8055555501183084228}
   speeds:
   - 0
-  - 0.1
+  - 0.05
   - 1
   - 0.01
   - 7
-  - 0.2
+  - 0.1
 --- !u!1 &239295003336806754
 GameObject:
   m_ObjectHideFlags: 0
