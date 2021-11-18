@@ -12,9 +12,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject scoreAndCombo;
     private int textIndex;
 
-    [SerializeField] private float textWaitSeconds = 4;
+    [SerializeField] private float textWaitSeconds = 3;
 
-    // Start is called before the first frame update
     void Start()
     {
         textTMP = transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
@@ -25,13 +24,23 @@ public class Tutorial : MonoBehaviour
         texts.Add("Welcome to the tutorial!");
         texts.Add("Use the inputs shown above...");
         texts.Add("to press the notes in the right order and score a beat!");
+        texts.Add("Come on, prove it!");
+        texts.Add(" "); texts.Add(" "); texts.Add(" ");  // Wait
+
         texts.Add("There are two lanes. Be careful!");
         texts.Add("Your accuracy determines your points");
         texts.Add("100 for perfect, 50 for great, 0 for miss!");
         texts.Add("The combo will help you score higher...");
         texts.Add("but don't loose it! A miss will reset it to one");
-        texts.Add("Are you ready to play?");
-        texts.Add("Let's roll that beats!");
+        texts.Add("Here, try something more");
+        texts.Add(" "); texts.Add(" "); texts.Add(" "); texts.Add(" "); // Wait
+
+        texts.Add("By the way, there are long notes too!");
+        texts.Add("Hold the control until the end to score a beat");
+        texts.Add("Time to try!");
+
+
+        texts.Add("Good luck, have fun!");
 
         textIndex = 0;
 
@@ -42,16 +51,23 @@ public class Tutorial : MonoBehaviour
     {
         while(textIndex < texts.Count)
         {
-            if (textIndex == 1)
-                controlKeys.SetActive(true);
-            else if (textIndex == 4)
+            switch(textIndex)
             {
-                controlKeys.SetActive(false);
-                scoreAndCombo.SetActive(true);
+                case 1:
+                    controlKeys.SetActive(true);
+                    break;
+                case 3:
+                    controlKeys.SetActive(false);
+                    break;
+                case 8:
+                    controlKeys.SetActive(false);
+                    scoreAndCombo.SetActive(true);
+                    break;
+                case 12:
+                    scoreAndCombo.SetActive(false);
+                    break;
+                
             }
-            else if(textIndex == 8)
-                scoreAndCombo.SetActive(false);
-
 
             textTMP.SetText(texts[textIndex]);
             textIndex++;
