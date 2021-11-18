@@ -27,6 +27,12 @@ public class EndSongMenu : MonoBehaviour
         SetScore();
         CheckNewRecord();    
         AddCoins();   
+        puntuacion.text = "YOUR SCORE: "+SceneManager.instance.totalScore;
+        PlayFabManager.SharedInstance.AddVC();
+        PlayFabManager.SharedInstance.getCurrency();
+
+        //Hay que pasarle la canción que acabe de terminar
+        // Usar DontDestroyOnLoad
     }
 
     private void Awake()
