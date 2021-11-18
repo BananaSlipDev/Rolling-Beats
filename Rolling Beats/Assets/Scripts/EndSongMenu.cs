@@ -20,15 +20,15 @@ public class EndSongMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rcoinsTXT;
 
     [SerializeField] private List<Sprite> letterSprites;
+    
 
 
     void Start()
     {
         SetScore();
         CheckNewRecord();    
-        AddCoins();   
-        puntuacion.text = "YOUR SCORE: "+SceneManager.instance.totalScore;
-        PlayFabManager.SharedInstance.AddVC();
+        AddCoins();
+        
         PlayFabManager.SharedInstance.getCurrency();
 
         //Hay que pasarle la canción que acabe de terminar
@@ -98,11 +98,13 @@ public class EndSongMenu : MonoBehaviour
     // PARA EL DAVID GANFORNINA E O NO
     private void CheckNewRecord()
     {
-        //if new record
-        newRecord.gameObject.SetActive(true);
-        
-        //else
-        newRecord.gameObject.SetActive(false);
+
+        if (SceneManager.instance.totalScore > PlayFabManager.SharedInstance.actualLevelScore)
+        {
+            newRecord.gameObject.SetActive(true);
+        }
+        else
+            newRecord.gameObject.SetActive(false);
     }
     
     #endregion
@@ -114,5 +116,6 @@ public class EndSongMenu : MonoBehaviour
         //Logic here
 
         rcoinsTXT.text = "+" + rcoins;
+        PlayFabManager.SharedInstance.AddVC(rcoins);
     }
 }
