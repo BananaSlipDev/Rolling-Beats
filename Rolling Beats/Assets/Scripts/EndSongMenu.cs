@@ -17,13 +17,16 @@ public class EndSongMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI greatTXT;
     [SerializeField] private TextMeshProUGUI missTXT;
 
+    [SerializeField] private TextMeshProUGUI rcoinsTXT;
+
     [SerializeField] private List<Sprite> letterSprites;
 
 
     void Start()
     {
         SetScore();
-        CheckNewRecord();       
+        CheckNewRecord();    
+        AddCoins();   
     }
 
     private void Awake()
@@ -84,6 +87,9 @@ public class EndSongMenu : MonoBehaviour
         accuracyTXT.text = performance + "%";
     }
 
+
+
+    // PARA EL DAVID GANFORNINA E O NO
     private void CheckNewRecord()
     {
         //if new record
@@ -94,4 +100,13 @@ public class EndSongMenu : MonoBehaviour
     }
     
     #endregion
+
+    private void AddCoins()
+    {
+        int rcoins = 0;
+
+        //Logic here
+
+        rcoinsTXT.text = "+" + rcoins;
+    }
 }
