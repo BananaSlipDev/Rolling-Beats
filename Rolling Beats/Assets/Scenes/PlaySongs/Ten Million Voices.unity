@@ -423,63 +423,11 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410752303}
   m_Enabled: 1
---- !u!1001 &1423423077
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 239295002787539442, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_Name
-      value: Space_BG
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.1953392
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+--- !u!82 &1410752305 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4487522438771536170, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
+  m_PrefabInstance: {fileID: 4487522438827566864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1922434946
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +502,83 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &239295002841991317
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 239295002787539442, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_Name
+      value: Space_BG
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1953392
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 239295002787539453, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471970183231930507, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: audiosource
+      value: 
+      objectReference: {fileID: 1410752305}
+    - target: {fileID: 3471970183276195978, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: audiosource
+      value: 
+      objectReference: {fileID: 1410752305}
+    - target: {fileID: 3471970183837059405, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: audiosource
+      value: 
+      objectReference: {fileID: 1410752305}
+    - target: {fileID: 3471970184222601897, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: audiosource
+      value: 
+      objectReference: {fileID: 1410752305}
+    - target: {fileID: 3471970184381494197, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
+      propertyPath: audiosource
+      value: 
+      objectReference: {fileID: 1410752305}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d8472139313ab004f927bac690dbf9cf, type: 3}
 --- !u!1001 &4487522438827566864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -576,7 +601,7 @@ PrefabInstance:
     - target: {fileID: 4487522438771536170, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: e7bee05052e279a41a6102b7d17b1cd5, type: 3}
+      objectReference: {fileID: 8300000, guid: 6314c1b9a194f7148af79185c72408b7, type: 3}
     - target: {fileID: 4487522438771536170, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: m_PlayOnAwake
       value: 1
@@ -595,7 +620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: songBPM
-      value: 135
+      value: 117
       objectReference: {fileID: 0}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: textito
@@ -604,7 +629,7 @@ PrefabInstance:
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: textAsset
       value: 
-      objectReference: {fileID: 4900000, guid: 4a652401d87e96c41802acb955cbefe6, type: 3}
+      objectReference: {fileID: 4900000, guid: 63293b70bee25ac49a13e157f47c8dd8, type: 3}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: songFileName
       value: Snake_Eyes.txt
@@ -615,7 +640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: firstBeatOffset
-      value: 2.35
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: beatsShownInAdvance
