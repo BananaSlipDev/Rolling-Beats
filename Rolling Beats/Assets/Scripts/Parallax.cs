@@ -7,39 +7,33 @@ public class Parallax : MonoBehaviour
     // Start is called before the first frame 
     public List<GameObject> layers;
     public List<float> speeds;
-    Vector3 coordIniciales;
-    Vector3 coordIniciales2;
-    Vector3 coordIniciales3;
+    private List<Vector3> initialCoords;
+
     void Start()
     {
-        coordIniciales = layers[3].transform.position;
-        coordIniciales2 = layers[2].transform.position;
-        coordIniciales3 = layers[10].transform.position;
-        //layer3 = GameObject.Find("FirstLayer");
-        //layer2 = GameObject.Find("2");
-        //layer1 = GameObject.Find("1");
+        initialCoords = new List<Vector3>();
+        for (int i = 0; i < layers.Count; i++)
+        {
+            initialCoords.Add(layers[i].transform.position);
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < layers.Count; i++)
+        for (int i = 0; i < layers.Count; i++)
         {
             layers[i].transform.Translate(-speeds[i] * Time.deltaTime, 0, 0);
         }
-        if (layers[3].transform.localPosition.x < -49.48)
+        for (int i = 0; i < layers.Count; i++)
         {
-            //Debug.Log(layers[3].)
-            layers[3].transform.position = coordIniciales;
+            if (layers[i].transform.position.x <= initialCoords[i].x - (layers[i].GetComponent<SpriteRenderer>().bounds.size.x * 2))
+            {
+              
+                layers[i].transform.position = initialCoords[i];
+            }
         }
-        if (layers[2].transform.localPosition.x < -28.28)
-        {
-            layers[2].transform.position = coordIniciales2;
-        }
-        if (layers[10].transform.localPosition.x < -36.80)
-        {
-            layers[10].transform.position = coordIniciales3;
-        }
+
     }
 }
