@@ -43,6 +43,8 @@ public class PlayFabManager : MonoBehaviour
 
     public int RollingCoins = 0;
 
+    public Dictionary<String, int> itemsAvailable = new Dictionary<string, int>();
+
 
     private void Awake()
     {
@@ -329,7 +331,7 @@ public class PlayFabManager : MonoBehaviour
             // In your game, this should just be a constant matching your primary catalog
             CatalogVersion = "Inventory",
             ItemId = mapName,
-            Price = 10,
+            Price = itemsAvailable[mapName],
             VirtualCurrency = "RC"
         }, PurchaseSuccess, OnError);
     }
@@ -382,6 +384,24 @@ public class PlayFabManager : MonoBehaviour
     public void onAddedSucces(ModifyUserVirtualCurrencyResult result)
     {
         Debug.Log("RC Added");
+    }
+
+    public void getShop()
+    {
+        GetCatalogItemsRequest vcRequest = new GetCatalogItemsRequest();
+
+        vcRequest.CatalogVersion = "Inventory";
+        
+        PlayFabClientAPI.GetCatalogItems(vcRequest,itemsGet, error => Debug.LogError(error.Error));
+    }
+
+    void itemsGet(GetCatalogItemsResult result)
+    {
+        foreach (var item in result.Catalog)
+        {
+            itemsAvailable.Add(item.DisplayName,Convert.ToInt32(item.VirtualCurrencyPrices["RC"]));
+            
+        }
     }
     
     
