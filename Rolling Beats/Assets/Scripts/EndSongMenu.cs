@@ -94,8 +94,6 @@ public class EndSongMenu : MonoBehaviour
     }
 
 
-
-    // PARA EL DAVID GANFORNINA E O NO
     private void CheckNewRecord()
     {
 
@@ -111,7 +109,7 @@ public class EndSongMenu : MonoBehaviour
 
     private void AddCoins()
     {
-        int rcoins = 0;
+        int rcoins = 2;
 
         //Logic here
 
