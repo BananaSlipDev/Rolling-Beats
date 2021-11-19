@@ -18,14 +18,47 @@ EditorBuildSettings:
     path: Assets/Scenes/PlaySongs/Tutorial.unity
     guid: dd883d2b2259b1647a240b48483bbb78
   - enabled: 1
-    path: Assets/Scenes/PlaySongs/Snake Eyes.unity
-    guid: 1d3e15bb50055c44d8e3d76b8ca431db
+    path: Assets/Scenes/PlaySongs/Amongus.unity
+    guid: 92b1ad22d7254864b8d1bc0cbad01651
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Ankha Zone.unity
+    guid: e554ff3eaa8b72e4e90eee535b0183e0
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Battlecry.unity
+    guid: 31ef5b57cae1e2443809914bf5284da4
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Cold Green Eyes.unity
+    guid: 760aea5cc9c669f468c37077812e1538
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Highlander.unity
+    guid: f16232f1e3b3fda4a8730440946e454e
   - enabled: 1
     path: Assets/Scenes/PlaySongs/Lolito.unity
     guid: 9229942803527d942a671c8f65fae686
   - enabled: 1
-    path: Assets/Scenes/PlaySongs/Amongus.unity
-    guid: 92b1ad22d7254864b8d1bc0cbad01651
+    path: Assets/Scenes/PlaySongs/Megalovania.unity
+    guid: b08bb1c0318c0ca4c9107357eeeaf72b
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Resonance.unity
+    guid: c077637ee8a3b384d8e8e84fb684ce15
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Rise.unity
+    guid: a536322356aa8324ebc8f706c61faa50
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Sasageyo.unity
+    guid: c8fa8adbb56875b47906a922ef159674
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Snake Eyes.unity
+    guid: 1d3e15bb50055c44d8e3d76b8ca431db
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Ten Million Voices.unity
+    guid: 5b9123161cdd6f64a8ef1793b6bbcd51
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Vagrant.unity
+    guid: dd0ee39543ebba640a2206a6f4570274
+  - enabled: 1
+    path: Assets/Scenes/PlaySongs/Warriors.unity
+    guid: 1c9df0f6a6f29394bb021df7cac14084
   - enabled: 1
     path: Assets/Scenes/EndSong.unity
     guid: e34e9dc1bc987194bb5176b4663ec9df

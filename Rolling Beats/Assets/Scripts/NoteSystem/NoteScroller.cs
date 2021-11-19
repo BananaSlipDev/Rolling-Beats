@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NoteScroller : MonoBehaviour
 {
-    [SerializeField] public const int UNITS_TO_MOVE = 2; // Unity-space units to move the notes (in other words, speed)
+    [SerializeField] public const int UNITS_TO_MOVE = 3; // Unity-space units to move the notes (in other words, speed)
 
     //Interval for Unity-space degrees to rotate the notes (rotation speed)
     [SerializeField] private const int MIN_DEGREES_TO_ROTATE = 10;
