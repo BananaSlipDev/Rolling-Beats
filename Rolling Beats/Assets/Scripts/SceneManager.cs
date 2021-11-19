@@ -28,12 +28,19 @@ public class SceneManager : MonoBehaviour
 
     private void Start()
     {
+
         instance = this;
         totalScore = 0;
         totalNotes = 0;
        
-        PlayFabManager.SharedInstance.ActualLevel = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        PlayFabManager.SharedInstance.getScoreAndLevel();
+
+        
+        if(!NoteHoldersManager.instance.testMode)
+        {
+            PlayFabManager.SharedInstance.ActualLevel = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            PlayFabManager.SharedInstance.getScoreAndLevel();
+        }
+
 
         // Sets a fixed framerate
         //Application.targetFrameRate = FRAMERATE;
