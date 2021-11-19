@@ -87,6 +87,8 @@ public class Conductor : MonoBehaviour
     {
         if (nextIndex >= notesPositions.Count)
         {
+            // Pass the total number of notes to the scene manager (to calculate the score later)
+            SceneManager.instance.totalNotes = notesPositions.Count;
             // A MODIFICAR
             StartCoroutine(SceneManager.instance.GameOver(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
         }

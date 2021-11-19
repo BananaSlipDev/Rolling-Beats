@@ -217,9 +217,17 @@ public class MenuManager : MonoBehaviour
 
     public void confirmPurchase()
     {
-        PlayFabManager.SharedInstance.makePurchase(songToBuy);
-        StartCoroutine(OneSecond());
-        panelBuy.SetActive(false);
+        if (PlayFabManager.SharedInstance.RollingCoins >= PlayFabManager.SharedInstance.itemsAvailable[songToBuy])
+        {
+            PlayFabManager.SharedInstance.makePurchase(songToBuy);
+            StartCoroutine(OneSecond());
+            panelBuy.SetActive(false);
+        }
+        else
+        {
+            //TODO: No MONEY
+        }
+        
         
     }
 
@@ -302,13 +310,13 @@ public class MenuManager : MonoBehaviour
         PlayFabManager.SharedInstance.GetInventory();
         PlayFabManager.SharedInstance.getCurrency();
         PlayFabManager.SharedInstance.getShop();
-        StartCoroutine(OneSecond());
         
-        //fillShop();
+        
         yield return new WaitForSeconds(3f);
         fillShop();
         yield return new WaitForSeconds(2f);
         checkItemsToAddShop();
+        StartCoroutine(OneSecond());
         MainMenu.SetActive(true);
         LoadScreen.SetActive(false);
     }

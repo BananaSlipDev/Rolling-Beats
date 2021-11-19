@@ -65,7 +65,7 @@ public class PlayFabManager : MonoBehaviour
     {
         if(passwordInput.text.Length <6)
         {
-            messageText.text = "PAssword too short";
+            messageText.text = "Password too short";
             return;
         }
         var request = new RegisterPlayFabUserRequest
@@ -371,12 +371,12 @@ public class PlayFabManager : MonoBehaviour
 
     }
     
-    public void AddVC()
+    public void AddVC(int coins)
     {
         AddUserVirtualCurrencyRequest vcRequest = new AddUserVirtualCurrencyRequest();
 
         vcRequest.VirtualCurrency = "RC";
-        vcRequest.Amount = 50;
+        vcRequest.Amount = coins;
 
         PlayFabClientAPI.AddUserVirtualCurrency(vcRequest, onAddedSucces, error=> Debug.LogError(error.Error));
         
@@ -400,7 +400,8 @@ public class PlayFabManager : MonoBehaviour
     {
         foreach (var item in result.Catalog)
         {
-            itemsAvailable.Add(item.DisplayName,Convert.ToInt32(item.VirtualCurrencyPrices["RC"]));
+            if(!itemsAvailable.ContainsKey(item.DisplayName))
+                itemsAvailable.Add(item.DisplayName,Convert.ToInt32(item.VirtualCurrencyPrices["RC"]));
             
         }
     }
