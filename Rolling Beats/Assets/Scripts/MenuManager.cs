@@ -42,34 +42,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        
         StartCoroutine(LoadScreenCR());
-        // Sets initial value for the 3 audio options
-       //MasterSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
-       //MusicSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
-       //SoundSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
-
-       //welcomeT.text = "Welcome " + PlayFabManager.SharedInstance.finalName ;
-       //MainMenu.SetActive(true);
-       //SettingsMenu.SetActive(false);
-       //SongSelectorMenu.SetActive(false);
-       //ScoresMenu.SetActive(false);
-       //CreditsMenu.SetActive(false);
-
-       //SongText.text = SongList[0].ToString();
-       //
-       //PlayFabManager.SharedInstance.ActualLevel = SongText.text;
-       //PlayFabManager.SharedInstance.getScoreAndLevel();
-       //PlayFabManager.SharedInstance.GetInventory();
-       //PlayFabManager.SharedInstance.getCurrency();
-       //PlayFabManager.SharedInstance.getShop();
-        
-        
-        
-        
-        
-
-        //yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
     }
 
     private void Awake()
@@ -82,10 +55,6 @@ public class MenuManager : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        
-    }
 
     public void OpenPanel(GameObject panel) {
         MainMenu.SetActive(false);

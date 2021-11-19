@@ -105,17 +105,15 @@ public class PlayFabManager : MonoBehaviour
         
     }
     
-    
-    
     // Start is called before the first frame update
     void Start()
     {
         songs = new List<string>();
         songs.Add("Tutorial");
+        songs.Add("Snake Eyes");
+        songs.Add("Amongus");
+        songs.Add("Battlecry");
     }
-
-    // Update is called once per frame
-   
 
     public void Login()
     {
@@ -355,7 +353,8 @@ public class PlayFabManager : MonoBehaviour
     {
         foreach (var eachItem in result.Inventory)
         {
-            songs.Add(eachItem.DisplayName);
+            if(!songs.Contains(eachItem.DisplayName))
+                songs.Add(eachItem.DisplayName);
         }
            
     }
@@ -384,7 +383,7 @@ public class PlayFabManager : MonoBehaviour
 
     public void onAddedSucces(ModifyUserVirtualCurrencyResult result)
     {
-        Debug.Log("RC Added");
+        //Debug.Log("RC Added");
     }
 
     public void getShop()
