@@ -77,7 +77,7 @@ public class MenuManager : MonoBehaviour
 
         panel.SetActive(true);
         yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
-        yourCoins.text = ": " +PlayFabManager.SharedInstance.RollingCoins;
+        yourCoins.text = PlayFabManager.SharedInstance.RollingCoins.ToString();
     }
 
     public void getCurrentLeaderboard()
@@ -279,7 +279,7 @@ public class MenuManager : MonoBehaviour
     public IEnumerator OneSecond()
     {
         yield return new WaitForSeconds(1f);
-        yourCoins.text = ": " +PlayFabManager.SharedInstance.RollingCoins;
+        yourCoins.text = PlayFabManager.SharedInstance.RollingCoins.ToString();
         checkPurchasedSongs();
         if (!PlayFabManager.SharedInstance.songs.Contains(SongText.text))
         {
