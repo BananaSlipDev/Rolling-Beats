@@ -121,7 +121,7 @@ public class PlayFabManager : MonoBehaviour
     {
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = SystemInfo.deviceUniqueIdentifier+Random.Range(0,1000),
+            CustomId = SystemInfo.deviceUniqueIdentifier+Random.Range(0,100000),
             CreateAccount = true,
             InfoRequestParameters =  new GetPlayerCombinedInfoRequestParams
             {

@@ -201,16 +201,9 @@ public class MenuManager : MonoBehaviour
         if (PlayFabManager.SharedInstance.RollingCoins >= PlayFabManager.SharedInstance.itemsAvailable[songToBuy])
         {
             PlayFabManager.SharedInstance.makePurchase(songToBuy);
-            while (PlayFabManager.SharedInstance.isProcessed == false)
-            {
-                
-            }
+            StartCoroutine(waitforBool());
             
-            StartCoroutine(OneSecond());
-            PlayFabManager.SharedInstance.isProcessed = true;
             
-            panelBuy.transform.Find("Check").gameObject.SetActive(false);
-            panelBuy.transform.Find("Loading").gameObject.SetActive(true);
         }
         else
         {
@@ -325,6 +318,20 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(OneSecond());
         MainMenu.SetActive(true);
         LoadScreen.SetActive(false);
+    }
+
+    IEnumerator waitforBool()
+    {
+        while (PlayFabManager.SharedInstance.isProcessed == false)
+        {
+            yield return null;
+        }
+        
+        StartCoroutine(OneSecond());
+        PlayFabManager.SharedInstance.isProcessed = false;
+            
+        panelBuy.transform.Find("Check").gameObject.SetActive(false);
+        panelBuy.transform.Find("Loading").gameObject.SetActive(true);
     }
 
     
