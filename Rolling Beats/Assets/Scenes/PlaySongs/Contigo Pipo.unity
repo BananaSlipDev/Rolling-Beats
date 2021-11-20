@@ -464,7 +464,7 @@ PrefabInstance:
     - target: {fileID: 4487522438771536170, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 04e6a55b2161495438e67288c39810e6, type: 3}
+      objectReference: {fileID: 8300000, guid: 53c4dc74bc461204e81206b0e7551378, type: 3}
     - target: {fileID: 4487522438771536170, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: m_PlayOnAwake
       value: 1
@@ -492,7 +492,7 @@ PrefabInstance:
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: textAsset
       value: 
-      objectReference: {fileID: 4900000, guid: d90484f1501bba7439facd7c0cdf94d5, type: 3}
+      objectReference: {fileID: 4900000, guid: 5ecd342d0d245b549973dc3b75b51587, type: 3}
     - target: {fileID: 4487522438771536171, guid: d55aed2f7cb394f4a898aad9cd69a15c, type: 3}
       propertyPath: songFileName
       value: Snake_Eyes.txt
