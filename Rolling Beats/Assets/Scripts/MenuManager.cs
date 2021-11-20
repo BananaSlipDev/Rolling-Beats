@@ -342,12 +342,15 @@ public class MenuManager : MonoBehaviour
         PlayFabManager.SharedInstance.getShop();
         
         
-        yield return new WaitForSeconds(3f);
-        fillShop();
         yield return new WaitForSeconds(2f);
+        fillShop();
+        yield return new WaitForSeconds(1f);
         checkItemsToAddShop();
         StartCoroutine(OneSecond());
         MainMenu.SetActive(true);
+
+        // Finishes loading screen
+        SimpleLoadingRotation.FinishLoading();
         LoadScreen.SetActive(false);
     }
 

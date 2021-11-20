@@ -114,7 +114,13 @@ public class PlayFabManager : MonoBehaviour
         songs.Add("Tutorial");
         songs.Add("Snake Eyes");
         songs.Add("Amongus");
-        songs.Add("Battlecry");
+        songs.Add("Cold Green Eyes");
+
+        // ===== Canciones extra añadidas SOLO PARA BETA =======
+        songs.Add("Highlander");
+        songs.Add("Rise");
+        songs.Add("Vagrant");
+        // =====================================================
     }
 
     public void Login()
