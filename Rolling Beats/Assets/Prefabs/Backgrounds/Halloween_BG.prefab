@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 239295002787539453}
   - component: {fileID: 239295002787539452}
+  - component: {fileID: 405776421}
   m_Layer: 8
   m_Name: Halloween_BG
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239295002787539442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 23.32, y: 1.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 239295003682726387}
@@ -60,6 +61,20 @@ MonoBehaviour:
   - 0.01
   - 7
   - 0.1
+--- !u!114 &405776421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239295002787539442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66b2aea97b5c8c4bbf23392476cd3b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 7984307742797439370}
 --- !u!1 &239295003336806754
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239295003374528846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.26, z: -49.423485}
+  m_LocalPosition: {x: 0, y: -0.21999997, z: -49.423485}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1544633533144089366}
@@ -1436,7 +1451,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2381978100218814873}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.26, z: -49.423485}
+  m_LocalPosition: {x: 0, y: -0.21999997, z: -49.423485}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9131653058141821045}
@@ -4169,7 +4184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5889287236675653769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.26, z: -49.423485}
+  m_LocalPosition: {x: 0, y: -0.21999997, z: -49.423485}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3761787097017462621}
@@ -4334,7 +4349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5998484828863744564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.26, z: -49.423485}
+  m_LocalPosition: {x: 0, y: -0.21999997, z: -49.423485}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2938080729841630938}
@@ -4830,7 +4845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6810076601860066052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.26, z: -49.423485}
+  m_LocalPosition: {x: 0, y: -0.21999997, z: -49.423485}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3772435233757783990}
@@ -5491,7 +5506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7391701029425177155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.26, z: -49.423485}
+  m_LocalPosition: {x: 0, y: -0.22, z: -49.423485}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2201818550645228455}
@@ -5987,7 +6002,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8055555501183084228}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.18, y: 0, z: 6.5422473}
+  m_LocalPosition: {x: 6.8, y: 0, z: 6.5422473}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4753325563558759462}
@@ -6817,6 +6832,10 @@ PrefabInstance:
     - target: {fileID: 3710068844283775152, guid: 2e29d7890f32fe0459ceee5c596af53f, type: 3}
       propertyPath: bias
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710068844283775152, guid: 2e29d7890f32fe0459ceee5c596af53f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3710068844283775152, guid: 2e29d7890f32fe0459ceee5c596af53f, type: 3}
       propertyPath: audiosource
