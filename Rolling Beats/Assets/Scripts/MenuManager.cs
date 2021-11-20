@@ -193,6 +193,9 @@ public class MenuManager : MonoBehaviour
     public void makePurchase()
     {
         panelBuy.SetActive(true);
+        panelBuy.transform.Find("NotMoney").gameObject.SetActive(false);
+        panelBuy.transform.Find("Check").gameObject.SetActive(true);
+        
         songToBuy = EventSystem.current.currentSelectedGameObject.name;;
     }
 
@@ -202,12 +205,11 @@ public class MenuManager : MonoBehaviour
         {
             PlayFabManager.SharedInstance.makePurchase(songToBuy);
             StartCoroutine(waitforBool());
-            
-            
         }
         else
         {
-            //TODO: No MONEY
+            panelBuy.transform.Find("NotMoney").gameObject.SetActive(true);
+            panelBuy.transform.Find("Check").gameObject.SetActive(false);
         }
         
         
@@ -322,6 +324,8 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator waitforBool()
     {
+        panelBuy.transform.Find("Check").gameObject.SetActive(false);
+        panelBuy.transform.Find("Loading").gameObject.SetActive(true);
         while (PlayFabManager.SharedInstance.isProcessed == false)
         {
             yield return null;
@@ -330,8 +334,7 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(OneSecond());
         PlayFabManager.SharedInstance.isProcessed = false;
             
-        panelBuy.transform.Find("Check").gameObject.SetActive(false);
-        panelBuy.transform.Find("Loading").gameObject.SetActive(true);
+        
     }
 
     

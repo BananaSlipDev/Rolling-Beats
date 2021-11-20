@@ -339,13 +339,18 @@ public class PlayFabManager : MonoBehaviour
 
     void PurchaseSuccess(PurchaseItemResult result)
     {
-        GetInventory();
+        GetInventory2();
         getCurrency();
     }
     
     public void GetInventory() 
     {
         PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(),OnGetInventory,error => Debug.LogError(error.GenerateErrorReport()));
+    }
+
+    public void GetInventory2()
+    {
+        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(),OnGetInventory2,error => Debug.LogError(error.GenerateErrorReport()));
     }
  
  
@@ -358,8 +363,19 @@ public class PlayFabManager : MonoBehaviour
             if(!songs.Contains(eachItem.DisplayName))
                 songs.Add(eachItem.DisplayName);
         }
+        
 
-        isProcessed = true;
+    }
+    
+    public void OnGetInventory2(GetUserInventoryResult result)
+    {
+        foreach (var eachItem in result.Inventory)
+        {
+            if(!songs.Contains(eachItem.DisplayName))
+                songs.Add(eachItem.DisplayName);
+        }
+
+        StartCoroutine(processEqualTrue());
 
     }
 
@@ -409,6 +425,13 @@ public class PlayFabManager : MonoBehaviour
                 itemsAvailable.Add(item.DisplayName,Convert.ToInt32(item.VirtualCurrencyPrices["RC"]));
             
         }
+    }
+
+    IEnumerator processEqualTrue()
+    {
+        yield return new WaitForSeconds(2f);
+        isProcessed = true;
+
     }
     
     
