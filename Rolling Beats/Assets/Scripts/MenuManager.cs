@@ -39,7 +39,7 @@ public class MenuManager : MonoBehaviour
     public GameObject panelBuy;
 
     public String songToBuy;
-    public GameObject songPrefab;
+    public GameObject songPrefab, buyRc1, buyRc2, buyRc3, buyRc4, buySkin;
 
 
     private void Start()
@@ -243,7 +243,7 @@ public class MenuManager : MonoBehaviour
     {
         foreach (Transform gameObj in shopPanel.transform)
         {
-            if (PlayFabManager.SharedInstance.itemsAvailable.ContainsKey(gameObj.name))
+            if (PlayFabManager.SharedInstance.itemsAvailable.ContainsKey(gameObj.name) && gameObj.transform.Find("SongPrice"))
             {
                 gameObj.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text =
                     PlayFabManager.SharedInstance.itemsAvailable[gameObj.name].ToString();
@@ -260,11 +260,40 @@ public class MenuManager : MonoBehaviour
         }
         foreach (var item in PlayFabManager.SharedInstance.itemsAvailable)
         {
-            GameObject newGO = Instantiate(songPrefab, shopPanel.transform);
-            newGO.GetComponent<Button>().onClick.AddListener(makePurchase);
-            newGO.name = item.Key;
-            newGO.transform.Find("SongName").GetComponent<TextMeshProUGUI>().text = item.Key;
-            newGO.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text = item.Value.ToString();
+            if (item.Value > 50)
+            {
+                GameObject newGO = Instantiate(songPrefab, shopPanel.transform);
+                newGO.GetComponent<Button>().onClick.AddListener(makePurchase);
+                newGO.name = item.Key;
+                newGO.transform.Find("SongName").GetComponent<TextMeshProUGUI>().text = item.Key;
+                newGO.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text = item.Value.ToString();
+            }
+            else if(item.Value==0)
+            {
+                GameObject newGO = Instantiate(buyRc1, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==1)
+            {
+                GameObject newGO = Instantiate(buyRc2, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==2)
+            {
+                GameObject newGO = Instantiate(buyRc3, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==3)
+            {
+                GameObject newGO = Instantiate(buyRc4, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==4)
+            {
+                GameObject newGO = Instantiate(buySkin, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            
 
 
         }
