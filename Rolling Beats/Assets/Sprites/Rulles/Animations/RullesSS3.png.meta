@@ -20,6 +20,15 @@ TextureImporter:
   - first:
       213: -30156472203910488
     second: RullesSS3_5
+  - first:
+      213: 4104450123040624553
+    second: RullesSS3_6
+  - first:
+      213: -745162646054814373
+    second: RullesSS3_7
+  - first:
+      213: 1835037085658252840
+    second: RullesSS3_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -50,7 +59,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -124,12 +133,12 @@ TextureImporter:
       name: RullesSS3_0
       rect:
         serializedVersion: 2
-        x: 253
-        y: 144
-        width: 605
+        x: 256
+        y: 140
+        width: 580
         height: 952
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,12 +154,12 @@ TextureImporter:
       name: RullesSS3_1
       rect:
         serializedVersion: 2
-        x: 1582
-        y: 127
-        width: 425
+        x: 1575
+        y: 140
+        width: 437
         height: 952
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,12 +175,12 @@ TextureImporter:
       name: RullesSS3_2
       rect:
         serializedVersion: 2
-        x: 2777
-        y: 144
-        width: 542
+        x: 2771
+        y: 140
+        width: 549
         height: 952
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,12 +196,12 @@ TextureImporter:
       name: RullesSS3_3
       rect:
         serializedVersion: 2
-        x: 3941
-        y: 144
-        width: 698
+        x: 3937
+        y: 140
+        width: 711
         height: 952
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,12 +217,12 @@ TextureImporter:
       name: RullesSS3_4
       rect:
         serializedVersion: 2
-        x: 5143
-        y: 144
-        width: 697
-        height: 952
+        x: 5139
+        y: 140
+        width: 711
+        height: 970
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,12 +238,12 @@ TextureImporter:
       name: RullesSS3_5
       rect:
         serializedVersion: 2
-        x: 6342
-        y: 144
-        width: 621
-        height: 952
+        x: 6336
+        y: 140
+        width: 664
+        height: 950
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -242,6 +251,69 @@ TextureImporter:
       bones: []
       spriteID: 8a26b9a29dcd49ff0800000000000000
       internalID: -30156472203910488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RullesSS3_6
+      rect:
+        serializedVersion: 2
+        x: 7579
+        y: 140
+        width: 438
+        height: 952
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af052ef3afe5f830800000000000000
+      internalID: 4104450123040624553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RullesSS3_7
+      rect:
+        serializedVersion: 2
+        x: 8656
+        y: 140
+        width: 580
+        height: 952
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5d330e7586a8a5f0800000000000000
+      internalID: -745162646054814373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RullesSS3_8
+      rect:
+        serializedVersion: 2
+        x: 9764
+        y: 224
+        width: 691
+        height: 952
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8260458c18c577910800000000000000
+      internalID: 1835037085658252840
       vertices: []
       indices: 
       edges: []

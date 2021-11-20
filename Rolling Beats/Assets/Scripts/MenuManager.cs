@@ -10,7 +10,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    private const float INITIAL_AUDIO_VALUE = 1f;
+    private static float master_audio_value = 1f;
+    private static float music_audio_value = 1f;
+    private static float sounds_audio_value = 1f;
 
     public GameObject MainMenu, SettingsMenu, SongSelectorMenu, ScoresMenu, CreditsMenu, ShopMenu, LoadScreen;
 
@@ -53,6 +55,15 @@ public class MenuManager : MonoBehaviour
         MusicSlider.onValueChanged.AddListener(ChangeVolumeMusic);
         SoundSlider.onValueChanged.AddListener(ChangeVolumeSounds);
         
+        // Sets the sliders 
+        MasterSlider.value = master_audio_value;
+        MusicSlider.value = music_audio_value;
+        SoundSlider.value = sounds_audio_value;
+        ChangeVolumeMaster(master_audio_value);
+        ChangeVolumeMusic(music_audio_value);
+        ChangeVolumeSounds(sounds_audio_value);
+
+        
     }
 
 
@@ -67,8 +78,6 @@ public class MenuManager : MonoBehaviour
         panel.SetActive(true);
         yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
         yourCoins.text = ": " +PlayFabManager.SharedInstance.RollingCoins;
-
-        
     }
 
     public void getCurrentLeaderboard()
@@ -155,15 +164,18 @@ public class MenuManager : MonoBehaviour
     #region Settings
     // Log10 * 20 sets the volume right (sound is not linear)
     public void ChangeVolumeMaster(float v) {
-        Mixer.SetFloat("VolMaster", Mathf.Log10(v) * 20);
+        master_audio_value = v;
+        Mixer.SetFloat("VolMaster", Mathf.Log10(master_audio_value) * 20);
     }
     public void ChangeVolumeMusic(float v)
     {
-        Mixer.SetFloat("VolMusic", Mathf.Log10(v) * 20);
+        music_audio_value = v;
+        Mixer.SetFloat("VolMusic", Mathf.Log10(music_audio_value) * 20);
     }
     public void ChangeVolumeSounds(float v)
     {
-        Mixer.SetFloat("VolSounds", Mathf.Log10(v) * 20);
+        sounds_audio_value = v;
+        Mixer.SetFloat("VolSounds", Mathf.Log10(sounds_audio_value) * 20);
     }
     #endregion
 
@@ -259,10 +271,6 @@ public class MenuManager : MonoBehaviour
 
     public IEnumerator LoadScreenCR()
     {
-        MasterSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
-        MusicSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
-        SoundSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
-
         welcomeT.text = "Welcome " + PlayFabManager.SharedInstance.finalName ;
         MainMenu.SetActive(false);
         SettingsMenu.SetActive(false);

@@ -14,6 +14,15 @@ TextureImporter:
   - first:
       213: 5403150834128379229
     second: RullesSS2_3
+  - first:
+      213: 7727121993589910972
+    second: RullesSS2_4
+  - first:
+      213: -7697293026956774865
+    second: RullesSS2_5
+  - first:
+      213: 6566161487656922011
+    second: RullesSS2_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -44,7 +53,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -118,9 +127,9 @@ TextureImporter:
       name: RullesSS2_0
       rect:
         serializedVersion: 2
-        x: 164
-        y: 133
-        width: 741
+        x: 0
+        y: 153
+        width: 1200
         height: 952
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -139,9 +148,9 @@ TextureImporter:
       name: RullesSS2_1
       rect:
         serializedVersion: 2
-        x: 1305
-        y: 129
-        width: 829
+        x: 1200
+        y: 153
+        width: 1200
         height: 952
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -160,9 +169,9 @@ TextureImporter:
       name: RullesSS2_2
       rect:
         serializedVersion: 2
-        x: 2455
-        y: 103
-        width: 865
+        x: 2400
+        y: 153
+        width: 1200
         height: 952
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -181,9 +190,9 @@ TextureImporter:
       name: RullesSS2_3
       rect:
         serializedVersion: 2
-        x: 3592
-        y: 107
-        width: 930
+        x: 3600
+        y: 153
+        width: 1200
         height: 952
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -194,6 +203,69 @@ TextureImporter:
       bones: []
       spriteID: d5dd3187e09dbfa40800000000000000
       internalID: 5403150834128379229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RullesSS2_4
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 153
+        width: 1200
+        height: 952
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbde80c53804c3b60800000000000000
+      internalID: 7727121993589910972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RullesSS2_5
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 153
+        width: 1200
+        height: 952
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f22762426c8bd2590800000000000000
+      internalID: -7697293026956774865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RullesSS2_6
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 153
+        width: 1200
+        height: 952
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b24a18511bf1b50800000000000000
+      internalID: 6566161487656922011
       vertices: []
       indices: 
       edges: []
