@@ -255,9 +255,17 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult obj)
     {
-        finalName= obj.DisplayName;
-        userUI.SetActive(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        if (obj.DisplayName.Length < 20)
+        {
+            finalName= obj.DisplayName;
+            userUI.SetActive(false);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        }
+        else
+        {
+            messageText.text = "Username too long";
+        }
+        
     }
     
     private void OnDisplayNameUpdate2(UpdateUserTitleDisplayNameResult obj)

@@ -111,8 +111,6 @@ public class EndSongMenu : MonoBehaviour
     {
         int rcoins = 2;
 
-        //Logic here
-
         rcoinsTXT.text = "+" + rcoins;
         PlayFabManager.SharedInstance.AddVC(rcoins);
     }
