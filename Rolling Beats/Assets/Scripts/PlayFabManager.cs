@@ -114,7 +114,13 @@ public class PlayFabManager : MonoBehaviour
         songs.Add("Tutorial");
         songs.Add("Snake Eyes");
         songs.Add("Amongus");
-        songs.Add("Battlecry");
+        songs.Add("Cold Green Eyes");
+
+        // ===== Canciones extra añadidas SOLO PARA BETA =======
+        songs.Add("Highlander");
+        songs.Add("Rise");
+        songs.Add("Vagrant");
+        // =====================================================
     }
 
     public void Login()
@@ -255,9 +261,17 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult obj)
     {
-        finalName= obj.DisplayName;
-        userUI.SetActive(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        if (obj.DisplayName.Length < 20)
+        {
+            finalName= obj.DisplayName;
+            userUI.SetActive(false);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        }
+        else
+        {
+            messageText.text = "Username too long";
+        }
+        
     }
     
     private void OnDisplayNameUpdate2(UpdateUserTitleDisplayNameResult obj)
@@ -339,13 +353,18 @@ public class PlayFabManager : MonoBehaviour
 
     void PurchaseSuccess(PurchaseItemResult result)
     {
-        GetInventory();
+        GetInventory2();
         getCurrency();
     }
     
     public void GetInventory() 
     {
         PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(),OnGetInventory,error => Debug.LogError(error.GenerateErrorReport()));
+    }
+
+    public void GetInventory2()
+    {
+        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(),OnGetInventory2,error => Debug.LogError(error.GenerateErrorReport()));
     }
  
  
@@ -358,8 +377,19 @@ public class PlayFabManager : MonoBehaviour
             if(!songs.Contains(eachItem.DisplayName))
                 songs.Add(eachItem.DisplayName);
         }
+        
 
-        isProcessed = true;
+    }
+    
+    public void OnGetInventory2(GetUserInventoryResult result)
+    {
+        foreach (var eachItem in result.Inventory)
+        {
+            if(!songs.Contains(eachItem.DisplayName))
+                songs.Add(eachItem.DisplayName);
+        }
+
+        StartCoroutine(processEqualTrue());
 
     }
 
@@ -409,6 +439,13 @@ public class PlayFabManager : MonoBehaviour
                 itemsAvailable.Add(item.DisplayName,Convert.ToInt32(item.VirtualCurrencyPrices["RC"]));
             
         }
+    }
+
+    IEnumerator processEqualTrue()
+    {
+        yield return new WaitForSeconds(2f);
+        isProcessed = true;
+
     }
     
     

@@ -20,6 +20,8 @@ public class EndSongMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rcoinsTXT;
 
     [SerializeField] private List<Sprite> letterSprites;
+
+    private int rollingCoinsGained;
     
 
 
@@ -27,7 +29,7 @@ public class EndSongMenu : MonoBehaviour
     {
         SetScore();
         CheckNewRecord();    
-        AddCoins();
+        AddCoins(rollingCoinsGained);
         
         PlayFabManager.SharedInstance.getCurrency();
 
@@ -65,7 +67,6 @@ public class EndSongMenu : MonoBehaviour
 
 
         // CALCULATE LETTER:
-        
         int totalNotes = SceneManager.instance.totalNotes;
         
         // Calculates performance, a % between 0 and 100
@@ -80,15 +81,31 @@ public class EndSongMenu : MonoBehaviour
 
 
         if(performance == 100 && misses == 0 && greats == 0)    // S+, 100% perfects
+        {
             letter.sprite = letterSprites[0];
+            rollingCoinsGained = 100;
+        }
         else if(performance == 100 && misses == 0)              // S, all scored no misses
+        {
             letter.sprite = letterSprites[1];
+            rollingCoinsGained = 80;
+        }
         else if(performance > 80)                               // A, at least 80% scored
+        {
             letter.sprite = letterSprites[2];
+            rollingCoinsGained = 60;
+        }
         else if(performance > 60)                               // B, at least 60% scored
+        {
             letter.sprite = letterSprites[3];
+            rollingCoinsGained = 40;
+        }
         else if(performance <= 60)                              // C, less than 60% scored
+        {
             letter.sprite = letterSprites[4];
+            rollingCoinsGained = 20;
+        }
+            
 
         accuracyTXT.text = performance + "%";
     }
@@ -107,12 +124,8 @@ public class EndSongMenu : MonoBehaviour
     
     #endregion
 
-    private void AddCoins()
+    private void AddCoins(int rcoins)
     {
-        int rcoins = 2;
-
-        //Logic here
-
         rcoinsTXT.text = "+" + rcoins;
         PlayFabManager.SharedInstance.AddVC(rcoins);
     }

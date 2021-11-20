@@ -10,15 +10,12 @@ public class LeaderboardButtons : MonoBehaviour
 
     public Button sendPunt;
 
-    public Button getPunt;
-
     public InputField score;
     
     // Start is called before the first frame update
 
     private void Awake()
     {
-        getPunt.onClick.AddListener(recibirPuntuacion);
         PlayFabManager.SharedInstance.rowsParent = GameObject.Find("TAble");
     }
 

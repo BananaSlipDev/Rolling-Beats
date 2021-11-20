@@ -43,7 +43,7 @@ public class SceneManager : MonoBehaviour
 
 
         // Sets a fixed framerate
-        //Application.targetFrameRate = FRAMERATE;
+        Application.targetFrameRate = FRAMERATE;
     }
 
 

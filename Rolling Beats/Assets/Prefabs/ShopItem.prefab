@@ -43,9 +43,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4543437212642419961}
     m_Modifications:
+    - target: {fileID: 2704203097760562415, guid: 7e871144accf8604f83051bf8c88f6cc, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704203097760562415, guid: 7e871144accf8604f83051bf8c88f6cc, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704203097760562415, guid: 7e871144accf8604f83051bf8c88f6cc, type: 3}
+      propertyPath: m_Color.r
+      value: 0.11764693
+      objectReference: {fileID: 0}
     - target: {fileID: 3289492073567199155, guid: 7e871144accf8604f83051bf8c88f6cc, type: 3}
       propertyPath: m_Name
       value: BuySong
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525024415156575970, guid: 7e871144accf8604f83051bf8c88f6cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949464616833932887, guid: 7e871144accf8604f83051bf8c88f6cc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.90414
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949464616833932887, guid: 7e871144accf8604f83051bf8c88f6cc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.90414
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949464616833932887, guid: 7e871144accf8604f83051bf8c88f6cc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.90414
       objectReference: {fileID: 0}
     - target: {fileID: 9197544629919173727, guid: 7e871144accf8604f83051bf8c88f6cc, type: 3}
       propertyPath: m_Pivot.x

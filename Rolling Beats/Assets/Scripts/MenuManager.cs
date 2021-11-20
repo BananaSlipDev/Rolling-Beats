@@ -39,7 +39,7 @@ public class MenuManager : MonoBehaviour
     public GameObject panelBuy;
 
     public String songToBuy;
-    public GameObject songPrefab;
+    public GameObject songPrefab, buyRc1, buyRc2, buyRc3, buyRc4, buySkin;
 
 
     private void Start()
@@ -193,6 +193,9 @@ public class MenuManager : MonoBehaviour
     public void makePurchase()
     {
         panelBuy.SetActive(true);
+        panelBuy.transform.Find("NotMoney").gameObject.SetActive(false);
+        panelBuy.transform.Find("Check").gameObject.SetActive(true);
+        
         songToBuy = EventSystem.current.currentSelectedGameObject.name;;
     }
 
@@ -202,12 +205,11 @@ public class MenuManager : MonoBehaviour
         {
             PlayFabManager.SharedInstance.makePurchase(songToBuy);
             StartCoroutine(waitforBool());
-            
-            
         }
         else
         {
-            //TODO: No MONEY
+            panelBuy.transform.Find("NotMoney").gameObject.SetActive(true);
+            panelBuy.transform.Find("Check").gameObject.SetActive(false);
         }
         
         
@@ -241,7 +243,7 @@ public class MenuManager : MonoBehaviour
     {
         foreach (Transform gameObj in shopPanel.transform)
         {
-            if (PlayFabManager.SharedInstance.itemsAvailable.ContainsKey(gameObj.name))
+            if (PlayFabManager.SharedInstance.itemsAvailable.ContainsKey(gameObj.name) && gameObj.transform.Find("SongPrice"))
             {
                 gameObj.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text =
                     PlayFabManager.SharedInstance.itemsAvailable[gameObj.name].ToString();
@@ -258,11 +260,40 @@ public class MenuManager : MonoBehaviour
         }
         foreach (var item in PlayFabManager.SharedInstance.itemsAvailable)
         {
-            GameObject newGO = Instantiate(songPrefab, shopPanel.transform);
-            newGO.GetComponent<Button>().onClick.AddListener(makePurchase);
-            newGO.name = item.Key;
-            newGO.transform.Find("SongName").GetComponent<TextMeshProUGUI>().text = item.Key;
-            newGO.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text = item.Value.ToString();
+            if (item.Value > 50)
+            {
+                GameObject newGO = Instantiate(songPrefab, shopPanel.transform);
+                newGO.GetComponent<Button>().onClick.AddListener(makePurchase);
+                newGO.name = item.Key;
+                newGO.transform.Find("SongName").GetComponent<TextMeshProUGUI>().text = item.Key;
+                newGO.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text = item.Value.ToString();
+            }
+            else if(item.Value==0)
+            {
+                GameObject newGO = Instantiate(buyRc1, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==1)
+            {
+                GameObject newGO = Instantiate(buyRc2, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==2)
+            {
+                GameObject newGO = Instantiate(buyRc3, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==3)
+            {
+                GameObject newGO = Instantiate(buyRc4, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==4)
+            {
+                GameObject newGO = Instantiate(buySkin, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            
 
 
         }
@@ -311,17 +342,22 @@ public class MenuManager : MonoBehaviour
         PlayFabManager.SharedInstance.getShop();
         
         
-        yield return new WaitForSeconds(3f);
-        fillShop();
         yield return new WaitForSeconds(2f);
+        fillShop();
+        yield return new WaitForSeconds(1f);
         checkItemsToAddShop();
         StartCoroutine(OneSecond());
         MainMenu.SetActive(true);
+
+        // Finishes loading screen
+        SimpleLoadingRotation.FinishLoading();
         LoadScreen.SetActive(false);
     }
 
     IEnumerator waitforBool()
     {
+        panelBuy.transform.Find("Check").gameObject.SetActive(false);
+        panelBuy.transform.Find("Loading").gameObject.SetActive(true);
         while (PlayFabManager.SharedInstance.isProcessed == false)
         {
             yield return null;
@@ -330,8 +366,7 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(OneSecond());
         PlayFabManager.SharedInstance.isProcessed = false;
             
-        panelBuy.transform.Find("Check").gameObject.SetActive(false);
-        panelBuy.transform.Find("Loading").gameObject.SetActive(true);
+        
     }
 
     

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class NoteHolderController : MonoBehaviour
 {
     private AudioSource sounds;
+    
 
     // Sprites, must be assigned from the inspector
     [SerializeField] private Sprite defaultSprite;
@@ -30,15 +31,18 @@ public class NoteHolderController : MonoBehaviour
     private CircleCollider2D circleColl;
     private BoxCollider2D boxColl;
 
+    // Scale Sprites
+    private PerfectScaleSprites perfectScale;
 
     void Start()
     {
         sounds = this.GetComponentInParent<AudioSource>();
-
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleColl = GetComponent<CircleCollider2D>();
         boxColl = GetComponent<BoxCollider2D>();
         particles = GetComponent<ParticleSystem>();
+
+        perfectScale = GameObject.FindWithTag("Background").GetComponent<PerfectScaleSprites>();
     }
 
     public void BeatNote()
@@ -98,6 +102,7 @@ public class NoteHolderController : MonoBehaviour
         {
             SceneManager.instance.ScoreNote("PERFECT");
             particles.GetComponent<ParticleSystemRenderer>().material = beatSprites[0];//Perfect
+            perfectScale.OnBeat();//Move Sprites
         }
         else if (boxColl.IsTouching(noteAboveCol))      // Great collider
         {
@@ -115,6 +120,7 @@ public class NoteHolderController : MonoBehaviour
         {
             SceneManager.instance.ScoreNote("PERFECT");
             particles.GetComponent<ParticleSystemRenderer>().material = beatSprites[0];//Perfect
+            perfectScale.OnBeat();//Move Sprites
         }
         else if (boxColl.IsTouching(noteAboveCol))      // Great collider
         {
