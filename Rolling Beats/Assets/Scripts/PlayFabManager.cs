@@ -46,6 +46,8 @@ public class PlayFabManager : MonoBehaviour
 
     public Dictionary<String, int> itemsAvailable = new Dictionary<string, int>();
 
+    public bool isProcessed =false;
+
 
     private void Awake()
     {
@@ -356,8 +358,12 @@ public class PlayFabManager : MonoBehaviour
             if(!songs.Contains(eachItem.DisplayName))
                 songs.Add(eachItem.DisplayName);
         }
-           
+
+        isProcessed = true;
+
     }
+
+    
 
     public void getCurrency()
     {
