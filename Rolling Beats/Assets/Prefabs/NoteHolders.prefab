@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1141904123103379354}
   - component: {fileID: 8188122257870466186}
+  - component: {fileID: 8259944519570922698}
+  - component: {fileID: 8259944519570922699}
   m_Layer: 6
   m_Name: Rulles
   m_TagString: Untagged
@@ -68,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -728005435
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f64a95e5bd407864094dfdd64669d4e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -82,6 +84,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8259944519570922698
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6267847501020268358}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35bf505e4b09fec44a2ee984deb23a0d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8259944519570922699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6267847501020268358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304d6439f4aa7204d886b482bf1585cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8259944520410912773
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +216,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8259944520555728188}
-  - component: {fileID: 2851760152955680730}
   - component: {fileID: 4470341953441594766}
   - component: {fileID: 8066265491984078324}
   m_Layer: 6
@@ -211,22 +243,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2851760152955680730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8259944520555728187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 304d6439f4aa7204d886b482bf1585cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rullesSprites:
-  - {fileID: 21300000, guid: f64a95e5bd407864094dfdd64669d4e2, type: 3}
-  - {fileID: 21300000, guid: 28966ac4776b63a4c8f835553f834b34, type: 3}
-  - {fileID: 21300000, guid: 13adfe2dd9b7e7c44a72f296308ef327, type: 3}
 --- !u!82 &4470341953441594766
 AudioSource:
   m_ObjectHideFlags: 0
@@ -335,11 +351,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbf91cba6aad734587beaaa04ed29ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testMode: 0
-  keyToPressTop: 122
-  keyToPressBottom: 120
+  testMode: 1
   NoteHolderTop: {fileID: 0}
   NoteHolderBottom: {fileID: 0}
+  multiplier: 0
+  keyToPressTop: 122
+  keyToPressBottom: 120
 --- !u!1 &8259944520690539220
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8259944520690539220}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -4, y: 1, z: -2}
+  m_LocalPosition: {x: -4, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8259944520555728188}
@@ -440,12 +457,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9902e951fed3664d9950d0d037730c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testMode: 0
   defaultSprite: {fileID: 21300000, guid: be1862e38472dcc4d85bc520c62df033, type: 3}
   pressedSprite: {fileID: 21300000, guid: 09ff03eecb4281e4c937aa6550f13527, type: 3}
-  beatSprites: []
-  keyToPress: 122
-  multiplier: 0
+  isLongAbove: 0
+  beatSprites:
+  - {fileID: 2100000, guid: 47f4e0d8da2768749b3545e58effcfa5, type: 2}
+  - {fileID: 2100000, guid: 63b7d364cf99f9b479f2b2b2e6cadae4, type: 2}
+  - {fileID: 2100000, guid: fe8d5c1e543ad6845b4b583b2893e22a, type: 2}
 --- !u!58 &8259944520690539240
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5312,7 +5330,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8259944521169360584}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -4, y: -1, z: -2}
+  m_LocalPosition: {x: -4, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8259944520555728188}
@@ -5381,12 +5399,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9902e951fed3664d9950d0d037730c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testMode: 0
   defaultSprite: {fileID: 21300000, guid: be1862e38472dcc4d85bc520c62df033, type: 3}
   pressedSprite: {fileID: 21300000, guid: 09ff03eecb4281e4c937aa6550f13527, type: 3}
-  beatSprites: []
-  keyToPress: 120
-  multiplier: 0
+  isLongAbove: 0
+  beatSprites:
+  - {fileID: 2100000, guid: 47f4e0d8da2768749b3545e58effcfa5, type: 2}
+  - {fileID: 2100000, guid: 63b7d364cf99f9b479f2b2b2e6cadae4, type: 2}
+  - {fileID: 2100000, guid: fe8d5c1e543ad6845b4b583b2893e22a, type: 2}
 --- !u!58 &8259944521169360588
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class NoteHoldersManager : MonoBehaviour
     private void Start()
     {
         instance = this;
-        rulles = this.GetComponent<RullesController>();
+        rulles = transform.Find("Rulles").gameObject.GetComponent<RullesController>();
         NoteHolderTop = transform.Find("NoteHolderTop").GetComponent<NoteHolderController>();
         NoteHolderBottom = transform.Find("NoteHolderBottom").GetComponent<NoteHolderController>();
 
