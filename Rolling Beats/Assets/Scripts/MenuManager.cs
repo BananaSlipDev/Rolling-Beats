@@ -10,7 +10,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    private const float INITIAL_AUDIO_VALUE = 1f;
+    private static float master_audio_value = 1f;
+    private static float music_audio_value = 1f;
+    private static float sounds_audio_value = 1f;
 
     public GameObject MainMenu, SettingsMenu, SongSelectorMenu, ScoresMenu, CreditsMenu, ShopMenu, LoadScreen;
 
@@ -37,7 +39,7 @@ public class MenuManager : MonoBehaviour
     public GameObject panelBuy;
 
     public String songToBuy;
-    public GameObject songPrefab;
+    public GameObject songPrefab, buyRc1, buyRc2, buyRc3, buyRc4, buySkin;
 
 
     private void Start()
@@ -53,6 +55,15 @@ public class MenuManager : MonoBehaviour
         MusicSlider.onValueChanged.AddListener(ChangeVolumeMusic);
         SoundSlider.onValueChanged.AddListener(ChangeVolumeSounds);
         
+        // Sets the sliders 
+        MasterSlider.value = master_audio_value;
+        MusicSlider.value = music_audio_value;
+        SoundSlider.value = sounds_audio_value;
+        ChangeVolumeMaster(master_audio_value);
+        ChangeVolumeMusic(music_audio_value);
+        ChangeVolumeSounds(sounds_audio_value);
+
+        
     }
 
 
@@ -66,9 +77,7 @@ public class MenuManager : MonoBehaviour
 
         panel.SetActive(true);
         yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
-        yourCoins.text = ": " +PlayFabManager.SharedInstance.RollingCoins;
-
-        
+        yourCoins.text = PlayFabManager.SharedInstance.RollingCoins.ToString();
     }
 
     public void getCurrentLeaderboard()
@@ -155,15 +164,18 @@ public class MenuManager : MonoBehaviour
     #region Settings
     // Log10 * 20 sets the volume right (sound is not linear)
     public void ChangeVolumeMaster(float v) {
-        Mixer.SetFloat("VolMaster", Mathf.Log10(v) * 20);
+        master_audio_value = v;
+        Mixer.SetFloat("VolMaster", Mathf.Log10(master_audio_value) * 20);
     }
     public void ChangeVolumeMusic(float v)
     {
-        Mixer.SetFloat("VolMusic", Mathf.Log10(v) * 20);
+        music_audio_value = v;
+        Mixer.SetFloat("VolMusic", Mathf.Log10(music_audio_value) * 20);
     }
     public void ChangeVolumeSounds(float v)
     {
-        Mixer.SetFloat("VolSounds", Mathf.Log10(v) * 20);
+        sounds_audio_value = v;
+        Mixer.SetFloat("VolSounds", Mathf.Log10(sounds_audio_value) * 20);
     }
     #endregion
 
@@ -181,6 +193,9 @@ public class MenuManager : MonoBehaviour
     public void makePurchase()
     {
         panelBuy.SetActive(true);
+        panelBuy.transform.Find("NotMoney").gameObject.SetActive(false);
+        panelBuy.transform.Find("Check").gameObject.SetActive(true);
+        
         songToBuy = EventSystem.current.currentSelectedGameObject.name;;
     }
 
@@ -189,12 +204,12 @@ public class MenuManager : MonoBehaviour
         if (PlayFabManager.SharedInstance.RollingCoins >= PlayFabManager.SharedInstance.itemsAvailable[songToBuy])
         {
             PlayFabManager.SharedInstance.makePurchase(songToBuy);
-            StartCoroutine(OneSecond());
-            panelBuy.SetActive(false);
+            StartCoroutine(waitforBool());
         }
         else
         {
-            //TODO: No MONEY
+            panelBuy.transform.Find("NotMoney").gameObject.SetActive(true);
+            panelBuy.transform.Find("Check").gameObject.SetActive(false);
         }
         
         
@@ -219,18 +234,68 @@ public class MenuManager : MonoBehaviour
             }
             
         }
+        panelBuy.transform.Find("Check").gameObject.SetActive(true);
+        panelBuy.transform.Find("Loading").gameObject.SetActive(false);
+        panelBuy.SetActive(false);
     }
 
     void checkItemsToAddShop()
     {
         foreach (Transform gameObj in shopPanel.transform)
         {
-            if (PlayFabManager.SharedInstance.itemsAvailable.ContainsKey(gameObj.name))
+            if (PlayFabManager.SharedInstance.itemsAvailable.ContainsKey(gameObj.name) && gameObj.transform.Find("SongPrice"))
             {
                 gameObj.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text =
                     PlayFabManager.SharedInstance.itemsAvailable[gameObj.name].ToString();
             }
             
+        }
+    }
+    
+    public void fillShop()
+    {
+        foreach (Transform item in shopPanel.transform)
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (var item in PlayFabManager.SharedInstance.itemsAvailable)
+        {
+            if (item.Value > 50)
+            {
+                GameObject newGO = Instantiate(songPrefab, shopPanel.transform);
+                newGO.GetComponent<Button>().onClick.AddListener(makePurchase);
+                newGO.name = item.Key;
+                newGO.transform.Find("SongName").GetComponent<TextMeshProUGUI>().text = item.Key;
+                newGO.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text = item.Value.ToString();
+            }
+            else if(item.Value==0)
+            {
+                GameObject newGO = Instantiate(buyRc1, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==1)
+            {
+                GameObject newGO = Instantiate(buyRc2, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==2)
+            {
+                GameObject newGO = Instantiate(buyRc3, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==3)
+            {
+                GameObject newGO = Instantiate(buyRc4, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            else if(item.Value==4)
+            {
+                GameObject newGO = Instantiate(buySkin, shopPanel.transform);
+                newGO.name = item.Key;
+            }
+            
+
+
         }
     }
 
@@ -245,7 +310,7 @@ public class MenuManager : MonoBehaviour
     public IEnumerator OneSecond()
     {
         yield return new WaitForSeconds(1f);
-        yourCoins.text = ": " +PlayFabManager.SharedInstance.RollingCoins;
+        yourCoins.text = PlayFabManager.SharedInstance.RollingCoins.ToString();
         checkPurchasedSongs();
         if (!PlayFabManager.SharedInstance.songs.Contains(SongText.text))
         {
@@ -259,10 +324,6 @@ public class MenuManager : MonoBehaviour
 
     public IEnumerator LoadScreenCR()
     {
-        MasterSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
-        MusicSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
-        SoundSlider.SetValueWithoutNotify(INITIAL_AUDIO_VALUE);
-
         welcomeT.text = "Welcome " + PlayFabManager.SharedInstance.finalName ;
         MainMenu.SetActive(false);
         SettingsMenu.SetActive(false);
@@ -281,32 +342,34 @@ public class MenuManager : MonoBehaviour
         PlayFabManager.SharedInstance.getShop();
         
         
-        yield return new WaitForSeconds(3f);
-        fillShop();
         yield return new WaitForSeconds(2f);
+        fillShop();
+        yield return new WaitForSeconds(1f);
         checkItemsToAddShop();
         StartCoroutine(OneSecond());
         MainMenu.SetActive(true);
+
+        // Finishes loading screen
+        SimpleLoadingRotation.FinishLoading();
         LoadScreen.SetActive(false);
     }
 
-    public void fillShop()
+    IEnumerator waitforBool()
     {
-        foreach (Transform item in shopPanel.transform)
+        panelBuy.transform.Find("Check").gameObject.SetActive(false);
+        panelBuy.transform.Find("Loading").gameObject.SetActive(true);
+        while (PlayFabManager.SharedInstance.isProcessed == false)
         {
-            Destroy(item.gameObject);
+            yield return null;
         }
-        foreach (var item in PlayFabManager.SharedInstance.itemsAvailable)
-        {
-            GameObject newGO = Instantiate(songPrefab, shopPanel.transform);
-            newGO.GetComponent<Button>().onClick.AddListener(makePurchase);
-            newGO.name = item.Key;
-            newGO.transform.Find("SongName").GetComponent<TextMeshProUGUI>().text = item.Key;
-            newGO.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text = item.Value.ToString();
-
-
-        }
+        
+        StartCoroutine(OneSecond());
+        PlayFabManager.SharedInstance.isProcessed = false;
+            
+        
     }
+
+    
 
     
 

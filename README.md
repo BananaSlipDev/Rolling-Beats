@@ -21,7 +21,7 @@
 ### Introducción
 * **Rolling beats** es un videojuego de ritmo, donde el jugador controla a Tina Rules, una patinadora cuyo sueño es convertirse en la primera persona en patinar sobre los anillos de Saturno.
 Durante el juego, se verá la evolución de Tina como patinadora a la vez que el jugador realiza canciones con un ritmo más rápido y frenético.
-Rolling beats se caracteriza por estar claramente diferenciado en niveles, con una duración de entre minuto y medio y dos minutos. Cada nivel dispone de una canción única y dos dificultades.
+Rolling beats se caracteriza por estar claramente diferenciado en niveles, con una duración de entre minuto y medio y tres minutos. Cada nivel dispone de una canción única.
 
 ### Mecánicas
 Este videojuego utiliza como mecánica principal pulsar y mantener botones en el momento exacto en el que las piezas musicales lo indican para conseguir la máxima puntuación. 
@@ -38,7 +38,13 @@ Cada nota musical, dependiendo del nivel de precisión del jugador tendrá 4 niv
 
 Tipos de multiplicadores:
 * Multiplicador: multiplicar la puntuación obtenida por el número de combo (notas seguidas acertadas).
-* Multiplicador opcional: a medida que el jugador progrese en la canción, se irá rellenando una barra de “ritmo” que podrá utilizar a conveniencia. Cuando el jugador decida utilizar el ritmo, tendrá una duración variable dependiendo del nivel de la barra, multiplicando x2 toda su puntuación durante este período.
+* Multiplicador secundario: a medida que el jugador progrese en la canción, se irá rellenando una barra de “ritmo” que podrá utilizar a conveniencia. Cuando el jugador decida utilizar el ritmo, tendrá una duración variable dependiendo del nivel de la barra, multiplicando x2 toda su puntuación durante este período.
+
+Niveles de dificultad:
+* Fácil: canciones con pocas notas y una velocidad lenta, apta para todos los jugadores. Tienen un Beats Por Minuto de 83 con un offset de 3,65 segundos.
+* Medio: canciones con una cantidad más alta de notas que las de dificultad fácil, mayor velocidad y dificultad, por ende. Con un BPM de 100 y offset de 3.1 segundos.
+* Difícil: canciones con entre 2 y 3 notas por segundo y un ritmo mayor que la dificultad media, para jugadores experimentados. Tienen un BPM de 117 y un offset de 2.7 segundos.
+* Infierno: canciones que no están pensadas para todo el mundo, con una cantidad de 3 a 5 notas por segundo y una velocidad abrumadora. Un característico BPM de 135 que hará sudar la gota gorda a todo tipo de jugadores y un offset de 2.35 segundos.
 
 ### Características clave
 * **Partidas rápidas:** cada partida está asociada a una única canción con un mapa único que tiene una duración aproximada de 2 minutos, por lo que si el jugador dispone de poco tiempo para jugar, puede divertirse con uno o dos niveles de Rolling Beats.
