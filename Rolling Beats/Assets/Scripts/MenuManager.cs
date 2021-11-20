@@ -201,8 +201,16 @@ public class MenuManager : MonoBehaviour
         if (PlayFabManager.SharedInstance.RollingCoins >= PlayFabManager.SharedInstance.itemsAvailable[songToBuy])
         {
             PlayFabManager.SharedInstance.makePurchase(songToBuy);
+            while (PlayFabManager.SharedInstance.isProcessed == false)
+            {
+                
+            }
+            
             StartCoroutine(OneSecond());
-            panelBuy.SetActive(false);
+            PlayFabManager.SharedInstance.isProcessed = true;
+            
+            panelBuy.transform.Find("Check").gameObject.SetActive(false);
+            panelBuy.transform.Find("Loading").gameObject.SetActive(true);
         }
         else
         {
@@ -231,6 +239,9 @@ public class MenuManager : MonoBehaviour
             }
             
         }
+        panelBuy.transform.Find("Check").gameObject.SetActive(true);
+        panelBuy.transform.Find("Loading").gameObject.SetActive(false);
+        panelBuy.SetActive(false);
     }
 
     void checkItemsToAddShop()
@@ -243,6 +254,24 @@ public class MenuManager : MonoBehaviour
                     PlayFabManager.SharedInstance.itemsAvailable[gameObj.name].ToString();
             }
             
+        }
+    }
+    
+    public void fillShop()
+    {
+        foreach (Transform item in shopPanel.transform)
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (var item in PlayFabManager.SharedInstance.itemsAvailable)
+        {
+            GameObject newGO = Instantiate(songPrefab, shopPanel.transform);
+            newGO.GetComponent<Button>().onClick.AddListener(makePurchase);
+            newGO.name = item.Key;
+            newGO.transform.Find("SongName").GetComponent<TextMeshProUGUI>().text = item.Key;
+            newGO.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text = item.Value.ToString();
+
+
         }
     }
 
@@ -298,23 +327,7 @@ public class MenuManager : MonoBehaviour
         LoadScreen.SetActive(false);
     }
 
-    public void fillShop()
-    {
-        foreach (Transform item in shopPanel.transform)
-        {
-            Destroy(item.gameObject);
-        }
-        foreach (var item in PlayFabManager.SharedInstance.itemsAvailable)
-        {
-            GameObject newGO = Instantiate(songPrefab, shopPanel.transform);
-            newGO.GetComponent<Button>().onClick.AddListener(makePurchase);
-            newGO.name = item.Key;
-            newGO.transform.Find("SongName").GetComponent<TextMeshProUGUI>().text = item.Key;
-            newGO.transform.Find("SongPrice").GetComponent<TextMeshProUGUI>().text = item.Value.ToString();
-
-
-        }
-    }
+    
 
     
 
