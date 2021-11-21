@@ -19,7 +19,7 @@
 ## Sobre Rolling Beats
 ![RollingBeats](https://user-images.githubusercontent.com/73433870/138893103-01520e24-c9f7-4b15-9033-06547c88691a.jpg)
 ### Introducción
-* **Rolling beats** es un videojuego de ritmo, donde el jugador controla a Tina Rules, una patinadora cuyo sueño es convertirse en la primera persona en patinar sobre los anillos de Saturno.
+* **Rolling beats** es un videojuego de ritmo, donde el jugador controla a Tina Rulles, una patinadora cuyo sueño es convertirse en la primera persona en patinar sobre los anillos de Saturno.
 Durante el juego, se verá la evolución de Tina como patinadora a la vez que el jugador realiza canciones con un ritmo más rápido y frenético.
 Rolling beats se caracteriza por estar claramente diferenciado en niveles, con una duración de entre minuto y medio y tres minutos. Cada nivel dispone de una canción única.
 
@@ -46,14 +46,16 @@ Niveles de dificultad:
 * Difícil: canciones con entre 2 y 3 notas por segundo y un ritmo mayor que la dificultad media, para jugadores experimentados. Tienen un BPM de 117 y un offset de 2.7 segundos.
 * Infierno: canciones que no están pensadas para todo el mundo, con una cantidad de 3 a 5 notas por segundo y una velocidad abrumadora. Un característico BPM de 135 que hará sudar la gota gorda a todo tipo de jugadores y un offset de 2.35 segundos.
 
+Rolling Beats cuenta actualmente con más de 18 canciones, 3 escenarios completos y 1 escenario secreto.
+
 ### Características clave
 * **Partidas rápidas:** cada partida está asociada a una única canción con un mapa único que tiene una duración aproximada de 2 minutos, por lo que si el jugador dispone de poco tiempo para jugar, puede divertirse con uno o dos niveles de Rolling Beats.
 * **Un reto:** al ser un juego de ritmo, los niveles pueden llegar a complicarse bastante y el jugador podría no superar los niveles la primera vez que los intenta, por lo que si buscas un buen reto, Rolling Beats es una buena opción.
 * **Rítmico:** si el jugador busca un juego con buena música y un buen sentido del ritmo, en Rolling Beats encontrará lo que busca.
 * **Comunidad:** creación de un editor de niveles para los jugadores, concursos, encuestas y colaboraciones con grupos de música para conseguir crear una comunidad y ser cercana a ella.
-### Tina Rules
+### Tina Rulles
 ![Tina](https://user-images.githubusercontent.com/73433870/138900946-eecb2e02-c0a2-4075-9e5b-66dc9a7c5652.jpg)
-Tina Rules es una patinadora aficionada cuyo sueño es llegar a patinar en los anillos de Saturno. 
+Tina Rulles es una patinadora aficionada cuyo sueño es llegar a patinar en los anillos de Saturno. 
 Cuando era pequeña ya patinaba con los viejos patines de su madre y en la actualidad patinadora en su tiempo libre.
 
 
