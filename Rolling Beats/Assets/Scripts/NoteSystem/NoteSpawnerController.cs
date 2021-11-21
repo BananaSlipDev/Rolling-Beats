@@ -50,7 +50,7 @@ public class NoteSpawnerController : MonoBehaviour
     {
         // Possible sprites must be assigned from inspector!!
         int randomSpriteIdx = (int)Random.Range(0, normalNoteSprites.Count);
-        longNotePrefab.GetComponent<SpriteRenderer>().sprite = normalNoteSprites[randomSpriteIdx];
+        longNoteEndPrefab.GetComponent<SpriteRenderer>().sprite = normalNoteSprites[randomSpriteIdx];
 
         Object.Instantiate(longNoteEndPrefab, p, Quaternion.identity);
     }

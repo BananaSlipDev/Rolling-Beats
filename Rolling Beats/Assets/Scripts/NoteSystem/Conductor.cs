@@ -41,6 +41,8 @@ public class Conductor : MonoBehaviour
 
     public bool wasWrited = false;
 
+    private int longEnds = 0; // Variable only using to not count the long note ends
+
     private void Awake()
     {
         System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-ES");
@@ -88,7 +90,7 @@ public class Conductor : MonoBehaviour
         if (nextIndex >= notesPositions.Count)
         {
             // Pass the total number of notes to the scene manager (to calculate the score later)
-            SceneManager.instance.totalNotes = notesPositions.Count;
+            SceneManager.instance.totalNotes = notesPositions.Count - longEnds;
             // A MODIFICAR
             StartCoroutine(SceneManager.instance.GameOver(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
         }
@@ -105,6 +107,7 @@ public class Conductor : MonoBehaviour
                 else if (notesType[nextIndex].Equals("LE"))
                 {
                     NoteSpawnerController.instance.SpawnLongNoteEnd(NoteSpawnerController.instance.GetSpawnerTopPosition());
+                    longEnds++;
                 }
                     
             }
@@ -119,6 +122,7 @@ public class Conductor : MonoBehaviour
                 else if (notesType[nextIndex].Equals("LE"))
                 {
                     NoteSpawnerController.instance.SpawnLongNoteEnd(NoteSpawnerController.instance.GetSpawnerBottomPosition());
+                    longEnds++;
                 }
             }
 
