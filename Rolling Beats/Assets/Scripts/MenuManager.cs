@@ -303,7 +303,7 @@ public class MenuManager : MonoBehaviour
 
     public IEnumerator MedioSecond()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
         yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
     }
 
