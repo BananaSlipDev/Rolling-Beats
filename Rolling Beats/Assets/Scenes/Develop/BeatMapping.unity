@@ -748,7 +748,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d684e3be0c8c11440b6244973d24edf9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 8a353a84ab4fdc247a7e04e857a8d9e9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c79e20cfb4da8084db687b657e26ae45, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -885,7 +885,7 @@ MonoBehaviour:
   timeStep: 0
   timeToBeat: 0
   restSmoothTime: 0
-  songFileName: Dross.txt
+  songFileName: Sasageyo 1.txt
   notes: []
 --- !u!114 &2041317763
 MonoBehaviour:
