@@ -32,7 +32,6 @@ public class SceneManager : MonoBehaviour
         instance = this;
         totalScore = 0;
         totalNotes = 0;
-       
 
         
         if(!NoteHoldersManager.instance.testMode)
