@@ -580,28 +580,36 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f147b21c7e675a94299e66b4e20bafef, type: 3}
     - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: fillNoteSprites.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: normalNoteSprites.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
-      propertyPath: fillNoteSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 5115e02f975278249bae610735b4ba2a, type: 3}
-    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
-      propertyPath: fillNoteSprites.Array.data[2]
+      propertyPath: fillNoteSprites.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: c1c53ea75b51bf6409672319653d5fcb, type: 3}
     - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: fillNoteSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 054f1b3d19f3a5e488530b3b3315a903, type: 3}
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: fillNoteSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
+      propertyPath: normalNoteSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: b489e17e304ada74a95fb74d3c5d9995, type: 3}
+    - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: normalNoteSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: cb6b88b294f7f554b8bb6524387634aa, type: 3}
+      objectReference: {fileID: 21300000, guid: d85138fce9faf2b4e93d13ce00d77aaa, type: 3}
     - target: {fileID: 3357068915839226771, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: normalNoteSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: f147b21c7e675a94299e66b4e20bafef, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227851114901986486, guid: d739970ed3ef82d408eee485abc16cce, type: 3}
       propertyPath: m_Name
       value: NoteSpawner
