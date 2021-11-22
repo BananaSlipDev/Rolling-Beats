@@ -120,6 +120,7 @@ public class PlayFabManager : MonoBehaviour
         songs.Add("Highlander");
         songs.Add("Rise");
         songs.Add("Vagrant");
+        songs.Add("Battlecry");
         // =====================================================
     }
 
