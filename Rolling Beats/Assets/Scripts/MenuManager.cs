@@ -381,7 +381,7 @@ public class MenuManager : MonoBehaviour
         LoadScreen.SetActive(true);
 
         SongText.text = SongList[0].ToString();
-        songInfo.text = songList2[0];
+        songInfo.text = "Credits to: \n"+songList2[0];
         checkSongDificult(songsDificult[0]);
         
         PlayFabManager.SharedInstance.ActualLevel = SongText.text;
