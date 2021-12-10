@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 4828462793338410058, guid: 8421e1f53fa45af4286df74e63263273, type: 3}
-  longNotePrefab: {fileID: 0}
-  longNoteEndPrefab: {fileID: 0}
+  longNotePrefab: {fileID: 4828462793338410058, guid: 01ea7eb75d5aaec4f815b736cf9ab7b5, type: 3}
+  longNoteEndPrefab: {fileID: 4828462793338410058, guid: 6052f3d7e75a0b942b4a2c541883369a, type: 3}
   normalNoteSprites: []
   fillNoteSprites: []
 --- !u!1 &5227851116148734363
