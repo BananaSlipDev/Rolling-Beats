@@ -16,6 +16,8 @@ public class MenuManager : MonoBehaviour
 
     public GameObject MainMenu, SettingsMenu, SongSelectorMenu, ScoresMenu, CreditsMenu, ShopMenu, LoadScreen;
 
+    public GameObject easy, intermediate, hard, inferno;
+
     [Header("Options")]
     public AudioMixer Mixer;
     public Slider MasterSlider;
@@ -24,12 +26,16 @@ public class MenuManager : MonoBehaviour
 
     [Header("SongSelection")]
     [SerializeField] private List<string> SongList;
+
+    [SerializeField] private List<string> songList2;
+    [SerializeField] private List<int> songsDificult;
     public Text SongText;
     private int CurrentSong = 0;
     
     public TextMeshProUGUI welcomeT;
     public TextMeshProUGUI yourScore;
     public TextMeshProUGUI yourCoins;
+    public TextMeshProUGUI songInfo;
 
     public Button getLead;
 
@@ -100,13 +106,15 @@ public class MenuManager : MonoBehaviour
         if (CurrentSong + 1 > SongList.Count-1)
         {
             SongText.text = SongList[0].ToString();
+            songInfo.text = "Credits to: \n"+songList2[0].ToString();
+            checkSongDificult(songsDificult[0]);
             CurrentSong = 0;
-            
-            
 
         }
         else {
             SongText.text = SongList[CurrentSong + 1].ToString();
+            songInfo.text = "Credits to: \n"+songList2[CurrentSong + 1].ToString();
+            checkSongDificult(songsDificult[CurrentSong+1]);
             CurrentSong += 1;
 
         }
@@ -130,11 +138,15 @@ public class MenuManager : MonoBehaviour
         if (CurrentSong - 1 < 0)
         {
             SongText.text = SongList[SongList.Count - 1].ToString();
+            songInfo.text = "Credits to: \n"+ songList2[songList2.Count - 1].ToString();
+            checkSongDificult(songsDificult[songsDificult.Count-1]);
             CurrentSong = SongList.Count - 1;
 
         }
         else {
             SongText.text = SongList[CurrentSong - 1].ToString();
+            songInfo.text = "Credits to: \n"+songList2[CurrentSong - 1].ToString();
+            checkSongDificult(songsDificult[CurrentSong-1]);
             CurrentSong -= 1;
             
             
@@ -301,10 +313,45 @@ public class MenuManager : MonoBehaviour
 
     #endregion
 
+    private void checkSongDificult(int level)
+    {
+        switch (level)
+        {
+            case 0:
+                easy.SetActive(true);
+                intermediate.SetActive(false);
+                hard.SetActive(false);
+                inferno.SetActive(false);
+                break;
+            case 1:
+                easy.SetActive(false);
+                intermediate.SetActive(true);
+                hard.SetActive(false);
+                inferno.SetActive(false);
+                
+                break;
+            case 2:
+                easy.SetActive(false);
+                intermediate.SetActive(false);
+                hard.SetActive(true);
+                inferno.SetActive(false);
+                
+                break;
+            case 3:
+                easy.SetActive(false);
+                intermediate.SetActive(false);
+                hard.SetActive(false);
+                inferno.SetActive(true);
+                
+                break;
+        }
+    }
+
     public IEnumerator MedioSecond()
     {
         yield return new WaitForSeconds(0.8f);
         yourScore.text = PlayFabManager.SharedInstance.actualLevelScore.ToString();
+        
     }
 
     public IEnumerator OneSecond()
@@ -334,6 +381,8 @@ public class MenuManager : MonoBehaviour
         LoadScreen.SetActive(true);
 
         SongText.text = SongList[0].ToString();
+        songInfo.text = "Credits to: \n"+songList2[0];
+        checkSongDificult(songsDificult[0]);
         
         PlayFabManager.SharedInstance.ActualLevel = SongText.text;
         PlayFabManager.SharedInstance.getScoreAndLevel();
