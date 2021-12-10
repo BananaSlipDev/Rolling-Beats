@@ -77,7 +77,7 @@ public class PlayFabManager : MonoBehaviour
             Password = passwordInput.text,
             RequireBothUsernameAndEmail = false
         };
-        PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
+        PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnErrorLogin);
     }
 
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
@@ -99,7 +99,7 @@ public class PlayFabManager : MonoBehaviour
                 GetPlayerProfile = true
             }
         };
-        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess,OnError);
+        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess,OnErrorLogin);
     }
 
     public void ResetPasswordButton()
@@ -135,14 +135,14 @@ public class PlayFabManager : MonoBehaviour
             GetPlayerProfile = true
             }
         };
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccessNoUser, OnError);
+        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccessNoUser, OnErrorLogin);
     }
     
     void OnLoginSuccessNoUser(LoginResult results)
     {
         mobile.SetActive(false);
         loginUI.SetActive(false);
-        messageText.gameObject.SetActive(true);
+        //messageText.gameObject.SetActive(true);
         userMobileUI.SetActive(true);
         
         //generateRandomUser();
@@ -151,10 +151,9 @@ public class PlayFabManager : MonoBehaviour
 
     void OnLoginSuccess(LoginResult results)
     {
-        
-        loginUI.SetActive(false);
-        messageText.gameObject.SetActive(true);
         messageText.text = "Logged In";
+        loginUI.SetActive(false);
+        //messageText.gameObject.SetActive(true);
         finalName = results.InfoResultPayload.PlayerProfile.DisplayName;
 
         string name = null;
@@ -179,9 +178,14 @@ public class PlayFabManager : MonoBehaviour
     
     void OnError(PlayFabError error)
     {
-        //messageText.text = error.ErrorMessage;
-        Debug.Log("error");
-        Debug.Log(error.ErrorMessage);
+       
+    }
+
+    void OnErrorLogin(PlayFabError error)
+    {
+        messageText.text = error.ErrorMessage;
+        //Debug.Log("error");
+        //Debug.Log(error.ErrorMessage);
     }
 
     public void SendLeaderboard(int value, String level)
@@ -246,8 +250,17 @@ public class PlayFabManager : MonoBehaviour
         {
             DisplayName = username.text,
         };
+
+        if (request.DisplayName.Length < 20)
+        {
+            PlayFabClientAPI.UpdateUserTitleDisplayName(request,OnDisplayNameUpdate, OnError);
+        }
+        else
+        {
+            messageText.text = "Username too long";
+        }
         
-        PlayFabClientAPI.UpdateUserTitleDisplayName(request,OnDisplayNameUpdate, OnError);
+        
     }
     
     public void generateRandomUser(String name)
@@ -262,16 +275,10 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult obj)
     {
-        if (obj.DisplayName.Length < 20)
-        {
+        
             finalName= obj.DisplayName;
             userUI.SetActive(false);
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-        }
-        else
-        {
-            messageText.text = "Username too long";
-        }
         
     }
     
