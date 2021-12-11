@@ -25,10 +25,14 @@ public class NoteHolderController : MonoBehaviour
     public bool isLongAbove = false;    
 
     // Particle systems
-    private ParticleSystem hitParticles;
+    private ParticleSystem perfectParticles;
+    private ParticleSystem greatParticles;
+    private ParticleSystem missParticles;
     [SerializeField] private List<Material> beatSprites; // Must be assigned from inspector
     private ParticleSystem longNoteParticles;
+
     
+
 
     // NoteHolder colliders
     private CircleCollider2D circleColl;
@@ -44,7 +48,14 @@ public class NoteHolderController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleColl = GetComponent<CircleCollider2D>();
         boxColl = GetComponent<BoxCollider2D>();
-        hitParticles = GetComponent<ParticleSystem>();
+        //Particle System
+        perfectParticles = GetComponent<ParticleSystem>();
+        perfectParticles.GetComponent<ParticleSystemRenderer>().material = beatSprites[0];
+        greatParticles = transform.Find("ParticleGreat").GetComponent<ParticleSystem>();
+        greatParticles.GetComponent<ParticleSystemRenderer>().material = beatSprites[1];
+        missParticles = transform.Find("ParticleMiss").GetComponent<ParticleSystem>();
+        missParticles.GetComponent<ParticleSystemRenderer>().material = beatSprites[2];
+
         longNoteParticles = transform.Find("LongNoteParticles").GetComponent<ParticleSystem>();
 
         perfectScale = GameObject.FindWithTag("Background").GetComponent<PerfectScaleSprites>();
@@ -52,7 +63,9 @@ public class NoteHolderController : MonoBehaviour
 
     private void Start() 
     {
-        hitParticles.Stop();
+        perfectParticles.Stop();
+        greatParticles.Stop();
+        missParticles.Stop();
         longNoteParticles.Stop();
     }
 
@@ -72,7 +85,7 @@ public class NoteHolderController : MonoBehaviour
         if (isLongAbove)
         {
             SceneManager.instance.Miss();
-            hitParticles.GetComponent<ParticleSystemRenderer>().material = beatSprites[2]; //Miss
+            missParticles.Emit(1);//Miss Particles
         }
             
     }
@@ -94,16 +107,12 @@ public class NoteHolderController : MonoBehaviour
                     // Nothing for the moment
                     break;
             }
-
-            
         }
         else
         {
             SceneManager.instance.Miss(); //Fails if beaten without a note
-            hitParticles.GetComponent<ParticleSystemRenderer>().material = beatSprites[2]; //Miss
+            missParticles.Emit(1);//Miss Particles
         }
-
-        hitParticles.Emit(1); // Emits whatever particle has to
 
     }
 
@@ -113,13 +122,14 @@ public class NoteHolderController : MonoBehaviour
         if (circleColl.IsTouching(noteAboveCol))        // Perfect collider
         {
             SceneManager.instance.ScoreNote("PERFECT");
-            hitParticles.GetComponent<ParticleSystemRenderer>().material = beatSprites[0];//Perfect
+            perfectParticles.Emit(1);//Perfect Particles
             perfectScale.OnBeat();//Move Sprites
         }
         else if (boxColl.IsTouching(noteAboveCol))      // Great collider
         {
             SceneManager.instance.ScoreNote("GREAT");
-            hitParticles.GetComponent<ParticleSystemRenderer>().material = beatSprites[1]; //Great
+            greatParticles.Emit(1);//Great Particles
+             //Great
         }
 
         Destroy(noteAbove);
@@ -132,13 +142,13 @@ public class NoteHolderController : MonoBehaviour
         if (circleColl != null && circleColl.IsTouching(noteAboveCol))        // Perfect collider
         {
             SceneManager.instance.ScoreNote("PERFECT");
-            hitParticles.GetComponent<ParticleSystemRenderer>().material = beatSprites[0];//Perfect
+            perfectParticles.Emit(1);
             perfectScale.OnBeat(); //Move Sprites
         }
         else if (boxColl.IsTouching(noteAboveCol))      // Great collider
         {
             SceneManager.instance.ScoreNote("GREAT");
-            hitParticles.GetComponent<ParticleSystemRenderer>().material = beatSprites[1]; //Great
+            greatParticles.Emit(1); //Great Particles
         }
 
         Destroy(noteAbove);
