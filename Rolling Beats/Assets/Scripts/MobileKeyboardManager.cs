@@ -27,16 +27,19 @@ public class MobileKeyboardManager : MonoBehaviour
     {
         if (email.isFocused)
         {
+            openKeyboard();
             KeyboardScript.SharedInstance.TextField = email;
         }
 
         if (pass.isFocused)
         {
+            openKeyboard();
             KeyboardScript.SharedInstance.TextField = pass;
         }
 
         if (username.isFocused)
         {
+            openKeyboard();
             KeyboardScript.SharedInstance.TextField = username;
         }
     }
