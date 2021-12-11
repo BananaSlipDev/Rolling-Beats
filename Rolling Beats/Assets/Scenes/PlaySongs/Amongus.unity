@@ -728,6 +728,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 4470341953441594766, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 49da98600008a4744b9b0352ed6349c5, type: 3}
     - target: {fileID: 4810627199689571250, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: lengthInSec
       value: 1
@@ -746,7 +750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8066265491984078324, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: testMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8188122257870466186, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: m_SortingLayer
