@@ -31,7 +31,7 @@ public class Tutorial : MonoBehaviour
         texts.Add("Your accuracy determines your points");
         texts.Add("100 for perfect, 50 for great, 0 for miss!");
         texts.Add("The combo will help you score higher...");
-        texts.Add("but don't loose it! A miss will reset it to one");
+        texts.Add("but don't lose it! A miss will reset it to one");
         texts.Add("Here, try something more");
         texts.Add(" "); texts.Add(" "); texts.Add(" "); texts.Add(" "); // Wait
 
