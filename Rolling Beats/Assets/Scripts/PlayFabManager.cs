@@ -28,6 +28,8 @@ public class PlayFabManager : MonoBehaviour
     public GameObject leaderboardUI;
     public GameObject mobile;
     public GameObject userMobileUI;
+    public GameObject keyboardB;
+    public GameObject keyboard;
 
     public GameObject rowPrefab;
     public GameObject rowsParent;
@@ -143,6 +145,8 @@ public class PlayFabManager : MonoBehaviour
     {
         mobile.SetActive(false);
         loginUI.SetActive(false);
+        keyboard.SetActive(false);
+        keyboardB.SetActive(false);
         //messageText.gameObject.SetActive(true);
         userMobileUI.SetActive(true);
         

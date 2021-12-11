@@ -867,6 +867,8 @@ MonoBehaviour:
   leaderboardUI: {fileID: 0}
   mobile: {fileID: 1013228376}
   userMobileUI: {fileID: 491793938}
+  keyboardB: {fileID: 1111440479}
+  keyboard: {fileID: 1168395617}
   rowPrefab: {fileID: 8073485110928647168, guid: 6d279d7d282cc614b8e1feca3ba4e380, type: 3}
   rowsParent: {fileID: 0}
   finalName: 
@@ -6064,7 +6066,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1852436634
 GameObject:
