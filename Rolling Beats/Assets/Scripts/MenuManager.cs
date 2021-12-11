@@ -10,16 +10,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    private static float master_audio_value = 1f;
-    private static float music_audio_value = 1f;
-    private static float sounds_audio_value = 1f;
+    
 
     public GameObject MainMenu, SettingsMenu, SongSelectorMenu, ScoresMenu, CreditsMenu, ShopMenu, LoadScreen;
 
     public GameObject easy, intermediate, hard, inferno;
 
     [Header("Options")]
-    public AudioMixer Mixer;
+    public SoundManager audioMix;
     public Slider MasterSlider;
     public Slider MusicSlider;
     public Slider SoundSlider;
@@ -47,31 +45,32 @@ public class MenuManager : MonoBehaviour
     public String songToBuy;
     public GameObject songPrefab, buyRc1, buyRc2, buyRc3, buyRc4, buySkin;
 
-
-    private void Start()
-    {
-        StartCoroutine(LoadScreenCR());
-    }
-
     private void Awake()
     {
+        audioMix = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         //shopPanel = GameObject.Find("Panel");
         PlayFabManager.SharedInstance.rowsParent = GameObject.Find("TAble");
+        MasterSlider.value = audioMix.volMaster;
+        MusicSlider.value = audioMix.volMusic;
+        SoundSlider.value = audioMix.volSounds;
         MasterSlider.onValueChanged.AddListener(ChangeVolumeMaster);
         MusicSlider.onValueChanged.AddListener(ChangeVolumeMusic);
         SoundSlider.onValueChanged.AddListener(ChangeVolumeSounds);
         
-        // Sets the sliders 
-        MasterSlider.value = master_audio_value;
-        MusicSlider.value = music_audio_value;
-        SoundSlider.value = sounds_audio_value;
-        ChangeVolumeMaster(master_audio_value);
-        ChangeVolumeMusic(music_audio_value);
-        ChangeVolumeSounds(sounds_audio_value);
+
+
+        
+        ChangeVolumeMaster(audioMix.volMaster);
+        ChangeVolumeMusic(audioMix.volMusic);
+        ChangeVolumeSounds(audioMix.volSounds);
 
         
     }
-
+    private void Start()
+    {
+        StartCoroutine(LoadScreenCR());
+        audioMix.setSounds();
+    }
 
     public void OpenPanel(GameObject panel) {
         MainMenu.SetActive(false);
@@ -175,19 +174,20 @@ public class MenuManager : MonoBehaviour
 
     #region Settings
     // Log10 * 20 sets the volume right (sound is not linear)
-    public void ChangeVolumeMaster(float v) {
-        master_audio_value = v;
-        Mixer.SetFloat("VolMaster", Mathf.Log10(master_audio_value) * 20);
+    public void ChangeVolumeMaster(float v)
+    {
+        audioMix.volMaster = v;
+        audioMix.setMasterVolume();
     }
     public void ChangeVolumeMusic(float v)
     {
-        music_audio_value = v;
-        Mixer.SetFloat("VolMusic", Mathf.Log10(music_audio_value) * 20);
+        audioMix.volMusic = v;
+        audioMix.setMusicVolume();
     }
     public void ChangeVolumeSounds(float v)
     {
-        sounds_audio_value = v;
-        Mixer.SetFloat("VolSounds", Mathf.Log10(sounds_audio_value) * 20);
+        audioMix.volSounds = v;
+        audioMix.setSoundVolume();
     }
     #endregion
 
@@ -417,9 +417,4 @@ public class MenuManager : MonoBehaviour
             
         
     }
-
-    
-
-    
-
 }
