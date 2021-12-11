@@ -9,9 +9,12 @@ public class Timer : MonoBehaviour
     private Image loadingBar;
     private float totalSongSeconds;
     private bool clockTimes;
+    private float offSet;
 
     private void Start()
     {
+        offSet = GameObject.Find("Conductor").GetComponent<Conductor>().firstBeatOffset;
+        Debug.Log(offSet);
         clockTimes = false;
         loadingBar = GetComponent<Image>();
         loadingBar.fillAmount = 0f; 
@@ -22,16 +25,11 @@ public class Timer : MonoBehaviour
     {
         if (!clockTimes)
         {
-            float passedTime = Conductor.instance.songPosition;
-
-            if (passedTime > 0.5)
+            float passedTime = Conductor.instance.songPosition-offSet;        
+            loadingBar.fillAmount = passedTime / totalSongSeconds;
+            if (passedTime / totalSongSeconds >= 1)
             {
-                Debug.Log("Reloj: " + passedTime + "/" + totalSongSeconds + "=" + passedTime / totalSongSeconds);
-                loadingBar.fillAmount = passedTime / totalSongSeconds;
-                if (passedTime / totalSongSeconds >= 1)
-                {
-                    clockTimes = true;
-                }
+                clockTimes = true;
             }
         }
     }
