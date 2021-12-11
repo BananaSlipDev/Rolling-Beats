@@ -26,8 +26,12 @@ public class SceneManager : MonoBehaviour
     public int totalNotes;
     public int totalScore;
 
+    //SoundManager
+    private SoundManager audioMix;
+
     private void Start()
     {
+        audioMix = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
         instance = this;
         totalScore = 0;
@@ -41,6 +45,7 @@ public class SceneManager : MonoBehaviour
         }
 
 
+        audioMix.setSounds();
         // Sets a fixed framerate
         Application.targetFrameRate = FRAMERATE;
     }
