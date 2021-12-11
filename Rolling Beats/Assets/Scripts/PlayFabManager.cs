@@ -47,6 +47,7 @@ public class PlayFabManager : MonoBehaviour
     public Dictionary<String, int> itemsAvailable = new Dictionary<string, int>();
 
     public bool isProcessed =false;
+    
 
 
     private void Awake()
@@ -153,6 +154,7 @@ public class PlayFabManager : MonoBehaviour
     {
         messageText.text = "Logged In";
         loginUI.SetActive(false);
+        mobile.SetActive(false);
         //messageText.gameObject.SetActive(true);
         finalName = results.InfoResultPayload.PlayerProfile.DisplayName;
 
@@ -226,6 +228,17 @@ public class PlayFabManager : MonoBehaviour
         
     }
 
+    public void GetLeaderboardAroundPlayer(string level)
+    {
+        var request = new GetLeaderboardAroundPlayerRequest
+        {
+            StatisticName = level,
+            MaxResultsCount = 10
+
+        };
+        PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderboardAroundPlayerGet, OnError);
+    }
+
     void OnLeaderboardGet(GetLeaderboardResult result)
     {
         foreach (Transform item in rowsParent.transform)
@@ -239,6 +252,38 @@ public class PlayFabManager : MonoBehaviour
             text[0].text = (item.Position +1).ToString();
             text[1].text = item.DisplayName;
             text[2].text = item.StatValue.ToString();
+            
+            if (item.DisplayName == finalName)
+            {
+                text[0].color = Color.magenta;
+                text[1].color = Color.magenta;
+                text[2].color = Color.magenta;
+            }
+            
+        }
+        
+    }
+    
+    void OnLeaderboardAroundPlayerGet(GetLeaderboardAroundPlayerResult result)
+    {
+        foreach (Transform item in rowsParent.transform)
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (var item in result.Leaderboard)
+        {
+            GameObject newGO = Instantiate(rowPrefab, rowsParent.transform);
+            TextMeshProUGUI[] text = newGO.GetComponentsInChildren<TextMeshProUGUI>();
+            text[0].text = (item.Position +1).ToString();
+            text[1].text = item.DisplayName;
+            text[2].text = item.StatValue.ToString();
+
+            if (item.DisplayName == finalName)
+            {
+                text[0].color = Color.magenta;
+                text[1].color = Color.magenta;
+                text[2].color = Color.magenta;
+            }
             
         }
         

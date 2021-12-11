@@ -94,6 +94,13 @@ public class MenuManager : MonoBehaviour
         
     }
 
+    public void getCurrentLeaderboardAroundPlayer()
+    {
+        PlayFabManager.SharedInstance.GetLeaderboardAroundPlayer(SongText.text);
+        SongSelectorMenu.SetActive(false);
+        ScoresMenu.SetActive(true);
+    }
+
     public void closeScoreBoard()
     {
         ScoresMenu.SetActive(false);
