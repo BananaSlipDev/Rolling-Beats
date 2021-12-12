@@ -30,7 +30,6 @@ public class Parallax : MonoBehaviour
         {
             if (layers[i].transform.position.x <= initialCoords[i].x - (layers[i].GetComponent<SpriteRenderer>().bounds.size.x * 2))
             {
-              
                 layers[i].transform.position = initialCoords[i];
             }
         }
