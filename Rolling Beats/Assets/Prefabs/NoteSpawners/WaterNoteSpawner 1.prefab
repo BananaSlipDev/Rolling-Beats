@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7217033613607005358}
   - component: {fileID: 158671991654572938}
   m_Layer: 0
-  m_Name: WaterNoteSpawner
+  m_Name: WaterNoteSpawner 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,21 +49,17 @@ MonoBehaviour:
   longNotePrefab: {fileID: 4828462793338410058, guid: 01ea7eb75d5aaec4f815b736cf9ab7b5, type: 3}
   longNoteEndPrefab: {fileID: 4828462793338410058, guid: 6052f3d7e75a0b942b4a2c541883369a, type: 3}
   normalNoteSprites:
-  - {fileID: 21300000, guid: 7ecf56faf34ec2d41a3a60277c281b91, type: 3}
-  - {fileID: 21300000, guid: cb6b88b294f7f554b8bb6524387634aa, type: 3}
-  - {fileID: 21300000, guid: f147b21c7e675a94299e66b4e20bafef, type: 3}
+  - {fileID: 21300000, guid: 85373206a5261da43973a2e229fe6e22, type: 3}
+  - {fileID: 21300000, guid: f970569af0c4a194ba24d7202df2ccca, type: 3}
   longNoteSprites:
-  - {fileID: 21300000, guid: 8352a5824d8dc944ab2c23710c0f6fcb, type: 3}
-  - {fileID: 21300000, guid: e0fb2069f64df624ea4d91d1e6d3333b, type: 3}
-  - {fileID: 21300000, guid: d199481ba61dc8c4eb7ee8415c5a4084, type: 3}
+  - {fileID: 21300000, guid: 3aac3c48257edf042abc9754c84aa7ab, type: 3}
+  - {fileID: 21300000, guid: d9f5dbf420859394bba26a33df85ace5, type: 3}
   longNoteEndSprites:
-  - {fileID: 21300000, guid: 8352a5824d8dc944ab2c23710c0f6fcb, type: 3}
-  - {fileID: 21300000, guid: e0fb2069f64df624ea4d91d1e6d3333b, type: 3}
-  - {fileID: 21300000, guid: d199481ba61dc8c4eb7ee8415c5a4084, type: 3}
+  - {fileID: 21300000, guid: 3aac3c48257edf042abc9754c84aa7ab, type: 3}
+  - {fileID: 21300000, guid: d9f5dbf420859394bba26a33df85ace5, type: 3}
   longNoteArrowSprites:
-  - {fileID: 21300000, guid: 2d6b9b9b84b4a044a801ca5eb18669a0, type: 3}
+  - {fileID: 21300000, guid: 5d2bc45461ec9bc478bc52ecde0ee1b9, type: 3}
   - {fileID: 21300000, guid: 644b8fa8f0c867345baf047470a7a8b7, type: 3}
-  - {fileID: 21300000, guid: b664dceee2ecc8745af5fc7c3102c971, type: 3}
 --- !u!1 &7217033614672505042
 GameObject:
   m_ObjectHideFlags: 0
