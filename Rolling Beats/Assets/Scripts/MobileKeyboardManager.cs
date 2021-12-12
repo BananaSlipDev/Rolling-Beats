@@ -17,9 +17,9 @@ public class MobileKeyboardManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayFabManager.SharedInstance.emailInput = email;
-        PlayFabManager.SharedInstance.passwordInput = pass;
-        PlayFabManager.SharedInstance.username = username;
+        
+        
+        
     }
 
     // Update is called once per frame
@@ -29,18 +29,21 @@ public class MobileKeyboardManager : MonoBehaviour
         {
             openKeyboard();
             KeyboardScript.SharedInstance.TextField = email;
+            PlayFabManager.SharedInstance.emailInput = email;
         }
 
         if (pass.isFocused)
         {
             openKeyboard();
             KeyboardScript.SharedInstance.TextField = pass;
+            PlayFabManager.SharedInstance.passwordInput = pass;
         }
 
         if (username.isFocused)
         {
             openKeyboard();
             KeyboardScript.SharedInstance.TextField = username;
+            PlayFabManager.SharedInstance.username = username;
         }
     }
 
