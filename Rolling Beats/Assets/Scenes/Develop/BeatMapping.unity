@@ -748,7 +748,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d684e3be0c8c11440b6244973d24edf9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 419a6ca06839a2a49af71f4f07eb15ee, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d9210746b738fe541ac32cffa9f6165b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -885,7 +885,7 @@ MonoBehaviour:
   timeStep: 0
   timeToBeat: 0
   restSmoothTime: 0
-  songFileName: Laura Escanes.txt
+  songFileName: Highlander.txt
   notes: []
 --- !u!114 &2041317763
 MonoBehaviour:
