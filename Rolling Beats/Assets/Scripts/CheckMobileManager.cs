@@ -27,6 +27,7 @@ public class CheckMobileManager : MonoBehaviour
     public GameObject login;
     public GameObject mobile;
     public GameObject keyboardMobile;
+    public GameObject keyboardManager; 
 
     private void Awake()
     {
@@ -53,8 +54,10 @@ public class CheckMobileManager : MonoBehaviour
         }
         else
         {
+            
             mobile.SetActive(false);
             keyboardMobile.SetActive(false);
+            keyboardManager.SetActive(false);
         }
         
     }

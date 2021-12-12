@@ -155,6 +155,7 @@ MonoBehaviour:
   login: {fileID: 171693256}
   mobile: {fileID: 1013228376}
   keyboardMobile: {fileID: 1111440479}
+  keyboardManager: {fileID: 1703395157}
 --- !u!4 &81843435
 Transform:
   m_ObjectHideFlags: 0
