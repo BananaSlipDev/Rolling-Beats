@@ -466,7 +466,7 @@ MonoBehaviour:
   intermediate: {fileID: 433430317}
   hard: {fileID: 1660712302}
   inferno: {fileID: 957889627}
-  Mixer: {fileID: 24100000, guid: 6971e6642a54f5647a0017f60795476d, type: 2}
+  audioMix: {fileID: 0}
   MasterSlider: {fileID: 392421902}
   MusicSlider: {fileID: 328967919}
   SoundSlider: {fileID: 552800513}
@@ -499,18 +499,18 @@ MonoBehaviour:
   - AlexElCapo
   - Porta
   - Dross
-  - 8
+  - LhoU
   - Laura Escanes
   - Lolito Fdez
-  - 11
-  - 12
-  - 13
-  - 14
-  - 15
-  - 16
-  - 17
-  - Imagine Dragos
-  songsDificult: 00000000010000000000000002000000030000000100000000000000010000000200000000000000000000000100000000000000020000000300000000000000010000000000000003000000
+  - Toby Fox
+  - T.M. Revolution
+  - State of mine
+  - Linked Horizon
+  - Feint (feat CoMa)
+  - Shaman's Harvest
+  - Feint (feat Veela)
+  - Imagine Dragons
+  songsDificult: 00000000010000000100000003000000010000000100000002000000000000000200000001000000020000000300000002000000020000000200000001000000020000000100000002000000
   SongText: {fileID: 1198129682}
   welcomeT: {fileID: 238994285}
   yourScore: {fileID: 564506240}
@@ -6696,7 +6696,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -4.5415955}
+  m_AnchoredPosition: {x: 0, y: -4.541626}
   m_SizeDelta: {x: 1120, y: 630}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1498484946
@@ -7622,7 +7622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 149.69995, y: -4.399872}
+  m_AnchoredPosition: {x: 149.69995, y: -4.3999023}
   m_SizeDelta: {x: -119.36078, y: 221.0404}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1674565348
