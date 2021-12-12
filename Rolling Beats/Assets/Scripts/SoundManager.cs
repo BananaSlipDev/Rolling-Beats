@@ -29,7 +29,6 @@ public class SoundManager : MonoBehaviour
     }
     public void setSounds()
     {
-        Debug.Log("Sonido a 0");
         Mixer.SetFloat("VolMaster", Mathf.Log10(volMaster) * 20);
         Mixer.SetFloat("VolMusic", Mathf.Log10(volMusic) * 20);
         Mixer.SetFloat("VolSounds", Mathf.Log10(volSounds) * 20);
