@@ -11,6 +11,7 @@ public class NoteHolderController : MonoBehaviour
     // Sprites, must be assigned from the inspector
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite pressedSprite;
+
     private SpriteRenderer spriteRenderer;
 
     // Note variables
@@ -30,6 +31,7 @@ public class NoteHolderController : MonoBehaviour
     private ParticleSystem missParticles;
     [SerializeField] private List<Material> beatSprites; // Must be assigned from inspector
     private ParticleSystem longNoteParticles;
+    [SerializeField] private Material fillLongParticleSprite;
 
     
 
@@ -57,6 +59,7 @@ public class NoteHolderController : MonoBehaviour
         missParticles.GetComponent<ParticleSystemRenderer>().material = beatSprites[2];
 
         longNoteParticles = transform.Find("LongNoteParticles").GetComponent<ParticleSystem>();
+        longNoteParticles.GetComponent<ParticleSystemRenderer>().material = fillLongParticleSprite;
 
         perfectScale = GameObject.FindWithTag("Background").GetComponent<PerfectScaleSprites>();
     }
@@ -67,6 +70,8 @@ public class NoteHolderController : MonoBehaviour
         greatParticles.Stop();
         missParticles.Stop();
         longNoteParticles.Stop();
+
+        
     }
 
     public void BeatNote()
