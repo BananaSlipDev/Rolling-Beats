@@ -839,7 +839,7 @@ PrefabInstance:
     - target: {fileID: 8259944520690539221, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: fillLongParticleSprite
       value: 
-      objectReference: {fileID: 2100000, guid: 1beb3d71da98dbb43934cfe80323b6f5, type: 2}
+      objectReference: {fileID: 2100000, guid: aa90c8e166dad1f4fa2fae700af936fa, type: 2}
     - target: {fileID: 8259944520690539221, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: beatSprites.Array.data[0]
       value: 
@@ -879,7 +879,7 @@ PrefabInstance:
     - target: {fileID: 8259944521169360585, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: fillLongParticleSprite
       value: 
-      objectReference: {fileID: 2100000, guid: 1beb3d71da98dbb43934cfe80323b6f5, type: 2}
+      objectReference: {fileID: 2100000, guid: aa90c8e166dad1f4fa2fae700af936fa, type: 2}
     - target: {fileID: 8259944521169360585, guid: d4405a5cd3411ce47bb8aa865785f7f9, type: 3}
       propertyPath: beatSprites.Array.data[0]
       value: 
