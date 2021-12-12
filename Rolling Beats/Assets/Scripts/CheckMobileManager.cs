@@ -9,7 +9,7 @@ using UnityEngine;
 public class CheckMobileManager : MonoBehaviour
 {
     public static CheckMobileManager SharedInstance;
-    private bool isMobile;
+    private bool isMobile=true;
 
 
     public bool IsMobileGet
@@ -26,6 +26,7 @@ public class CheckMobileManager : MonoBehaviour
     
     public GameObject login;
     public GameObject mobile;
+    public GameObject keyboardMobile;
 
     private void Awake()
     {
@@ -53,6 +54,7 @@ public class CheckMobileManager : MonoBehaviour
         else
         {
             mobile.SetActive(false);
+            keyboardMobile.SetActive(false);
         }
         
     }
