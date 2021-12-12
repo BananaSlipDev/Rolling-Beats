@@ -14,7 +14,20 @@ public class NoteSpawnerController : MonoBehaviour
     private GameObject spawnerBottom;
 
     [SerializeField] private List<Sprite> normalNoteSprites;
-    [SerializeField] private List<Sprite> fillNoteSprites;
+    [SerializeField] private List<Sprite> longNoteSprites;
+    [SerializeField] private List<Sprite> longNoteEndSprites;
+    [SerializeField] private List<Sprite> longNoteArrowSprites;
+
+    
+    
+
+    /* The following variable is used to match long notes with their end.
+        For it to work, sprites of longNotes and LongNoteEnds must be
+        added with the exact same color order.
+    */
+    private int longNoteEndSpriteMemory = 0;
+    private int bottomLongNoteEndSpriteMemory = 0;
+
 
     private void Start()
     {
@@ -36,22 +49,24 @@ public class NoteSpawnerController : MonoBehaviour
 
     public void SpawnLongNote(Vector3 p)
     {
-        // Asigns sprites for notes AND fills
         // Possible sprites must be assigned from inspector!!
-        int randomSpriteIdx = (int)Random.Range(0, normalNoteSprites.Count);
-        longNotePrefab.GetComponent<SpriteRenderer>().sprite = normalNoteSprites[randomSpriteIdx];
+        int randomSpriteIdx = (int)Random.Range(0, longNoteSprites.Count);
+        longNotePrefab.GetComponent<SpriteRenderer>().sprite = longNoteSprites[randomSpriteIdx];
+        longNotePrefab.transform.Find("Arrow").GetComponent<SpriteRenderer>().sprite = longNoteArrowSprites[randomSpriteIdx];
 
-        randomSpriteIdx = (int)Random.Range(0, fillNoteSprites.Count);
-        longNotePrefab.transform.Find("Fill").GetComponent<SpriteRenderer>().sprite = fillNoteSprites[randomSpriteIdx];
+        
+        longNoteEndSpriteMemory = randomSpriteIdx;
+
         Object.Instantiate(longNotePrefab, p, Quaternion.identity);
     }
 
     public void SpawnLongNoteEnd(Vector3 p)
     {
         // Possible sprites must be assigned from inspector!!
-        int randomSpriteIdx = (int)Random.Range(0, normalNoteSprites.Count);
-        longNoteEndPrefab.GetComponent<SpriteRenderer>().sprite = normalNoteSprites[randomSpriteIdx];
 
+        longNoteEndPrefab.GetComponent<SpriteRenderer>().sprite = longNoteEndSprites[longNoteEndSpriteMemory];
+        longNoteEndPrefab.transform.Find("Arrow").GetComponent<SpriteRenderer>().sprite = longNoteArrowSprites[longNoteEndSpriteMemory];
+        
         Object.Instantiate(longNoteEndPrefab, p, Quaternion.identity);
     }
 

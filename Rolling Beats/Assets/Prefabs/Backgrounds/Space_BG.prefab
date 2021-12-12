@@ -319,7 +319,7 @@ MonoBehaviour:
   - 0.04
   - 0.01
   - 0.05
-  - 7
+  - 4
   - 0.03
 --- !u!114 &652447528
 MonoBehaviour:
@@ -5302,7 +5302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149027848103133851, guid: 2e29d7890f32fe0459ceee5c596af53f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5
+      value: 3.28
       objectReference: {fileID: 0}
     - target: {fileID: 6149027848103133851, guid: 2e29d7890f32fe0459ceee5c596af53f, type: 3}
       propertyPath: m_LocalPosition.y

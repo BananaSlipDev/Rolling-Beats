@@ -28,6 +28,8 @@ public class PlayFabManager : MonoBehaviour
     public GameObject leaderboardUI;
     public GameObject mobile;
     public GameObject userMobileUI;
+    public GameObject keyboardB;
+    public GameObject keyboard;
 
     public GameObject rowPrefab;
     public GameObject rowsParent;
@@ -47,6 +49,7 @@ public class PlayFabManager : MonoBehaviour
     public Dictionary<String, int> itemsAvailable = new Dictionary<string, int>();
 
     public bool isProcessed =false;
+    
 
 
     private void Awake()
@@ -77,7 +80,7 @@ public class PlayFabManager : MonoBehaviour
             Password = passwordInput.text,
             RequireBothUsernameAndEmail = false
         };
-        PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
+        PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnErrorLogin);
     }
 
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
@@ -99,7 +102,7 @@ public class PlayFabManager : MonoBehaviour
                 GetPlayerProfile = true
             }
         };
-        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess,OnError);
+        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess,OnErrorLogin);
     }
 
     public void ResetPasswordButton()
@@ -120,6 +123,7 @@ public class PlayFabManager : MonoBehaviour
         songs.Add("Highlander");
         songs.Add("Rise");
         songs.Add("Vagrant");
+        songs.Add("Battlecry");
         // =====================================================
     }
 
@@ -134,14 +138,16 @@ public class PlayFabManager : MonoBehaviour
             GetPlayerProfile = true
             }
         };
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccessNoUser, OnError);
+        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccessNoUser, OnErrorLogin);
     }
     
     void OnLoginSuccessNoUser(LoginResult results)
     {
         mobile.SetActive(false);
         loginUI.SetActive(false);
-        messageText.gameObject.SetActive(true);
+        keyboard.SetActive(false);
+        keyboardB.SetActive(false);
+        //messageText.gameObject.SetActive(true);
         userMobileUI.SetActive(true);
         
         //generateRandomUser();
@@ -150,10 +156,10 @@ public class PlayFabManager : MonoBehaviour
 
     void OnLoginSuccess(LoginResult results)
     {
-        
-        loginUI.SetActive(false);
-        messageText.gameObject.SetActive(true);
         messageText.text = "Logged In";
+        loginUI.SetActive(false);
+        mobile.SetActive(false);
+        //messageText.gameObject.SetActive(true);
         finalName = results.InfoResultPayload.PlayerProfile.DisplayName;
 
         string name = null;
@@ -178,9 +184,14 @@ public class PlayFabManager : MonoBehaviour
     
     void OnError(PlayFabError error)
     {
-        //messageText.text = error.ErrorMessage;
-        Debug.Log("error");
-        Debug.Log(error.ErrorMessage);
+       
+    }
+
+    void OnErrorLogin(PlayFabError error)
+    {
+        messageText.text = error.ErrorMessage;
+        //Debug.Log("error");
+        //Debug.Log(error.ErrorMessage);
     }
 
     public void SendLeaderboard(int value, String level)
@@ -221,6 +232,17 @@ public class PlayFabManager : MonoBehaviour
         
     }
 
+    public void GetLeaderboardAroundPlayer(string level)
+    {
+        var request = new GetLeaderboardAroundPlayerRequest
+        {
+            StatisticName = level,
+            MaxResultsCount = 10
+
+        };
+        PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderboardAroundPlayerGet, OnError);
+    }
+
     void OnLeaderboardGet(GetLeaderboardResult result)
     {
         foreach (Transform item in rowsParent.transform)
@@ -235,6 +257,38 @@ public class PlayFabManager : MonoBehaviour
             text[1].text = item.DisplayName;
             text[2].text = item.StatValue.ToString();
             
+            if (item.DisplayName == finalName)
+            {
+                text[0].color = Color.magenta;
+                text[1].color = Color.magenta;
+                text[2].color = Color.magenta;
+            }
+            
+        }
+        
+    }
+    
+    void OnLeaderboardAroundPlayerGet(GetLeaderboardAroundPlayerResult result)
+    {
+        foreach (Transform item in rowsParent.transform)
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (var item in result.Leaderboard)
+        {
+            GameObject newGO = Instantiate(rowPrefab, rowsParent.transform);
+            TextMeshProUGUI[] text = newGO.GetComponentsInChildren<TextMeshProUGUI>();
+            text[0].text = (item.Position +1).ToString();
+            text[1].text = item.DisplayName;
+            text[2].text = item.StatValue.ToString();
+
+            if (item.DisplayName == finalName)
+            {
+                text[0].color = Color.magenta;
+                text[1].color = Color.magenta;
+                text[2].color = Color.magenta;
+            }
+            
         }
         
     }
@@ -245,8 +299,17 @@ public class PlayFabManager : MonoBehaviour
         {
             DisplayName = username.text,
         };
+
+        if (request.DisplayName.Length < 20)
+        {
+            PlayFabClientAPI.UpdateUserTitleDisplayName(request,OnDisplayNameUpdate, OnError);
+        }
+        else
+        {
+            messageText.text = "Username too long";
+        }
         
-        PlayFabClientAPI.UpdateUserTitleDisplayName(request,OnDisplayNameUpdate, OnError);
+        
     }
     
     public void generateRandomUser(String name)
@@ -261,16 +324,10 @@ public class PlayFabManager : MonoBehaviour
 
     private void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult obj)
     {
-        if (obj.DisplayName.Length < 20)
-        {
+        
             finalName= obj.DisplayName;
             userUI.SetActive(false);
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-        }
-        else
-        {
-            messageText.text = "Username too long";
-        }
         
     }
     
