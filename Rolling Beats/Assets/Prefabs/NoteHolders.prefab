@@ -1361,8 +1361,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 1
-    mode: 1
+    enabled: 0
+    mode: 0
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1480,7 +1480,8 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 2ca07df05ad7a3445870bb81d1e21835, type: 3}
+    - sprite: {fileID: 0}
+    - sprite: {fileID: 0}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -6166,8 +6167,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 1
-    mode: 1
+    enabled: 0
+    mode: 0
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -6285,7 +6286,8 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 2ca07df05ad7a3445870bb81d1e21835, type: 3}
+    - sprite: {fileID: 0}
+    - sprite: {fileID: 0}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -24489,6 +24491,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 47f4e0d8da2768749b3545e58effcfa5, type: 2}
   - {fileID: 2100000, guid: 63b7d364cf99f9b479f2b2b2e6cadae4, type: 2}
   - {fileID: 2100000, guid: fe8d5c1e543ad6845b4b583b2893e22a, type: 2}
+  fillLongParticleSprite: {fileID: 2100000, guid: 2c6b7de21cb126d408ac01e9f9c85838, type: 2}
 --- !u!58 &8259944520690539240
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -29434,6 +29437,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 47f4e0d8da2768749b3545e58effcfa5, type: 2}
   - {fileID: 2100000, guid: 63b7d364cf99f9b479f2b2b2e6cadae4, type: 2}
   - {fileID: 2100000, guid: fe8d5c1e543ad6845b4b583b2893e22a, type: 2}
+  fillLongParticleSprite: {fileID: 2100000, guid: 2c6b7de21cb126d408ac01e9f9c85838, type: 2}
 --- !u!58 &8259944521169360588
 CircleCollider2D:
   m_ObjectHideFlags: 0
