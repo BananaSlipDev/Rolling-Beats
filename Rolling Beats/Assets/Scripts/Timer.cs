@@ -14,7 +14,6 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         offSet = GameObject.Find("Conductor").GetComponent<Conductor>().firstBeatOffset;
-        Debug.Log(offSet);
         clockTimes = false;
         loadingBar = GetComponent<Image>();
         loadingBar.fillAmount = 0f; 
